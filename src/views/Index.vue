@@ -1,6 +1,5 @@
 <template>
     <div class="wrapper">
-
         <carousel :per-page="1"
                   loop
                   :speed="1"
@@ -10,13 +9,14 @@
                   navigationEnabled
                   navigationNextLabel="<i class='material-icons' style='display:none'>keyboard_arrow_right</i>"
                   navigationPrevLabel="<i class='material-icons' style='display:none'>keyboard_arrow_left</i>"
-                  style="height: 80vh;">
+                  style="height: 80vh;"
+                  md-small-hide>
             <slide>
                 <div class="carousel-caption">
                     <h3>#1 Новость</h3>
                     <h2>
-                        Вышли новые версии XpeditionEnterprise,<br> PADS и HyperLynx
-                        подробнее
+                        Вышли новые версии XpeditionEnterprise,<br />
+                        PADS и HyperLynx подробнее
                     </h2>
                     <div class="line-slider"></div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="carousel-caption">
                     <h3>#2 Новость</h3>
                     <h2>
-                        Вышли новые версии XpeditionEnterprise,<br> 
+                        Вышли новые версии XpeditionEnterprise,<br />
                         PADS и HyperLynx подробнее
                     </h2>
                     <div class="line-slider"></div>
@@ -38,8 +38,8 @@
                 <div class="carousel-caption">
                     <h3>#3 Новость</h3>
                     <h2>
-                        Вышли новые версии XpeditionEnterprise,<br> PADS и HyperLynx
-                        подробнее
+                        Вышли новые версии XpeditionEnterprise,<br />
+                        PADS и HyperLynx подробнее
                     </h2>
                     <div class="line-slider"></div>
                 </div>
@@ -48,415 +48,62 @@
         </carousel>
         <div class="main main-raised">
             <div class="section" style="padding: 0;">
-                <nav-tabs-card no-label 
-                               tabs-plain 
-                               style="padding:0 10px">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-row">
+                        <div class="md-toolbar-section-start">
+                            <md-list>
+                                <md-list-item href="javascript:void(0)" v-on:click="openCategory">
+                                    <md-icon>list</md-icon>
+                                    <p>КАТЕГОРИИ</p>
+                                    <md-icon :style="{ transform: 'rotate('+ turn+'turn)'}">keyboard_arrow_down</md-icon>
+                                </md-list-item>
+                            </md-list>
+                        </div>
+                        <div class="md-toolbar-section-end">
+                            <md-button class="md-just-icon md-simple md-white md-toolbar-toggle">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </md-button>
+
+                            <div class="md-collapse">
+                                <md-list>
+                                    <md-list-item href="#/">
+                                        <md-icon>explore</md-icon>
+                                        <p>Тренинги</p>
+                                    </md-list-item>
+
+                                    <md-list-item href="javascript:void(0)">
+                                        <md-icon>account_circle</md-icon>
+                                        <p>Контаты</p>
+                                    </md-list-item>
+
+                                    <md-list-item href="javascript:void(0)">
+                                        <md-icon>settings</md-icon>
+                                        <p>О нас</p>
+                                    </md-list-item>
+                                </md-list>
+                            </div>
+                        </div>
+                    </div>
+                </md-toolbar>
+                <nav-tabs-card no-label tabs-plain id="tabs-menu">
                     <template slot="content">
-                        <md-tabs class="md-primary" md-alignment="centered">
-                            <md-tab id="tab-home" md-label="ИМС">
+                        <md-tabs class="md-secondary" md-alignment="centered">
+                            <md-tab v-for="item in category" :key="item.ID" :id="item.ID" :md-label="item.NAME">
                                 <div class="container">
-                                    <div class="md-layout">
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item  product b1">
+                                    <div class="md-layout md-gutter md-alignment-left">
+                                        <router-link class="md-layout-item md-size-20 md-small-size-100" 
+                                                     v-for="product in products" :key="product.ID"
+                                                     :to="product.ID">
+                                            <md-card class="product">
                                                 <img src="@/assets/img/products/1.svg" />
                                                 <md-card-header-text>
-                                                    <div class="md-title">Veloce</div>
+                                                    <div class="md-title">{{product.NAME}}</div>
                                                     <div class="md-subhead">The Veloce® Strato™</div>
                                                 </md-card-header-text>
                                             </md-card>
                                         </router-link>
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item product b2">
-                                                <img src="@/assets/img/products/icon/2.png" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">Tanner</div>
-                                                    <div class="md-subhead">Маршрут проектирования Tanner</div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item md-size-23 product b1">
-                                                <img src="@/assets/img/products/icon/3.png" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">OASYS-RTL</div>
-                                                    <div class="md-subhead">Высокое качество синтеза</div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item md-size-23 product b2">
-                                                <img src="@/assets/img/products/1.svg" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">APRISA</div>
-                                                    <div class="md-subhead">Трассировка цифровых ИС</div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                    </div>
-                                    <div class="md-layout">
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item md-size-23 product b2">
-                                                <img src="@/assets/img/products/icon/2.png" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">Eldo</div>
-                                                    <div class="md-subhead">Eldo Classic,
-                                                        Eldo Premier и Eldo RF.
-                                                    </div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item md-size-23 product b1">
-                                                <img src="@/assets/img/products/icon/3.png" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">AFS</div>
-                                                    <div class="md-subhead">Analog Fast Spice</div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item md-size-23 product b2">
-                                                <img src="@/assets/img/products/1.svg" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">Symphony</div>
-                                                    <div class="md-subhead">Symphony Mixed-Signal Platform</div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                        <router-link to="/product" class="a-product">
-                                            <md-card class="md-layout-item md-size-23 product b1">
-                                                <img src="@/assets/img/products/icon/2.png" />
-                                                <md-card-header-text>
-                                                    <div class="md-title">Vista</div>
-                                                    <div class="md-subhead">Vista™</div>
-                                                </md-card-header-text>
-                                            </md-card>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </md-tab>
-
-                            <md-tab id="tab-pages" md-label="ПЛИС">
-                                <div class="container">
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                </div>
-                            </md-tab>
-
-                            <md-tab id="tab-posts" md-label="Прроектирование на печатных платах">
-                                <div class="container">
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                </div>
-                            </md-tab>
-
-                            <md-tab id="tab-posts2" md-label="Тепловой анализ">
-                                <div class="container">
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/4.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                </div>
-                            </md-tab>
-
-                            <md-tab id="tab-posts3" md-label="Тестирование микросхем">
-                                <div class="container">
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                </div>
-                            </md-tab>
-
-                            <md-tab id="tab-posts4" md-label="Кабельные соединения">
-                                <div class="container">
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                    </div>
-                                    <div class="md-layout">
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b2">
-                                            <img src="@/assets/img/products/2.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
-                                        <md-card class="md-layout-item md-size-23 product b1">
-                                            <img src="@/assets/img/products/1.svg" />
-                                            <md-card-header-text>
-                                                <div class="md-title">HDL описание проекта</div>
-                                                <div class="md-subhead">HDL описание проекта</div>
-                                            </md-card-header-text>
-                                        </md-card>
                                     </div>
                                 </div>
                             </md-tab>
@@ -469,168 +116,221 @@
 </template>
 
 <script>
-    import { NavTabsCard } from "@/components";
+import { NavTabsCard } from "@/components";
 
-    export default {
-        components: {
-            NavTabsCard,
-        },
-        name: "index",
-        bodyClass: "index-page",
-        props: {
-            image: {
-                type: String,
-                default: require("@/assets/img/vue-mk-header.jpg")
-            },
-            leaf4: {
-                type: String,
-                default: require("@/assets/img/leaf4.png")
-            },
-            leaf3: {
-                type: String,
-                default: require("@/assets/img/leaf3.png")
-            },
-            leaf2: {
-                type: String,
-                default: require("@/assets/img/leaf2.png")
-            },
-            leaf1: {
-                type: String,
-                default: require("@/assets/img/leaf1.png")
-            },
-            signup: {
-                type: String,
-                default: require("@/assets/img/city.jpg")
-            },
-            landing: {
-                type: String,
-                default: require("@/assets/img/landing.jpg")
-            },
-            profile: {
-                type: String,
-                default: require("@/assets/img/profile.jpg")
-            }
-        },
-        data() {
-            return {
-                firstname: null,
-                email: null,
-                password: null,
-                leafShow: false,
-                carousel1: require("@/assets/img/slider-1.jpg"),
-                carousel2: require("@/assets/img/slider-2.jpg"),
-                carousel3: require("@/assets/img/slider-2.jpg"),
-                productImg: require("@/assets/img/products/1.jpg")
-            };
-        },
-        methods: {
-            leafActive() {
-                if (window.innerWidth < 768) {
-                    this.leafShow = false;
-                } else {
-                    this.leafShow = true;
-                }
-            }
-        },
-        computed: {
-            headerStyle() {
-                return {
-                    backgroundImage: `url(${this.image})`
-                };
-            },
-            signupImage() {
-                return {
-                    backgroundImage: `url(${this.signup})`
-                };
-            }
-        },
-        mounted() {
-            this.leafActive();
-            window.addEventListener("resize", this.leafActive);
-        },
-        beforeDestroy() {
-            window.removeEventListener("resize", this.leafActive);
-        }
+export default {
+  components: {
+    NavTabsCard
+  },
+  name: "index",
+  bodyClass: "index-page",
+  props: {
+    image: {
+      type: String,
+      default: require("@/assets/img/vue-mk-header.jpg")
+    },
+    leaf4: {
+      type: String,
+      default: require("@/assets/img/leaf4.png")
+    },
+    leaf3: {
+      type: String,
+      default: require("@/assets/img/leaf3.png")
+    },
+    leaf2: {
+      type: String,
+      default: require("@/assets/img/leaf2.png")
+    },
+    leaf1: {
+      type: String,
+      default: require("@/assets/img/leaf1.png")
+    },
+    signup: {
+      type: String,
+      default: require("@/assets/img/city.jpg")
+    },
+    landing: {
+      type: String,
+      default: require("@/assets/img/landing.jpg")
+    },
+    profile: {
+      type: String,
+      default: require("@/assets/img/profile.jpg")
+    }
+  },
+  data() {
+    return {
+      firstname: null,
+      email: null,
+      password: null,
+      leafShow: false,
+      carousel1: require("@/assets/img/slider-1.jpg"),
+      carousel2: require("@/assets/img/slider-2.jpg"),
+      carousel3: require("@/assets/img/slider-2.jpg"),
+      productImg: require("@/assets/img/products/1.jpg"),
+      category: 'N',
+      products: [],
+      clickCategory: 0,
+      turn: 0
     };
+  },
+  methods: {
+    leafActive() {
+      if (window.innerWidth < 768) {
+        this.leafShow = false;
+      } else {
+        this.leafShow = true;
+      }
+    },
+      openCategory: function (event) {
+          let parent = document.getElementById("tabs-menu");
+          let tabsMenu = parent.querySelector('.md-tabs-navigation');
+          if (this.clickCategory == 0) {
+              tabsMenu.classList.add("activeTabs");
+              this.clickCategory = 1;
+              this.turn = 0.5;
+          } else {
+              tabsMenu.classList.remove("activeTabs");
+              this.clickCategory = 0;
+              this.turn = 0;
+          }
+      }
+  },
+  computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.image})`
+      };
+    },
+    signupImage() {
+      return {
+        backgroundImage: `url(${this.signup})`
+      };
+    }
+  },
+  mounted() {
+    this.leafActive();
+      window.addEventListener("resize", this.leafActive);
+      this.axios.get(this.$root.baseURL+'/rest/1/1szw54c9zzx4ab1d/entity.section.get?ENTITY=products').then((response) => {
+          this.category = response.data.result;
+      }); 
+      this.axios.get(this.$root.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?ENTITY=products').then((response) => {
+          this.products = response.data.result;;
+      });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.leafActive);
+  }
+};
 </script>
 <style lang="scss">
-    .section-download {
-        .md-button + .md-button{
-            margin-left: 5px;
-         }
-    }
+.section-download {
+  .md-button + .md-button {
+    margin-left: 5px;
+  }
+}
 
-    .VueCarousel-pagination {
-        margin-bottom: 10vh !important;
-    }
+.VueCarousel-pagination {
+  margin-bottom: 10vh !important;
+}
 
-    .VueCarousel-inner {
-      transition: none !important;
-    }
+.VueCarousel-inner {
+  transition: none !important;
+}
 
-    .VueCarousel-slide-active {
-        animation: shadow  3s 1 ease-in-out;
+.VueCarousel-slide-active {
+  animation: shadow 3s 1 ease-in-out;
+}
+@keyframes shadow {
+  from {
+    opacity: 0.8;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.carousel-caption {
+  bottom: 30vh !important;
+  animation: carousel-caption 2s 1 ease-in-out;
+}
+@keyframes carousel-caption {
+  from {
+    opacity: 0;
+    transform: translateY(10vh);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.line-slider {
+  margin: 3% auto;
+  width: 25%;
+  max-width: 100%;
+  height: 1px;
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(242, 243, 248, 0) 0%,
+    #f6f6f6 50%,
+    rgba(242, 243, 248, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(242, 243, 248, 0) 0%,
+    #f6f6f6 50%,
+    rgba(242, 243, 248, 0) 100%
+  );
+}
+.product {
+  height: 200px;
+  margin-left:1%;
+    .md-card-header {
+      background: #4b8edb !important;
     }
-    @keyframes shadow {
-      from {
-        opacity: 0.8;
-      }
-      20% {
-        opacity: 1;
-      }
-      to {
-        opacity: 1;
-      }
+    .md-title {
+      color: #3d434b;
+      font-size: 14pt !important;
     }
-    .carousel-caption {
-        bottom: 30vh !important;
-        animation: carousel-caption 2s 1 ease-in-out;
+    img {
+      width: 60px !important;
+      margin: 15px;
     }
-    @keyframes carousel-caption {
-        from {
-            opacity: 0;
-            transform: translateY(10vh);
-        }
-        to {
-            opacity: 1;
-        }
+}
+.md-layout-item:nth-child(2n + 1) .product {
+    border-top: 10px solid #2e5790;
+}
+.md-layout-item:nth-child(2n) .product {
+    border-top: 10px solid #4b8edb;
+}
+.md-toolbar {
+    margin-bottom: 0 !important;
+}
+.md-card.md-card-nav-tabs{
+    /*position: relative;
+    top: -60px;*/
+}
+#tabs-menu{
+    padding:0 10px;
+    .md-tabs-navigation{
+        background: #4b8edb! important;
+        box-shadow: 0 0 black;
+        border-radius: 0;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.15s ease-out;
     }
-    .line-slider{
-        margin: 3% auto;
-        width: 25%;
-        max-width: 100%;
-        height: 1px;
-        background: -moz-linear-gradient(0deg, rgba(242, 243, 248, 0) 0%, #f6f6f6 50%, rgba(242, 243, 248, 0) 100%);
-        background: -webkit-linear-gradient(0deg, rgba(242, 243, 248, 0) 0%, #f6f6f6 50%, rgba(242, 243, 248, 0) 100%);
+    button{
+        width: 30%;
+        max-width: inherit !important;
     }
-    .a-product{
-        margin-right: 1vw !important;
-        margin-left: 1vw !important;
-        width: 21%
+    .activeTabs{
+        max-height: 500px;
+        transition: max-height 0.7s ease-out;
     }
-    .product{
-        height: 200px;
-    }
-    .product.b1 {
-        border-top: 10px solid #2e5790;
-    }
-    .product.b2 {
-        border-top: 10px solid #4b8edb;
-    }
-    .product .md-card-header{
-        background: #4b8edb !important;
-    }
-    .product .md-title{
-        color:#3d434b;
-        font-size:14pt !important;
-    }
-    .product img{
-        width: 60px !important;
-        margin: 15px;
-    }
-    @media all and (min-width: 991px) {
-        .btn-container {
-            display: flex;
-        }
-    }
+}
 </style>

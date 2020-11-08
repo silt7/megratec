@@ -49,22 +49,26 @@ export default new Router({
       }
     },
     {
-        path: "/components",
-        name: "components",
-        components: { default: Components, header: MainNavbar, footer: MainFooter },
-        props: {
-            header: { colorOnScroll: 400 },
-            footer: { backgroundColor: "black" }
-        }
+      path: "/components",
+      name: "components",
+      components: {
+        default: Components,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
     },
     {
-        path: "/product",
-        name: "product",
-        components: { default: Product, header: MainNavbar, footer: MainFooter },
-        props: {
-            header: { colorOnScroll: 400 },
-            footer: { backgroundColor: "black" }
-        }
+      path: "/product",
+      name: "product",
+      components: { default: Product, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
     }
   ],
   scrollBehavior: to => {

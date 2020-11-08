@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style lang="css">
-    .nav-tabs{
-        justify-content: flex-end;
-    }
+.nav-tabs {
+  justify-content: flex-end;
+}
 </style>

@@ -8,7 +8,7 @@
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
-        <img :src="imgLogo" style="height:40px"/>
+        <img :src="imgLogo" style="height:40px" />
       </div>
       <div class="md-toolbar-section-end">
         <md-button
@@ -57,26 +57,16 @@
                     </a>
                 </li>
 
-                <md-list-item href="/"
-                              target="_blank"
-                              v-if="showDownload">
-                    <p>Каталог</p>
+                <md-list-item href="/" target="_blank" v-if="showDownload">
+                    <md-icon>mail</md-icon>
+                    <p>lokhov@megratec.ru</p>
                 </md-list-item>
 
                 <md-list-item href="javascript:void(0)"
                               @click="scrollToElement()"
                               v-if="showDownload">
-                    <p>Обучение</p>
-                </md-list-item>
-                <md-list-item href="javascript:void(0)"
-                              @click="scrollToElement()"
-                              v-if="showDownload">
-                    <p>Партнёры</p>
-                </md-list-item>
-                <md-list-item href="javascript:void(0)"
-                              @click="scrollToElement()"
-                              v-if="showDownload">
-                    <p>О нас</p>
+                    <md-icon>phone_android</md-icon>
+                    <p>495-7875940</p>
                 </md-list-item>
 
                 <li class="md-list-item" v-else>
@@ -114,25 +104,6 @@
                         </div>
                     </a>
                 </li>
-
-                <md-list-item href="https://twitter.com/CreativeTim"
-                              target="_blank">
-                    <i class="fab fa-twitter"></i>
-                    <p class="hidden-lg">Twitter</p>
-                    <md-tooltip md-direction="bottom">Follow us on Twitter</md-tooltip>
-                </md-list-item>
-                <md-list-item href="https://www.facebook.com/CreativeTim"
-                              target="_blank">
-                    <i class="fab fa-facebook-square"></i>
-                    <p class="hidden-lg">Facebook</p>
-                    <md-tooltip md-direction="bottom">Like us on Facebook</md-tooltip>
-                </md-list-item>
-                <md-list-item href="https://www.instagram.com/CreativeTimOfficial"
-                              target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <p class="hidden-lg">Instagram</p>
-                    <md-tooltip md-direction="bottom">Follow us on Instagram</md-tooltip>
-                </md-list-item>
             </md-list>
           </div>
         </div>
@@ -185,7 +156,7 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
-      imgLogo: require("@/assets/img/logo.png"),
+      imgLogo: require("@/assets/img/logo.png")
     };
   },
   computed: {
@@ -220,15 +191,15 @@ export default {
         document.body.scrollTop || document.documentElement.scrollTop;
       let navbarColor = document.getElementById("toolbar");
       this.currentScrollValue = scrollValue;
-      if (this.colorOnScroll > 0 && scrollValue > this.colorOnScroll) {
+      if (scrollValue > 300) {
         this.extraNavClasses = `md-${this.type}`;
-          navbarColor.classList.remove("md-transparent");
-          this.imgLogo = require("@/assets/img/logo-blue.png");
+        navbarColor.classList.remove("md-transparent");
+        this.imgLogo = require("@/assets/img/logo-blue.png");
       } else {
         if (this.extraNavClasses) {
           this.extraNavClasses = "";
-            navbarColor.classList.add("md-transparent");
-            this.imgLogo = require("@/assets/img/logo.png");
+          navbarColor.classList.add("md-transparent");
+          this.imgLogo = require("@/assets/img/logo.png");
         }
       }
     },

@@ -18,9 +18,9 @@
             </a>
           </li>
           <li>
-              <a href="">
-                  Партнёры
-              </a>
+            <a href="">
+              Партнёры
+            </a>
           </li>
           <li>
             <a href="">
@@ -29,9 +29,7 @@
           </li>
         </ul>
       </nav>
-      <div class="copyright">
-        &copy; {{ year }}
-      </div>
+      <div class="copyright">&copy; {{ year }}</div>
     </div>
   </footer>
 </template>
