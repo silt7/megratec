@@ -8,9 +8,7 @@
                   :mouse-drag="false"
                   navigationEnabled
                   navigationNextLabel="<i class='material-icons' style='display:none'>keyboard_arrow_right</i>"
-                  navigationPrevLabel="<i class='material-icons' style='display:none'>keyboard_arrow_left</i>"
-                  style="height: 80vh;"
-                  md-small-hide>
+                  navigationPrevLabel="<i class='material-icons' style='display:none'>keyboard_arrow_left</i>">
             <slide>
                 <div class="carousel-caption">
                     <h3>#1 Новость</h3>
@@ -68,17 +66,17 @@
 
                             <div class="md-collapse">
                                 <md-list>
-                                    <md-list-item href="#/">
+                                    <md-list-item href="/trainings/">
                                         <md-icon>explore</md-icon>
                                         <p>Тренинги</p>
                                     </md-list-item>
 
-                                    <md-list-item href="javascript:void(0)">
+                                    <md-list-item href="/contacts/">
                                         <md-icon>account_circle</md-icon>
                                         <p>Контаты</p>
                                     </md-list-item>
 
-                                    <md-list-item href="javascript:void(0)">
+                                    <md-list-item href="/about/">
                                         <md-icon>settings</md-icon>
                                         <p>О нас</p>
                                     </md-list-item>
@@ -90,17 +88,21 @@
                 <nav-tabs-card no-label tabs-plain id="tabs-menu">
                     <template slot="content">
                         <md-tabs class="md-secondary" md-alignment="centered">
-                            <md-tab v-for="item in category" :key="item.ID" :id="item.ID" :md-label="item.NAME">
+                            <md-tab v-for="item in category" :key="item.ID" :md-label="item.NAME">
                                 <div class="container">
                                     <div class="md-layout md-gutter md-alignment-left">
                                         <router-link class="md-layout-item md-size-20 md-small-size-100" 
                                                      v-for="product in products" :key="product.ID"
-                                                     :to="product.ID">
+                                                     :to="'product/' + product.ID"
+                                                     v-if="product.SECTION == item.ID">
                                             <md-card class="product">
-                                                <img src="@/assets/img/products/1.svg" />
+                                                <img 
+													v-if="product.PROPERTY_VALUES.icon != ''"
+													:src="product.PROPERTY_VALUES.icon"/>
+												<img v-else src="@/assets/img/icon/noimg.svg"/>
                                                 <md-card-header-text>
                                                     <div class="md-title">{{product.NAME}}</div>
-                                                    <div class="md-subhead">The Veloce® Strato™</div>
+                                                    <div class="md-subhead">Подробнее ></div>
                                                 </md-card-header-text>
                                             </md-card>
                                         </router-link>
@@ -333,4 +335,13 @@ export default {
         transition: max-height 0.7s ease-out;
     }
 }
+.md-button .md-ripple {
+    justify-content: start !important;
+}
+@media screen and (min-width: 960px) {
+  .VueCarousel {
+    height: 80vh;
+  }
+}
+
 </style>

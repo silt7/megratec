@@ -8,7 +8,7 @@
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
-        <img :src="imgLogo" style="height:40px" />
+        <router-link to="/"><img :src="imgLogo" style="height:40px" /></router-link>
       </div>
       <div class="md-toolbar-section-end">
         <md-button

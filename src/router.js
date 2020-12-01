@@ -8,10 +8,15 @@ import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Product from "./views/Product.vue";
+import Trainings from "./views/Trainings.vue";
+import Contacts from "./views/Contacts.vue";
+import About from "./views/About.vue";
 
 Vue.use(Router);
 
 export default new Router({
+    linkExactActiveClass: "active",
+    mode: "history",
   routes: [
     {
       path: "/",
@@ -62,14 +67,53 @@ export default new Router({
       }
     },
     {
-      path: "/product",
+      path: "/product/:id",
       name: "product",
       components: { default: Product, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
-    }
+    },
+	{
+      path: "/trainings",
+      name: "trainings",
+      components: {
+        default: Trainings,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+	{
+      path: "/contacts",
+      name: "contacts",
+      components: {
+        default: Contacts,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+	{
+      path: "/about",
+      name: "about",
+      components: {
+        default: About,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
   ],
   scrollBehavior: to => {
     if (to.hash) {
