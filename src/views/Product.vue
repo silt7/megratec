@@ -28,6 +28,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         components: {
 
@@ -51,7 +52,19 @@
                 };
             }
         },
-        mounted() {
+        beforeRouteEnter(to, from, next) {
+            var params = {
+                params: {
+                    ENTITY: 'products',
+                    'FILTER[ID]': to.params.id
+                }
+            };
+            axios.get(to.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?', params).then((response) => {
+                document.title = response.data.result[0].NAME;
+                next(vm => vm.product = response.data.result[0])
+            });
+        },
+        /*mounted() {
             var params = {
                 params: {
                     ENTITY: 'products',
@@ -61,7 +74,7 @@
             this.axios.get(this.$root.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?', params).then((response) => {
                 this.product = response.data.result[0];
             });
-        },
+        },*/
     };
 </script>
 

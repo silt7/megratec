@@ -57,19 +57,7 @@
                     </a>
                 </li>
 
-                <md-list-item href="/" target="_blank" v-if="showDownload">
-                    <md-icon>mail</md-icon>
-                    <p>lokhov@megratec.ru</p>
-                </md-list-item>
-
-                <md-list-item href="javascript:void(0)"
-                              @click="scrollToElement()"
-                              v-if="showDownload">
-                    <md-icon>phone_android</md-icon>
-                    <p>495-7875940</p>
-                </md-list-item>
-
-                <li class="md-list-item" v-else>
+                <li class="md-list-item" v-if="!showDownload">
                     <a href="javascript:void(0)"
                        class="md-list-item-router md-list-item-container md-button-clean dropdown">
                         <div class="md-list-item-content">
@@ -78,7 +66,7 @@
                                            class="md-button md-button-link md-white md-simple dropdown-toggle"
                                            data-toggle="dropdown">
                                     <i class="material-icons">view_carousel</i>
-                                    <p>Examples</p>
+                                    <p>Продукты</p>
                                 </md-button>
                                 <ul class="dropdown-menu dropdown-with-icons">
                                     <li>
@@ -104,6 +92,43 @@
                         </div>
                     </a>
                 </li>
+                <md-list-item v-if="this.$route.path !== '/'">
+                    <router-link exact to="/trainings/">
+                        <md-icon></md-icon>
+                        <p>Продукты</p>
+                    </router-link>
+                </md-list-item>
+                <md-list-item v-if="this.$route.path !== '/'">
+                    <router-link exact to="/trainings/">
+                        <md-icon></md-icon>
+                        <p>Тренинги</p>
+                    </router-link>
+                </md-list-item>
+                <md-list-item v-if="this.$route.path !== '/'">
+                    <router-link exact to="/contacts/">
+                        <md-icon></md-icon>
+                        <p>Контакты</p>
+                    </router-link>
+                </md-list-item>
+                <md-list-item v-if="this.$route.path !== '/'">
+                    <router-link exact to="/about/">
+                        <md-icon></md-icon>
+                        <p>О нас</p>
+                    </router-link>
+                </md-list-item>
+
+
+                <md-list-item href="/" target="_blank" v-if="this.$route.path === '/'">
+                    <md-icon>mail</md-icon>
+                    <p>lokhov@megratec.ru</p>
+                </md-list-item>
+
+                <md-list-item href="javascript:void(0)"
+                              @click="scrollToElement()"
+                              v-if="this.$route.path === '/'">
+                    <md-icon>phone_android</md-icon>
+                    <p>+7 (495) 787-59-40</p>
+                </md-list-item>
             </md-list>
           </div>
         </div>
@@ -191,7 +216,7 @@ export default {
         document.body.scrollTop || document.documentElement.scrollTop;
       let navbarColor = document.getElementById("toolbar");
       this.currentScrollValue = scrollValue;
-      if (scrollValue > 300) {
+      if (scrollValue > 100) {
         this.extraNavClasses = `md-${this.type}`;
         navbarColor.classList.remove("md-transparent");
         this.imgLogo = require("@/assets/img/logo-blue.png");

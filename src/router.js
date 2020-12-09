@@ -14,6 +14,8 @@ import About from "./views/About.vue";
 
 Vue.use(Router);
 
+const baseURL = 'https://megratec-dev.ru';
+
 export default new Router({
     linkExactActiveClass: "active",
     mode: "history",
@@ -22,36 +24,22 @@ export default new Router({
       path: "/",
       name: "index",
       components: { default: Index, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
+      meta: { baseURL: baseURL }
     },
     {
       path: "/landing",
       name: "landing",
       components: { default: Landing, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
     },
     {
       path: "/login",
       name: "login",
       components: { default: Login, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 }
-      }
     },
     {
       path: "/profile",
       name: "profile",
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
     },
     {
       path: "/components",
@@ -60,20 +48,13 @@ export default new Router({
         default: Components,
         header: MainNavbar,
         footer: MainFooter
-      },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
       }
     },
     {
       path: "/product/:id",
       name: "product",
       components: { default: Product, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
+      meta: { baseURL: baseURL}
     },
 	{
       path: "/trainings",
@@ -82,10 +63,6 @@ export default new Router({
         default: Trainings,
         header: MainNavbar,
         footer: MainFooter
-      },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
       }
     },
 	{
@@ -95,10 +72,6 @@ export default new Router({
         default: Contacts,
         header: MainNavbar,
         footer: MainFooter
-      },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
       }
     },
 	{
@@ -108,10 +81,6 @@ export default new Router({
         default: About,
         header: MainNavbar,
         footer: MainFooter
-      },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
       }
     },
   ],
