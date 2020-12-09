@@ -1,49 +1,124 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page-header header-filter" :style="headerStyle">
-      <div class="container">
-        <div class="md-layout md-alignment-center">
-          <div
-            class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
-          >
-            <h1 class="title" style="text-align:center">Контакты</h1>
-          </div>
-        </div>
-      </div>
-    </parallax>
+      <parallax class="section page-header">
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9d6d0e5d7de6282289225ecd34d2c7e141d20e4b775ca761992f0a5b77ade574&amp;source=constructor" width="100%" style="height:45vh" frameborder="0"></iframe>
+      </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-        <div class="container">
-          <div class="md-layout">
-            <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
-              <form class="contact-form">
-                <div class="md-layout">
-                  <div class="md-layout-item md-size-50">
-                    <md-field>
-                      <label>Your Name</label>
-                      <md-input v-model="name" type="text"></md-input>
-                    </md-field>
+          <div class="container">
+              <div class="md-layout">
+                  <div class="md-layout-item md-size-50 md-small-size-100 ml-auto">
+                      <h2 class="title" style="margin-top:0">Отправить нам сообщение</h2>
+                      <form class="contact-form">
+                          <md-field>
+                              <label>Имя</label>
+                              <md-input v-model="name" type="text"></md-input>
+                          </md-field>
+                          <md-field>
+                              <label>Email</label>
+                              <md-input v-model="email" type="email"></md-input>
+                          </md-field>
+                          <md-field>
+                              <label>Телефон</label>
+                              <md-input v-model="phone" type="phone"></md-input>
+                          </md-field>
+                          <md-field maxlength="5">
+                              <label>Комментарий</label>
+                              <md-textarea v-model="message"></md-textarea>
+                          </md-field>
+                          <div class="md-layout">
+                              <div class="md-layout-item md-size-33 mx-auto text-center">
+                                  <md-button class="md-primary">Отправить</md-button>
+                              </div>
+                          </div>
+                      </form>
                   </div>
-                  <div class="md-layout-item md-size-50">
-                    <md-field>
-                      <label>Your Email</label>
-                      <md-input v-model="email" type="email"></md-input>
-                    </md-field>
+                  <div class="md-layout-item md-size-33 md-small-size-100 ml-auto">
+                      <div class="md-layout contacts">
+                          <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
+                              <i class="md-icon md-icon-font md-theme-default">pin_drop</i>
+                          </div>
+                          <div class="md-layout-item md-size-80 md-small-size-100 ml-auto">
+                              <h4 class="title">Адрес</h4>
+                              <p class="muted-text">
+                                  Россия, 123007, Москва<br>
+                                  Хорошевское ш., 38, корп. 1, эт. 4, пом. 1, ком. 18
+                              </p>
+                          </div>
+                      </div>
+                      <div class="md-layout contacts">
+                          <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
+                              <i class="md-icon md-icon-font md-theme-default">phone</i>
+                          </div>
+                          <div class="md-layout-item md-size-80 md-small-size-100 ml-auto">
+                              <h4 class="title">Контактная информация</h4>
+                              <p class="muted-text">
+                                  Тел: 495-7875940<br>
+                                  Факс: 495-7875935<br>
+                                  e-mail: lokhov@megratec.ru
+                              </p>
+                          </div>
+                      </div>
+                      <div class="md-layout contacts">
+                          <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
+                              <i class="md-icon md-icon-font md-theme-default">contacts</i>
+                          </div>
+                          <div class="md-layout-item md-size-80 md-small-size-100 ml-auto">
+                              <h4 class="title">Техническая поддержка</h4>
+                              <p class="muted-text">
+                                  support@megratec.ru
+                              </p>
+                              <!--<h6>Продажи и административная поддержка:</h6>
+                    <p class="muted-text">
+                        Лохов Андрей Львович<br>
+                        lokhov@megratec.ru
+                    </p>
+                    <h6>Техническая поддержка, консалтинг, проекты:</h6>
+                    <p class="muted-text">
+                        Филиппов Александр Анатольевич<br>
+                        fill@megratec.ru
+                    </p>
+                    <h6>Цифровое и аналого-цифровое моделирование, синтез VHDL, верификация:</h6>
+                    <p class="muted-text">
+                        Селиванов Иван Витальевич<br>
+                        selivanov@megratec.ru
+                    </p>
+                    <h6>Печатные платы, синтез C, верификация, DFT:</h6>
+                    <p class="muted-text">
+                        Селиванов Иван Витальевич<br>
+                        selivanov@megratec.ru
+                    </p>-->
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <md-field maxlength="5">
-                  <label>Your Message</label>
-                  <md-textarea v-model="message"></md-textarea>
-                </md-field>
-                <div class="md-layout">
-                  <div class="md-layout-item md-size-33 mx-auto text-center">
-                    <md-button class="md-primary">Send Message</md-button>
+              </div>
+              <div class="md-layout" style="margin-top:50px">
+                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                      <img src="@/assets/img/about/1.svg" />
+                      <h4 class="title">Лохов Андрей Львович</h4>
+                      Продажи и администр. поддержка
+                      <span class="text-danger">lokhov@megratec.ru</span>
                   </div>
-                </div>
-              </form>
-            </div>
+                  <div class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center">
+                      <img src="@/assets/img/about/2.svg" />
+                      <h4 class="title">Филиппов Александр Анатольевич</h4>
+                      Техническая поддержка, консалтинг, проекты
+                      <span class="text-danger">fill@megratec.ru</span>
+                  </div>
+                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                      <img src="@/assets/img/about/3.svg" />
+                      <h4 class="title">Селиванов Иван Витальевич</h4>
+                      Цифровое и аналого-цифровое моделирование
+                      <span class="text-danger">selivanov@megratec.ru</span>
+                  </div>
+                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                      <img src="@/assets/img/about/4.svg" />
+                      <h4 class="title">Селиванов Иван Витальевич</h4>
+                      Печатные платы, синтез C, верификация, DFT
+                      <span class="text-danger">selivanov@megratec.ru</span>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -101,8 +176,22 @@ export default {
 }
 @media screen and (min-width: 960px) {
   .page-header  {
-    height: 40vh;
+    height: 45vh;
   }
 }
-
+.section-contacts i{
+    color:#2e5790 !important;
+    font-size: 36px !important;
+}
+.section-contacts .title{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.section-contacts .contacts{
+    margin-top: 15px;
+    margin-bottom: 40px
+}
+.section-contacts h6{
+    margin-bottom: 0px
+}
 </style>

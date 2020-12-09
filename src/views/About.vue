@@ -12,64 +12,111 @@
       </div>
     </parallax>
     <div class="main main-raised">
-      <div class="section section-contacts">
-          <div class="container">
-              <p>
-                  Компания МЕГРАТЕК (Megratec - Mentor Graphics Technologies) зарегистрирована в марте 2001 года и имеет статус официального представителя компании Mentor Graphics с правом распространения всего спектра продукции Mentor Graphics на рынке России и СНГ. Персонал компании имеет двадцатилетний опыт работы с программным обеспечением Mentor Graphics.
-              </p>
-              <p>
-                  Компания Mentor Graphics, являющаяся одним из мировых лидеров в области разработки и распространения средств автоматизации проектирования электронных систем и программного обеспечения, была основана в 1981 году, насчитывает около 4500 сотрудников и имеет годовой оборот более 1200 млн. долларов.
-              </p>
-              <p>
-                  Приоритетными направлениями развития средств проектирования, поставляемых Mentor Graphics, являются комплексные маршруты проектирования, функциональной и физической верификации систем, печатных плат и интегральных схем, в том числе HDL-проектирование FPGA и ASIC, проектирование встроенных программных систем, программно-аппаратная верификация, аппаратная эмуляция, тепловой и электромагнитный анализ, тестирование, тестопригодность и диагностика, формальная верификация и многое другое.
-              </p>
-              <p>
-                  В функции компании МЕГРАТЕК входит маркетинг, продажа, техническая и административная поддержка и сопровождение программных продуктов Mentor Graphics. С этой целью создано два технических центра, специализирующихся, соответственно, в области средств проектирования систем и печатных плат и в области проектирования интегральных схем. Мы также имеем возможность осуществлять комплексные поставки программного обеспечения, электронных компонентов и аппаратных платформ любой конфигурации через своих партнеров.
-              </p>
-              <div class="md-layout">
-                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
-                      <img src="@/assets/img/faces/avatar.jpg"
-                           alt="Thumbnail Image"
-                           class="img-raised rounded-circle"
-                           width="60%"/>
-                      <h4>Лохов Андрей Львович</h4>
-                      Продажи и административная поддержка
-                      lokhov@megratec.ru
-                  </div>
-              </div>
-          </div>
-        <div class="container">
-          <div class="md-layout">
-            <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
-              <form class="contact-form">
+        <div class="section section-contacts">
+            <div class="container text-center">
+                <h5>
+                    Компания МЕГРАТЕК (Megratec - Mentor Graphics Technologies) зарегистрирована в марте 2001 года и имеет статус официального представителя компании Mentor Graphics с правом распространения всего спектра продукции Mentor Graphics на рынке России и СНГ. Персонал компании имеет двадцатилетний опыт работы с программным обеспечением Mentor Graphics.
+                </h5>
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-50">
-                    <md-field>
-                      <label>Your Name</label>
-                      <md-input v-model="name" type="text"></md-input>
-                    </md-field>
-                  </div>
-                  <div class="md-layout-item md-size-50">
-                    <md-field>
-                      <label>Your Email</label>
-                      <md-input v-model="email" type="email"></md-input>
-                    </md-field>
-                  </div>
+                    <h2 class="title" style="margin: 10px auto;margin-top: 70px">Наша поддержка</h2>
+                    <h5 style="margin-bottom: 50px">
+                        В функции компании МЕГРАТЕК входит маркетинг, продажа, техническая и административная поддержка и сопровождение программных продуктов Mentor Graphics. С этой целью создано два технических центра, специализирующихся, соответственно, в области средств проектирования систем и печатных плат и в области проектирования интегральных схем.
+                    </h5>
+                    <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                        <img src="@/assets/img/about/1.svg" />
+                        <h4 class="title">Лохов Андрей Львович</h4>
+                        Продажи и администр. поддержка
+                        <span class="text-danger">lokhov@megratec.ru</span>
+                    </div>
+                    <div class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center">
+                        <img src="@/assets/img/about/2.svg" />
+                        <h4 class="title">Филиппов Александр Анатольевич</h4>
+                        Техническая поддержка, консалтинг, проекты
+                        <span class="text-danger">fill@megratec.ru</span>
+                    </div>
+                    <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                        <img src="@/assets/img/about/3.svg" />
+                        <h4 class="title">Селиванов Иван Витальевич</h4>
+                        Цифровое и аналого-цифровое моделирование
+                        <span class="text-danger">selivanov@megratec.ru</span>
+                    </div>
+                    <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                        <img src="@/assets/img/about/4.svg" />
+                        <h4 class="title">Селиванов Иван Витальевич</h4>
+                        Печатные платы, синтез C, верификация, DFT
+                        <span class="text-danger">selivanov@megratec.ru</span>
+                    </div>
                 </div>
-                <md-field maxlength="5">
-                  <label>Your Message</label>
-                  <md-textarea v-model="message"></md-textarea>
-                </md-field>
-                <div class="md-layout">
-                  <div class="md-layout-item md-size-33 mx-auto text-center">
-                    <md-button class="md-primary">Send Message</md-button>
-                  </div>
-                </div>
-              </form>
             </div>
-          </div>
+            <div class="container" style="padding: 70px 0">
+                <h2 class="text-center title">Партнёры</h2>
+                <h5>Мы также имеем возможность осуществлять комплексные поставки программного обеспечения, электронных компонентов и аппаратных платформ любой конфигурации через своих партнеров.</h5>
+                <div class="md-layout">
+                    <div class="md-layout-item">
+                        <a href="#" target="_blank">
+                            <img src="@/assets/img/partner/1.png" />
+                        </a>
+                    </div>
+                    <div class="md-layout-item">
+                        <a href="#" target="_blank">
+                            <img src="@/assets/img/partner/2.png" />
+                        </a>
+                    </div>
+                    <div class="md-layout-item">
+                        <a href="#" target="_blank">
+                            <img src="@/assets/img/partner/3.png" />
+                        </a>
+                    </div>
+                    <div class="md-layout-item">
+                        <a href="#" target="_blank">
+                            <img src="@/assets/img/partner/4.png" />
+                        </a>
+                    </div>
+                    <div class="md-layout-item">
+                        <a href="#" target="_blank">
+                            <img src="@/assets/img/partner/5.png" />
+                        </a>
+                    </div>
+                    <div class="md-layout-item">
+                        <a href="#" target="_blank">
+                            <img src="@/assets/img/partner/6.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <h2 class="title" style="margin: 10px auto">Оставить заявку</h2>
+                <div class="md-layout">
+                    <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
+                        <form class="contact-form">
+                            <div class="md-layout">
+                                <div class="md-layout-item md-size-50">
+                                    <md-field>
+                                        <label>Имя</label>
+                                        <md-input v-model="name" type="text"></md-input>
+                                    </md-field>
+                                </div>
+                                <div class="md-layout-item md-size-50">
+                                    <md-field>
+                                        <label>Email</label>
+                                        <md-input v-model="email" type="email"></md-input>
+                                    </md-field>
+                                </div>
+                            </div>
+                            <md-field maxlength="5">
+                                <label>Сообщение</label>
+                                <md-textarea v-model="message"></md-textarea>
+                            </md-field>
+                            <div class="md-layout">
+                                <div class="md-layout-item md-size-33 mx-auto text-center">
+                                    <md-button class="md-primary">Отправить</md-button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
   </div>
 </template>

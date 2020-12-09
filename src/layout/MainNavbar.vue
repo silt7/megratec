@@ -95,25 +95,29 @@
                 <md-list-item v-if="this.$route.path !== '/'">
                     <router-link exact to="/trainings/">
                         <md-icon></md-icon>
-                        <p>Продукты</p>
+                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Продукты</p>
+                        <p v-else>Продукты</p>
                     </router-link>
                 </md-list-item>
                 <md-list-item v-if="this.$route.path !== '/'">
                     <router-link exact to="/trainings/">
                         <md-icon></md-icon>
-                        <p>Тренинги</p>
+                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Тренинги</p>
+                        <p v-else>Тренинги</p>
                     </router-link>
                 </md-list-item>
                 <md-list-item v-if="this.$route.path !== '/'">
                     <router-link exact to="/contacts/">
                         <md-icon></md-icon>
-                        <p>Контакты</p>
+                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Контакты</p>
+                        <p v-else>Контакты</p>
                     </router-link>
                 </md-list-item>
                 <md-list-item v-if="this.$route.path !== '/'">
                     <router-link exact to="/about/">
                         <md-icon></md-icon>
-                        <p>О нас</p>
+                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">О нас</p>
+                        <p v-else>О нас</p>
                     </router-link>
                 </md-list-item>
 

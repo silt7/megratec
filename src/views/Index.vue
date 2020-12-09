@@ -208,8 +208,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" style="padding-bottom: 50px">
-                    <h2 class="text-center">Партнёры</h2>
+                <div class="container" style="padding: 50px 0">
                     <div class="md-layout">
                         <div class="md-layout-item">
                             <a href="#" target="_blank">
