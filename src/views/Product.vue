@@ -5,14 +5,18 @@
         <div class="main main-raised">
             <div class="section profile-content">
                 <div class="container">
+                    <div class="breadcrumps">
+                        <router-link exact to="/">Главная</router-link> >
+                        <router-link :to="{ name: 'products', params: { filtr:  sectionName[0]}}">{{sectionName[1]}}</router-link> >
+                        {{product.NAME}}</div>
                     <div class="md-layout">
                         <div class="md-layout-item md-size-50 mx-auto">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img v-if="product.DETAIL_PICTURE" 
-										:src="product.DETAIL_PICTURE"
-                                        class="img-raised rounded img-fluid" />
-									<img v-else src="@/assets/img/picture-not.jpg" class="img-raised rounded img-fluid gg"/>
+                                    <img v-if="product.DETAIL_PICTURE"
+                                         :src="product.DETAIL_PICTURE"
+                                         class="img-raised rounded img-fluid" />
+                                    <img v-else src="@/assets/img/picture-not.jpg" class="img-raised rounded img-fluid gg" />
                                 </div>
                                 <div class="name">
                                     <h3 class="title">{{product.NAME}}</h3>
@@ -36,7 +40,8 @@
         bodyClass: "profile-page",
         data() {
             return {
-                product: []
+                product: [],
+                sectionName: []
             };
         },
         props: {
@@ -53,7 +58,7 @@
             }
         },
         beforeRouteEnter(to, from, next) {
-            var params = {
+            let params = {
                 params: {
                     ENTITY: 'products',
                     'FILTER[ID]': to.params.id
@@ -61,7 +66,18 @@
             };
             axios.get(to.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?', params).then((response) => {
                 document.title = response.data.result[0].NAME;
-                next(vm => vm.product = response.data.result[0])
+                let sectionName = [];
+                 let paramsC = {
+                    params: {
+                        ENTITY: 'products',
+                        'FILTER[ID]': response.data.result[0].SECTION
+                    }
+                };
+                axios.get(to.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.section.get?', paramsC).then((response) => {
+                    sectionName.push(response.data.result[0].ID);
+                    sectionName.push(response.data.result[0].NAME)
+                });
+                next(vm => { vm.product = response.data.result[0], vm.sectionName = sectionName})
             });
         },
         /*mounted() {
@@ -104,5 +120,14 @@
     }
 
     }
+    }
+    .breadcrumps{
+        padding: 10px;
+        font-size: 12px;
+    }
+    .breadcrumps a{
+        color: #2e5790 !important;
+        padding-right: 5px;
+        padding-left: 5px;
     }
 </style>

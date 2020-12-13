@@ -115,6 +115,11 @@
                                 </div>
                             </md-tab>
                         </md-tabs>
+                        <div class="md-layout text-center">
+                            <div class="md-layout-item md-size-33 mx-auto">
+                                <router-link exact to="/products/"><md-button class="md-primary all-products">Все</md-button></router-link>
+                            </div>
+                        </div>
                     </template>
                 </nav-tabs-card>
                 <div class="container news" style="padding-bottom:25px">
@@ -425,6 +430,9 @@
     .md-card.md-card-nav-tabs {
         /*position: relative;
     top: -60px;*/
+    }
+    .all-products .md-button-content{
+        margin: auto;
     }
     .news .card-title{
         color: #fff !important;

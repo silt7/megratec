@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <md-list-item v-if="this.$route.path !== '/'">
-                    <router-link exact to="/trainings/">
+                    <router-link exact to="/products/">
                         <md-icon></md-icon>
                         <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Продукты</p>
                         <p v-else>Продукты</p>

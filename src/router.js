@@ -7,6 +7,7 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
+import Products from "./views/Products.vue";
 import Product from "./views/Product.vue";
 import Trainings from "./views/Trainings.vue";
 import Contacts from "./views/Contacts.vue";
@@ -49,6 +50,13 @@ export default new Router({
         header: MainNavbar,
         footer: MainFooter
       }
+    },
+    {
+      path: "/products/",
+      name: "products",
+      components: { default: Products, header: MainNavbar, footer: MainFooter },
+      meta: { baseURL: baseURL},
+      props: true
     },
     {
       path: "/product/:id",
