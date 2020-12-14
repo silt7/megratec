@@ -4,27 +4,30 @@
                   :style="headerStyle"></parallax>
         <div class="main main-raised">
             <div class="section profile-content">
-                <div class="container">
+                <div class="container" v-for="item in product[0]" :key="item.ID">
                     <div class="breadcrumps">
                         <router-link exact to="/">Главная</router-link> >
-                        <router-link :to="{ name: 'products', params: { filtr:  sectionName[0]}}">{{sectionName[1]}}</router-link> >
-                        {{product.NAME}}</div>
+                        <router-link v-for="section in product[1]" :key="section.ID" 
+                                     :to="{ name: 'products', params: { filtr: section[0].ID}}">{{section[0].NAME}}
+                        </router-link> >
+                        {{item.NAME}}
+                    </div>
                     <div class="md-layout">
                         <div class="md-layout-item md-size-50 mx-auto">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img v-if="product.DETAIL_PICTURE"
-                                         :src="product.DETAIL_PICTURE"
+                                    <img v-if="item.DETAIL_PICTURE"
+                                         :src="item.DETAIL_PICTURE"
                                          class="img-raised rounded img-fluid" />
-                                    <img v-else src="@/assets/img/picture-not.jpg" class="img-raised rounded img-fluid gg" />
+                                    <img v-else src="@/assets/img/picture-not.jpg" class="img-raised rounded img-fluid" />
                                 </div>
                                 <div class="name">
-                                    <h3 class="title">{{product.NAME}}</h3>
+                                    <h3 class="title">{{item.NAME}}</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container" v-html="product.DETAIL_TEXT"></div>
+                    <div class="container" v-html="item.DETAIL_TEXT"></div>
                 </div>
             </div>
         </div>
@@ -32,7 +35,6 @@
 </template>
 
 <script>
-    import axios from 'axios'
     export default {
         components: {
 
@@ -40,8 +42,7 @@
         bodyClass: "profile-page",
         data() {
             return {
-                product: [],
-                sectionName: []
+                product: []
             };
         },
         props: {
@@ -58,39 +59,8 @@
             }
         },
         beforeRouteEnter(to, from, next) {
-            let params = {
-                params: {
-                    ENTITY: 'products',
-                    'FILTER[ID]': to.params.id
-                }
-            };
-            axios.get(to.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?', params).then((response) => {
-                document.title = response.data.result[0].NAME;
-                let sectionName = [];
-                 let paramsC = {
-                    params: {
-                        ENTITY: 'products',
-                        'FILTER[ID]': response.data.result[0].SECTION
-                    }
-                };
-                axios.get(to.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.section.get?', paramsC).then((response) => {
-                    sectionName.push(response.data.result[0].ID);
-                    sectionName.push(response.data.result[0].NAME)
-                });
-                next(vm => { vm.product = response.data.result[0], vm.sectionName = sectionName})
-            });
+            next(vm => { vm.product = vm.getProducts(to.params.id) })
         },
-        /*mounted() {
-            var params = {
-                params: {
-                    ENTITY: 'products',
-                    'FILTER[ID]': this.$route.params.id
-                }
-            };
-            this.axios.get(this.$root.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?', params).then((response) => {
-                this.product = response.data.result[0];
-            });
-        },*/
     };
 </script>
 

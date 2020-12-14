@@ -15,8 +15,6 @@ import About from "./views/About.vue";
 
 Vue.use(Router);
 
-const baseURL = 'https://megratec-dev.ru';
-
 export default new Router({
     linkExactActiveClass: "active",
     mode: "history",
@@ -25,7 +23,6 @@ export default new Router({
       path: "/",
       name: "index",
       components: { default: Index, header: MainNavbar, footer: MainFooter },
-      meta: { baseURL: baseURL }
     },
     {
       path: "/landing",
@@ -55,14 +52,12 @@ export default new Router({
       path: "/products/",
       name: "products",
       components: { default: Products, header: MainNavbar, footer: MainFooter },
-      meta: { baseURL: baseURL},
       props: true
     },
     {
       path: "/product/:id",
       name: "product",
       components: { default: Product, header: MainNavbar, footer: MainFooter },
-      meta: { baseURL: baseURL}
     },
 	{
       path: "/trainings",

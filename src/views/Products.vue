@@ -137,37 +137,15 @@
         },
         beforeRouteEnter(to, from, next) {
             let categoryId = 0;
-            let products = [];
 
             if (typeof to.params.filtr !== "undefined") {
                 categoryId = to.params.filtr;
             }
 
-            axios.get(to.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?ENTITY=products').then((response) => {
-                products.push(response.data.result);
-            });
             next(vm => {
-                    vm.products = products,
-                    vm.category = vm.getCategory(to.meta.baseURL, categoryId)
+                    vm.products = vm.getProducts(),
+                    vm.category = vm.getCategory(categoryId)
                 })
-        },
-        methods: {
-            getCategory: function (url, categoryId) {
-                let res = [];
-                let params = {
-                    params: {
-                        ENTITY: 'products',
-                        'SORT[SORT]': 'ASC'
-                    }
-                };
-                if (categoryId != 0) {
-                    params['params']['FILTER[ID]'] = categoryId;
-                }
-                axios.get(url + '/rest/1/1szw54c9zzx4ab1d/entity.section.get?', params).then((response) => {
-                    res.push(response.data.result);
-                });
-                return res;
-            }
         }
     };
 </script>

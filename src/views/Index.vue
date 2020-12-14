@@ -94,11 +94,11 @@
                 <nav-tabs-card no-label tabs-plain id="tabs-menu">
                     <template slot="content">
                         <md-tabs class="md-secondary" md-alignment="centered">
-                            <md-tab v-for="item in category" :key="item.ID" :md-label="item.NAME">
+                            <md-tab v-for="item in category[0]" :key="item.ID" :md-label="item.NAME">
                                 <div class="container">
                                     <div class="md-layout md-gutter md-alignment-left">
                                         <router-link class="md-layout-item md-size-20 md-small-size-100"
-                                                     v-for="product in products" :key="product.ID"
+                                                     v-for="product in products[0]" :key="product.ID"
                                                      :to="'product/' + product.ID"
                                                      v-if="product.SECTION == item.ID">
                                             <md-card class="product">
@@ -313,13 +313,10 @@
         mounted() {
             this.leafActive();
             window.addEventListener("resize", this.leafActive);
-            document.title = 'Megratec'
-            this.axios.get(this.$route.meta.baseURL+'/rest/1/1szw54c9zzx4ab1d/entity.section.get?ENTITY=products&SORT%5BSORT%5D=ASC').then((response) => {
-                this.category = response.data.result;
-            });
-            this.axios.get(this.$route.meta.baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?ENTITY=products').then((response) => {
-                this.products = response.data.result;
-            });
+            document.title = 'Megratec';
+            this.category = this.getCategory(0);
+            this.products = this.getProducts();
+
         },
         beforeDestroy() {
             window.removeEventListener("resize", this.leafActive);
