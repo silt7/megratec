@@ -125,52 +125,20 @@
                 <div class="container news" style="padding-bottom:25px">
                     <h2>Последние события</h2>
                     <div class="md-layout text-center">
-                        <div class="md-layout-item">
+                        <div class="md-layout-item" v-for="item in news[0]" :key="item.ID" v-if="item.SORT <= 3">
                             <div class="md-card md-card-background md-theme-default"
-                                 :style="{'background-image': 'url('+require('@/assets/img/news/7.jpg')+')'}">
+                                 :style="{'background-image': 'url(' + item.PREVIEW_PICTURE + ')'}">
                                 <div class="md-card-content" style="height:290px">
-                                    <h6 class="card-category text-info"> 21.02.19 </h6>
-                                    <a href="javascript:void(0)"><h3 class="card-title"> Семинары </h3></a>
-                                    <p class="card-description">Компания МЕГРАТЕК совместно с компанией Mentor Graphics провела 23, 24 и 25 января 2019 г. серию семинаров </p>
+                                    <h6 class="card-category text-info"> {{item.DATE_ACTIVE_FROM.split('T')[0]}} </h6>
+                                    <a href="javascript:void(0)"><h3 class="card-title">{{item.NAME}}</h3></a>
+                                    <p class="card-description">{{item.PREVIEW_TEXT}}</p>
                                     <a href="javascript:void(0)" class="md-button md-white md-round md-theme-default">
                                         <div class="md-ripple">
-                                            <div class="md-button-content">
-                                                <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Читать
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md-layout-item">
-                            <div class="md-card md-card-background md-theme-default"
-                                 :style="{'background-image': 'url('+require('@/assets/img/news/2.jpg')+')'}">
-                                <div class="md-card-content" style="height:290px">
-                                    <h6 class="card-category text-info"> 29.05.17 </h6>
-                                    <a href="javascript:void(0)"><h3 class="card-title"> Вышла новая книга по VHDL </h3></a>
-                                    <p class="card-description"> В продаже появилась книга "Моделирование и верификация цифровых систем на языке VHDL" </p>
-                                    <a href="javascript:void(0)" class="md-button md-white md-round md-theme-default">
-                                        <div class="md-ripple">
-                                            <div class="md-button-content">
-                                                <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Читать
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md-layout-item">
-                            <div class="md-card md-card-background md-theme-default"
-                                 :style="{'background-image': 'url('+require('@/assets/img/news/5.jpg')+')'}">
-                                <div class="md-card-content" style="height:290px">
-                                    <h6 class="card-category text-info"> 18.11.17 </h6>
-                                    <a href="javascript:void(0)"><h3 class="card-title"> Обновление сайта </h3></a>
-                                    <p class="card-description">Обновлён форум и другие модули сайта</p>
-                                    <a href="javascript:void(0)" class="md-button md-white md-round md-theme-default">
-                                        <div class="md-ripple">
-                                            <div class="md-button-content">
-                                                <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Читать
-                                            </div>
+                                             <router-link :to="'/news/' + item.ID" style="color: #999">
+                                                <div class="md-button-content">
+                                                    <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Читать
+                                                </div>
+                                            </router-link>
                                         </div>
                                     </a>
                                 </div>
@@ -178,34 +146,20 @@
                         </div>
                     </div>
                     <div class="md-layout text-center">
-                        <div class="md-layout-item">
+                        <div class="md-layout-item" v-for="item in news[0]" :key="item.ID" v-if="item.SORT > 3 && item.SORT <= 5">
                             <div class="md-card md-card-background md-theme-default" 
-                                 :style="{'background-image': 'url('+require('@/assets/img/news/4.jpg')+')'}">
+                                 :style="{'background-image': 'url(' + item.PREVIEW_PICTURE + ')'}">
                                 <div class="md-card-content" style="height:215px">
-                                    <h6 class="card-category text-info"> 19.12.15 </h6>
-                                    <a href="javascript:void(0)"><h3 class="card-title"> Премодерация отключена </h3></a>
-                                    <p class="card-description"> Теперь темы и сообщения будут видны всем сразу после их создания. </p>
+                                    <h6 class="card-category text-info"> {{item.DATE_ACTIVE_FROM.split('T')[0]}} </h6>
+                                    <a href="javascript:void(0)"><h3 class="card-title"> {{item.NAME}} </h3></a>
+                                    <p class="card-description"> {{item.PREVIEW_TEXT}} </p>
                                     <a href="javascript:void(0)" class="md-button md-danger md-round md-theme-default">
                                         <div class="md-ripple">
-                                            <div class="md-button-content">
-                                                <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Read Article
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md-layout-item">
-                            <div class="md-card md-card-background md-theme-default" style="background-image: url('/img/slider-1.jpg')">
-                                <div class="md-card-content" style="height:215px">
-                                    <h6 class="card-category text-info" > 28.11.15 </h6>
-                                    <a href="javascript:void(0)"><h3 class="card-title"> Модернизация сайта </h3></a>
-                                    <p class="card-description"> В связи с модернизацией сайта, некоторые его функции могут быть временно недоступны. Приносим свои извинения за доставленные неудобства. </p>
-                                    <a href="javascript:void(0)" class="md-button md-danger md-round md-theme-default">
-                                        <div class="md-ripple">
-                                            <div class="md-button-content">
-                                                <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Read Article
-                                            </div>
+                                            <router-link :to="'/news/' + item.ID" style="color: white">
+                                                <div class="md-button-content">
+                                                    <i class="md-icon md-icon-font md-theme-default">format_align_left</i> Читать
+                                                </div>
+                                            </router-link>
                                         </div>
                                     </a>
                                 </div>
@@ -272,6 +226,7 @@
                 productImg: require("@/assets/img/products/1.jpg"),
                 category: 'N',
                 products: [],
+                news: [],
                 clickCategory: 0,
                 turn: 0
             };
@@ -314,8 +269,9 @@
             this.leafActive();
             window.addEventListener("resize", this.leafActive);
             document.title = 'Megratec';
-            this.category = this.getCategory(0);
-            this.products = this.getProducts();
+            this.category = this.getSection('products',0);
+            this.products = this.getItem('products', 0);
+            this.news = this.getItem('news',0);
 
         },
         beforeDestroy() {

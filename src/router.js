@@ -12,6 +12,7 @@ import Product from "./views/Product.vue";
 import Trainings from "./views/Trainings.vue";
 import Contacts from "./views/Contacts.vue";
 import About from "./views/About.vue";
+import News from "./views/News.vue";
 
 Vue.use(Router);
 
@@ -85,6 +86,11 @@ export default new Router({
         header: MainNavbar,
         footer: MainFooter
       }
+    },
+    {
+      path: "/news/:id",
+      name: "news",
+      components: { default: News, header: MainNavbar, footer: MainFooter },
     },
   ],
   scrollBehavior: to => {

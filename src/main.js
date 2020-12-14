@@ -27,11 +27,11 @@ Vue.mixin({
     };
     },
     methods: {
-        getCategory: function (categoryId) {
+        getSection: function (entity, categoryId) {
             let res = [];
             let params = {
                 params: {
-                    ENTITY: 'products',
+                    ENTITY: entity,
                     'SORT[SORT]': 'ASC'
                 }
             };
@@ -45,11 +45,11 @@ Vue.mixin({
             });
             return res;
         },
-        getProducts: function (productId) {
+        getItem: function (entity, productId) {
             let res = [];
             let params = {
                 params: {
-                    ENTITY: 'products',
+                    ENTITY: entity,
                 }
             };
             if (productId > 0) {
@@ -60,7 +60,7 @@ Vue.mixin({
 
                 let categoryName = [];
                 if (productId > 0) {
-                    categoryName = this.getCategory(response.data.result[0]['SECTION']);
+                    categoryName = this.getSection(entity, response.data.result[0]['SECTION']);
                     res.push(categoryName);
                 }
             });

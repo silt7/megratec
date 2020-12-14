@@ -4,20 +4,13 @@
                   :style="headerStyle"></parallax>
         <div class="main main-raised">
             <div class="section profile-content">
-                <div class="container" v-for="item in product[0]" :key="item.ID">
-                    <div class="breadcrumps">
-                        <router-link exact to="/">Главная</router-link> >
-                        <router-link v-for="section in product[1]" :key="section.ID" 
-                                     :to="{ name: 'products', params: { filtr: section[0].ID}}">{{section[0].NAME}}
-                        </router-link> >
-                        {{item.NAME}}
-                    </div>
+                <div class="container" v-for="item in news[0]" :key="item.ID">
                     <div class="md-layout">
                         <div class="md-layout-item md-size-50 mx-auto">
                             <div class="profile">
                                 <div class="avatar">
-                                    <img v-if="item.DETAIL_PICTURE"
-                                         :src="item.DETAIL_PICTURE"
+                                    <img v-if="item.PREVIEW_PICTURE"
+                                         :src="item.PREVIEW_PICTURE"
                                          class="img-raised rounded img-fluid" />
                                     <img v-else src="@/assets/img/picture-not.jpg" class="img-raised rounded img-fluid" />
                                 </div>
@@ -42,7 +35,7 @@
         bodyClass: "profile-page",
         data() {
             return {
-                product: []
+                news: []
             };
         },
         props: {
@@ -59,7 +52,7 @@
             }
         },
         beforeRouteEnter(to, from, next) {
-            next(vm => { vm.product = vm.getItem('products', to.params.id) })
+            next(vm => { vm.news = vm.getItem('news', to.params.id) })
         },
     };
 </script>

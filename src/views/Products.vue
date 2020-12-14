@@ -26,55 +26,55 @@
                                         </md-button>
                                         <ul class="dropdown-menu dropdown-with-icons">
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 0)">
+                                                <a v-on:click="category = getSection('products', 0)">
                                                     <i class="material-icons">view_day</i>
                                                     <p>Все</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 3)">
+                                                <a v-on:click="category = getSection('products', 3)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Функциональная верификация</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 5)">
+                                                <a v-on:click="category = getSection('products', 5)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Физическая верификация ИС</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 2)">
+                                                <a v-on:click="category = getSection('products', 2)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Системное проектирование</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 4)">
+                                                <a v-on:click="category = getSection('products', 4)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Физическое проектирование ИС</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 6)">
+                                                <a v-on:click="category = getSection('products', 6)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Подготовка производства ИС</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 7)">
+                                                <a v-on:click="category = getSection('products', 7)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Тестирование и диагностика ИС</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 8)">
+                                                <a v-on:click="category = getSection('products', 8)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Проектирование FPGA</p>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a v-on:click="category = getCategory($route.meta.baseURL, 9)">
+                                                <a v-on:click="category = getSection('products', 9)">
                                                     <i class="material-icons">account_circle</i>
                                                     <p>Проектирование систем на печатных платах</p>
                                                 </a>
@@ -143,8 +143,8 @@
             }
 
             next(vm => {
-                    vm.products = vm.getProducts(),
-                    vm.category = vm.getCategory(categoryId)
+                    vm.products = vm.getItem('products', 0),
+                    vm.category = vm.getSection('products', categoryId)
                 })
         }
     };
