@@ -1,13 +1,14 @@
 <template>
   <div class="wrapper">
       <parallax class="section page-header">
+          <div class="header-background"></div>
           <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9d6d0e5d7de6282289225ecd34d2c7e141d20e4b775ca761992f0a5b77ade574&amp;source=constructor" width="100%" style="height:45vh" frameborder="0"></iframe>
       </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
           <div class="container">
               <div class="md-layout">
-                  <div class="md-layout-item md-size-50 md-small-size-100 ml-auto">
+                  <div class="md-layout-item md-size-50 md-small-size-100 ml-auto block-1">
                       <h2 class="title" style="margin-top:0">Отправить нам сообщение</h2>
                       <form class="contact-form">
                           <md-field>
@@ -33,7 +34,7 @@
                           </div>
                       </form>
                   </div>
-                  <div class="md-layout-item md-size-33 md-small-size-100 ml-auto">
+                  <div class="md-layout-item md-size-33 md-small-size-100 ml-auto block-2">
                       <div class="md-layout contacts">
                           <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
                               <i class="md-icon md-icon-font md-theme-default">pin_drop</i>
@@ -69,55 +70,58 @@
                                   support@megratec.ru
                               </p>
                               <!--<h6>Продажи и административная поддержка:</h6>
-                    <p class="muted-text">
-                        Лохов Андрей Львович<br>
-                        lokhov@megratec.ru
-                    </p>
-                    <h6>Техническая поддержка, консалтинг, проекты:</h6>
-                    <p class="muted-text">
-                        Филиппов Александр Анатольевич<br>
-                        fill@megratec.ru
-                    </p>
-                    <h6>Цифровое и аналого-цифровое моделирование, синтез VHDL, верификация:</h6>
-                    <p class="muted-text">
-                        Селиванов Иван Витальевич<br>
-                        selivanov@megratec.ru
-                    </p>
-                    <h6>Печатные платы, синтез C, верификация, DFT:</h6>
-                    <p class="muted-text">
-                        Селиванов Иван Витальевич<br>
-                        selivanov@megratec.ru
-                    </p>-->
+                <p class="muted-text">
+                    Лохов Андрей Львович<br>
+                    lokhov@megratec.ru
+                </p>
+                <h6>Техническая поддержка, консалтинг, проекты:</h6>
+                <p class="muted-text">
+                    Филиппов Александр Анатольевич<br>
+                    fill@megratec.ru
+                </p>
+                <h6>Цифровое и аналого-цифровое моделирование, синтез VHDL, верификация:</h6>
+                <p class="muted-text">
+                    Селиванов Иван Витальевич<br>
+                    selivanov@megratec.ru
+                </p>
+                <h6>Печатные платы, синтез C, верификация, DFT:</h6>
+                <p class="muted-text">
+                    Селиванов Иван Витальевич<br>
+                    selivanov@megratec.ru
+                </p>-->
                           </div>
                       </div>
                   </div>
-              </div>
-              <div class="md-layout" style="margin-top:50px">
-                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
-                      <img src="@/assets/img/about/1.svg" />
-                      <h4 class="title">Лохов Андрей Львович</h4>
-                      Продажи и администр. поддержка
-                      <span class="text-danger">lokhov@megratec.ru</span>
+
+                  <div class="md-layout-item md-size-100 block-3">
+                      <div class="md-layout">
+                          <div class="md-layout-item md-size-20 md-xsmall-size-100 my-auto ml-auto text-center">
+                              <img src="@/assets/img/about/1.svg" />
+                              <h4 class="title">Лохов Андрей Львович</h4>
+                              Продажи и администр. поддержка
+                              <span class="text-danger">lokhov@megratec.ru</span>
+                          </div>
+                          <div class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center">
+                              <img src="@/assets/img/about/2.svg" />
+                              <h4 class="title">Филиппов Александр Анатольевич</h4>
+                              Техническая поддержка, консалтинг, проекты
+                              <span class="text-danger">fill@megratec.ru</span>
+                          </div>
+                          <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                              <img src="@/assets/img/about/3.svg" />
+                              <h4 class="title">Селиванов Иван Витальевич</h4>
+                              Цифровое и аналого-цифровое моделирование
+                              <span class="text-danger">selivanov@megratec.ru</span>
+                          </div>
+                          <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
+                              <img src="@/assets/img/about/4.svg" />
+                              <h4 class="title">Селиванов Иван Витальевич</h4>
+                              Печатные платы, синтез C, верификация, DFT
+                              <span class="text-danger">selivanov@megratec.ru</span>
+                          </div>
+                      </div>
                   </div>
-                  <div class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center">
-                      <img src="@/assets/img/about/2.svg" />
-                      <h4 class="title">Филиппов Александр Анатольевич</h4>
-                      Техническая поддержка, консалтинг, проекты
-                      <span class="text-danger">fill@megratec.ru</span>
                   </div>
-                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
-                      <img src="@/assets/img/about/3.svg" />
-                      <h4 class="title">Селиванов Иван Витальевич</h4>
-                      Цифровое и аналого-цифровое моделирование
-                      <span class="text-danger">selivanov@megratec.ru</span>
-                  </div>
-                  <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
-                      <img src="@/assets/img/about/4.svg" />
-                      <h4 class="title">Селиванов Иван Витальевич</h4>
-                      Печатные платы, синтез C, верификация, DFT
-                      <span class="text-danger">selivanov@megratec.ru</span>
-                  </div>
-              </div>
           </div>
       </div>
     </div>
@@ -194,4 +198,38 @@ export default {
 .section-contacts h6{
     margin-bottom: 0px
 }
+.header-background{
+    height: 100px;
+    background: #2e5790;
+    width: 100%;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+}
+.block-3{
+    margin-top: 50px;
+}
+    @media screen and (max-width: 900px) {
+        .page-header{
+            height: 40vh;
+        }
+        .block-1 { order: 3; }
+        .block-2 { order: 1; }
+        .block-3 { order: 2; }
+        .header-background {
+            height: 80px;
+        }
+        .block-3{
+            margin-top: 0;
+        }
+        .block-3 .md-layout-item{
+            margin-top: 20px;
+        }
+        .block-1{
+            margin-top: 50px;
+        }
+        .block-2 .title{
+            margin-top: 10px;
+        }
+    }
 </style>

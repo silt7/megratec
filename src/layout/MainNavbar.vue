@@ -7,8 +7,8 @@
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
-      <div class="md-toolbar-section-start">
-        <router-link to="/"><img :src="imgLogo" style="height:40px" /></router-link>
+      <div class="md-toolbar-section-start logo">
+        <router-link to="/"><b>megra</b>tec<span class="logo_mini">MENTOR GRAPHIC TECHNOLOGES</span></router-link>
       </div>
       <div class="md-toolbar-section-end">
         <md-button
@@ -93,43 +93,41 @@
                     </a>
                 </li>
                 <md-list-item v-if="this.$route.path !== '/'">
+                    <router-link exact to="/">
+                        <p>Главная</p>
+                    </router-link>
+                </md-list-item>
+                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
                     <router-link exact to="/products/">
-                        <md-icon></md-icon>
-                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Продукты</p>
-                        <p v-else>Продукты</p>
+                        <p>Продукты</p>
                     </router-link>
                 </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/'">
+                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
                     <router-link exact to="/trainings/">
-                        <md-icon></md-icon>
-                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Тренинги</p>
-                        <p v-else>Тренинги</p>
+                        <p>Тренинги</p>
                     </router-link>
                 </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/'">
+                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
                     <router-link exact to="/contacts/">
-                        <md-icon></md-icon>
-                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">Контакты</p>
-                        <p v-else>Контакты</p>
+                        <p>Контакты</p>
                     </router-link>
                 </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/'">
+                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
                     <router-link exact to="/about/">
-                        <md-icon></md-icon>
-                        <p v-if="this.$route.path === '/contacts/'" style="color:#2e5790">О нас</p>
-                        <p v-else>О нас</p>
+                        <p>О нас</p>
                     </router-link>
                 </md-list-item>
 
 
-                <md-list-item href="/" target="_blank" v-if="this.$route.path === '/'">
+                <md-list-item href="/" target="_blank"
+                              v-if="this.$route.path === '/' && this.window.width > 990">
                     <md-icon>mail</md-icon>
                     <p>lokhov@megratec.ru</p>
                 </md-list-item>
 
                 <md-list-item href="javascript:void(0)"
                               @click="scrollToElement()"
-                              v-if="this.$route.path === '/'">
+                              v-if="this.$route.path === '/' && this.window.width > 990">
                     <md-icon>phone_android</md-icon>
                     <p>+7 (495) 787-59-40</p>
                 </md-list-item>
@@ -185,8 +183,17 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
-      imgLogo: require("@/assets/img/logo.png")
+      imgLogo: require("@/assets/img/logo.png"),
+      colorLogo: '#fff',
+      window: {
+          width: 0,
+          height: 0
+      }
     };
+  },
+  created() {
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
   },
   computed: {
     showDownload() {
@@ -223,12 +230,10 @@ export default {
       if (scrollValue > 100) {
         this.extraNavClasses = `md-${this.type}`;
         navbarColor.classList.remove("md-transparent");
-        this.imgLogo = require("@/assets/img/logo-blue.png");
       } else {
         if (this.extraNavClasses) {
           this.extraNavClasses = "";
           navbarColor.classList.add("md-transparent");
-          this.imgLogo = require("@/assets/img/logo.png");
         }
       }
     },
@@ -240,6 +245,10 @@ export default {
       if (element_id) {
         element_id.scrollIntoView({ block: "end", behavior: "smooth" });
       }
+    },
+    handleResize() {
+        this.window.width = window.innerWidth;
+        this.window.height = window.innerHeight;
     }
   },
   mounted() {
@@ -250,3 +259,27 @@ export default {
   }
 };
 </script>
+<style>
+    .logo a{
+        font-size: 3.3rem;
+        position: relative;
+        height: 40px;
+        color: #2e5790 !important;
+    }
+    .logo a:hover, .logo a:active{
+        color: #2e5790 !important;
+    }
+    .md-transparent .logo a{
+        color: #fff !important;
+    }
+    .md-transparent .logo a:hover, .logo a:active{
+        color: #fff !important;
+    }
+    .logo_mini{
+        position: absolute;
+        font-size: 0.45rem;
+        font-weight: 600;
+        bottom: -10px;
+        right: 2px;
+    }
+</style>

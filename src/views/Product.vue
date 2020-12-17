@@ -9,10 +9,9 @@
                         <router-link exact to="/">Главная</router-link> >
                         <router-link v-for="section in product[1]" :key="section.ID" 
                                      :to="{ name: 'products', params: { filtr: section[0].ID}}">{{section[0].NAME}}
-                        </router-link> >
-                        {{item.NAME}}
+                        </router-link>
                     </div>
-                    <div class="md-layout">
+                    <div class="md-layout content">
                         <div class="md-layout-item md-size-50 mx-auto">
                             <div class="profile">
                                 <div class="avatar">
@@ -99,5 +98,16 @@
         color: #2e5790 !important;
         padding-right: 5px;
         padding-left: 5px;
+    }
+    @media screen and (max-width: 900px) {
+        .profile-page .page-header {
+            height: 200px;
+        }
+        .content{
+            margin-top:50px;
+        }
+        .content .name{
+             margin-top: -30px !important;
+        }
     }
 </style>

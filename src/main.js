@@ -32,7 +32,8 @@ Vue.mixin({
             let params = {
                 params: {
                     ENTITY: entity,
-                    'SORT[SORT]': 'ASC'
+                    'SORT[SORT]': 'ASC',
+                    'FILTER[ACTIVE]': 'Y'
                 }
             };
             if (categoryId > 0) {
@@ -50,10 +51,14 @@ Vue.mixin({
             let params = {
                 params: {
                     ENTITY: entity,
+                    'SORT[SORT]': 'ASC',
+                    'FILTER[ACTIVE]': 'Y'
                 }
             };
             if (productId > 0) {
                 params['params']['FILTER[ID]'] = productId;
+            } else if (productId == -1) {
+                params['params']['FILTER[PROPERTY_VIEWMAIN]'] = 1;
             }
             this.axios.get($baseURL + '/rest/1/1szw54c9zzx4ab1d/entity.item.get?', params).then((response) => {
                 res.push(response.data.result);

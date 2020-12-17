@@ -85,7 +85,7 @@
                             </a>
                         </li>
                     </md-list>
-                    <div v-for="item in category[0]" :key="item.ID">
+                    <div v-for="item in category[0]" :key="item.ID" class="catalog">
                         <h2>{{item.NAME}}</h2>
                         <div class="container">
                             <div class="md-layout md-gutter md-alignment-left">
@@ -186,5 +186,14 @@
         width: 140px;
         position: absolute;
         right: 15px;
+    }
+    @media screen and (max-width: 900px) {
+        .filtr {
+            left: 0;
+            right: 0;
+        }
+        .catalog{
+            margin-top: 40px;
+        }
     }
 </style>

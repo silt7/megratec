@@ -46,7 +46,7 @@
         </carousel>
         <div class="main main-raised">
             <div class="section" style="padding: 0;">
-                <md-toolbar class="md-primary">
+                <md-toolbar class="md-primary mainMenu">
                     <div class="md-toolbar-row">
                         <div class="md-toolbar-section-start">
                             <md-list>
@@ -128,7 +128,7 @@
                         <div class="md-layout-item" v-for="item in news[0]" :key="item.ID" v-if="item.SORT <= 3">
                             <div class="md-card md-card-background md-theme-default"
                                  :style="{'background-image': 'url(' + item.PREVIEW_PICTURE + ')'}">
-                                <div class="md-card-content" style="height:290px">
+                                <div class="md-card-content" style="min-height:290px">
                                     <h6 class="card-category text-info"> {{item.DATE_ACTIVE_FROM.split('T')[0]}} </h6>
                                     <a href="javascript:void(0)"><h3 class="card-title">{{item.NAME}}</h3></a>
                                     <p class="card-description">{{item.PREVIEW_TEXT}}</p>
@@ -149,7 +149,7 @@
                         <div class="md-layout-item" v-for="item in news[0]" :key="item.ID" v-if="item.SORT > 3 && item.SORT <= 5">
                             <div class="md-card md-card-background md-theme-default" 
                                  :style="{'background-image': 'url(' + item.PREVIEW_PICTURE + ')'}">
-                                <div class="md-card-content" style="height:215px">
+                                <div class="md-card-content" style="min-height:215px">
                                     <h6 class="card-category text-info"> {{item.DATE_ACTIVE_FROM.split('T')[0]}} </h6>
                                     <a href="javascript:void(0)"><h3 class="card-title"> {{item.NAME}} </h3></a>
                                     <p class="card-description"> {{item.PREVIEW_TEXT}} </p>
@@ -169,32 +169,32 @@
                 </div>
                 <div class="container" style="padding: 50px 0">
                     <div class="md-layout">
-                        <div class="md-layout-item">
+                        <div class="md-layout-item md-small-size-33">
                             <a href="#" target="_blank">
                                 <img src="@/assets/img/partner/1.png"/>
                             </a>
                         </div>
-                        <div class="md-layout-item">
+                        <div class="md-layout-item md-small-size-33">
                             <a href="#" target="_blank">
                                 <img src="@/assets/img/partner/2.png"/>
                             </a>
                         </div>
-                        <div class="md-layout-item">
+                        <div class="md-layout-item md-small-size-33">
                             <a href="#" target="_blank">
                                 <img src="@/assets/img/partner/3.png"/>
                             </a>
                         </div>
-                        <div class="md-layout-item">
+                        <div class="md-layout-item md-small-size-33">
                             <a href="#" target="_blank">
                                 <img src="@/assets/img/partner/4.png"/>
                             </a>
                         </div>
-                        <div class="md-layout-item">
+                        <div class="md-layout-item md-small-size-33">
                             <a href="#" target="_blank">
                                 <img src="@/assets/img/partner/5.png"/>
                             </a>
                         </div>
-                        <div class="md-layout-item">
+                        <div class="md-layout-item md-small-size-33">
                             <a href="#" target="_blank">
                                 <img src="@/assets/img/partner/6.png"/>
                             </a>
@@ -270,7 +270,7 @@
             window.addEventListener("resize", this.leafActive);
             document.title = 'Megratec';
             this.category = this.getSection('products',0);
-            this.products = this.getItem('products', 0);
+            this.products = this.getItem('products', -1);
             this.news = this.getItem('news',0);
 
         },
@@ -396,11 +396,6 @@
     .news .md-card-content{
         background-color: rgba(10,30,50,0.7);
     }
-    .news .md-card-content .md-button{
-        position: absolute;
-        bottom: 5px;
-        left: 33%;
-    }
     #tabs-menu {
         padding: 0 10px;
         .md-tabs-navigation
@@ -433,13 +428,27 @@
         justify-content: start !important;
     }
 
-    @media screen and (min-width: 960px) {
+    @media screen and (min-width: 901px) {
         .VueCarousel {
             height: 65vh;
         }
 
         .md-tabs-navigation {
             padding-left: 11vw !important;
+        }
+        .news .md-card-content .md-button{
+            position: absolute;
+            width: 140px;
+            bottom: 5px; 
+            left: 0; 
+            right: 0;
+            margin: auto;
+
+        }
+    }
+    @media screen and (max-width: 900px) {
+        .mainMenu button{
+            display:none;
         }
     }
 </style>

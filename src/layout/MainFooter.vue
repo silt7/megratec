@@ -8,22 +8,22 @@
       <nav>
         <ul>
           <li>
-            <a href="">
-              Каталог
+            <a href="/products/">
+              Продукты
             </a>
           </li>
           <li>
-            <a href="">
-              Обучение
+            <a href="/trainings/">
+              Тренинги
             </a>
           </li>
           <li>
-            <a href="">
-              Партнёры
+            <a href="/contacts/">
+              Контакты
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="/about/">
               О нас
             </a>
           </li>

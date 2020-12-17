@@ -97,7 +97,7 @@
                                     <md-textarea v-model="message"></md-textarea>
                                 </md-field>
                                 <div class="md-layout">
-                                    <div class="md-layout-item md-size-33 mx-auto text-center">
+                                    <div class="md-layout-item md-size-50 mx-auto text-center">
                                         <md-button class="md-primary">Отправить</md-button>
                                     </div>
                                 </div>
@@ -169,9 +169,17 @@
         border-left: 5px solid #2e5790;
     }
 
-    @media screen and (min-width: 960px) {
+    @media screen and (min-width: 900px) {
         .page-header {
             height: 70vh;
+        }
+    }
+    @media screen and (max-width: 900px) {
+        .page-header {
+            height: 60vh;
+        }
+        .section{
+            padding:10px 0;
         }
     }
 </style>
