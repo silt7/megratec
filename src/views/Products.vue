@@ -195,5 +195,8 @@
         .catalog{
             margin-top: 40px;
         }
+        h2{
+            font-size: 2.1rem;
+        }
     }
 </style>

@@ -5,7 +5,7 @@
         <div class="main main-raised">
             <div class="section profile-content">
                 <div class="container" v-for="item in news[0]" :key="item.ID">
-                    <div class="md-layout">
+                    <div class="md-layout content">
                         <div class="md-layout-item md-size-50 mx-auto">
                             <div class="profile">
                                 <div class="avatar">
@@ -92,5 +92,16 @@
         color: #2e5790 !important;
         padding-right: 5px;
         padding-left: 5px;
+    }
+    @media screen and (max-width: 900px) {
+        .profile-page .page-header {
+            height: 200px;
+        }
+        .content{
+            margin-top:50px;
+        }
+        .content .name{
+             margin-top: -30px !important;
+        }
     }
 </style>

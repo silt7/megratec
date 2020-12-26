@@ -122,7 +122,7 @@
                 <md-list-item href="/" target="_blank"
                               v-if="this.$route.path === '/' && this.window.width > 990">
                     <md-icon>mail</md-icon>
-                    <p>lokhov@megratec.ru</p>
+                    <p>support@megratec.ru</p>
                 </md-list-item>
 
                 <md-list-item href="javascript:void(0)"

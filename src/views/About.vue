@@ -178,7 +178,7 @@ export default {
 }
 @media screen and (max-width: 900px) {
   .page-header  {
-    height: 30vh;
+    height: 300px;
   }
   .support .md-layout-item{
       margin-top: 30px;

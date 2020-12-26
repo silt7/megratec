@@ -175,9 +175,6 @@
         }
     }
     @media screen and (max-width: 900px) {
-        .page-header {
-            height: 60vh;
-        }
         .section{
             padding:10px 0;
         }

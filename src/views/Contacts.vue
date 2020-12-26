@@ -210,9 +210,9 @@ export default {
     margin-top: 50px;
 }
     @media screen and (max-width: 900px) {
-        .page-header{
-            height: 40vh;
-        }
+         .page-header  {
+            height: 300px;
+         }
         .block-1 { order: 3; }
         .block-2 { order: 1; }
         .block-3 { order: 2; }
