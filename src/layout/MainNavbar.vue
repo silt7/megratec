@@ -8,7 +8,11 @@
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start logo">
-        <router-link to="/"><b>megra</b>tec<span class="logo_mini">MENTOR GRAPHIC TECHNOLOGES</span></router-link>
+        <router-link to="/"
+          ><b>megra</b>tec<span class="logo_mini"
+            >MENTOR GRAPHIC TECHNOLOGES</span
+          ></router-link
+        >
       </div>
       <div class="md-toolbar-section-end">
         <md-button
@@ -27,110 +31,130 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
-                <li class="md-list-item" v-if="!showDownload">
-                    <a href="javascript:void(0)"
-                       class="md-list-item-router md-list-item-container md-button-clean dropdown">
-                        <div class="md-list-item-content">
-                            <drop-down direction="down">
-                                <md-button slot="title"
-                                           class="md-button md-button-link md-white md-simple dropdown-toggle"
-                                           data-toggle="dropdown">
-                                    <i class="material-icons">apps</i>
-                                    <p>Components</p>
-                                </md-button>
-                                <ul class="dropdown-menu dropdown-with-icons">
-                                    <li>
-                                        <a href="#/">
-                                            <i class="material-icons">layers</i>
-                                            <p>All Components</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="№">
-                                            <i class="material-icons">content_paste</i>
-                                            <p>Главная</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </drop-down>
-                        </div>
-                    </a>
-                </li>
+              <li class="md-list-item" v-if="!showDownload">
+                <a
+                  href="javascript:void(0)"
+                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                >
+                  <div class="md-list-item-content">
+                    <drop-down direction="down">
+                      <md-button
+                        slot="title"
+                        class="md-button md-button-link md-white md-simple dropdown-toggle"
+                        data-toggle="dropdown"
+                      >
+                        <i class="material-icons">apps</i>
+                        <p>Components</p>
+                      </md-button>
+                      <ul class="dropdown-menu dropdown-with-icons">
+                        <li>
+                          <a href="#/">
+                            <i class="material-icons">layers</i>
+                            <p>All Components</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="№">
+                            <i class="material-icons">content_paste</i>
+                            <p>Главная</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </drop-down>
+                  </div>
+                </a>
+              </li>
 
-                <li class="md-list-item" v-if="!showDownload">
-                    <a href="javascript:void(0)"
-                       class="md-list-item-router md-list-item-container md-button-clean dropdown">
-                        <div class="md-list-item-content">
-                            <drop-down direction="down">
-                                <md-button slot="title"
-                                           class="md-button md-button-link md-white md-simple dropdown-toggle"
-                                           data-toggle="dropdown">
-                                    <i class="material-icons">view_carousel</i>
-                                    <p>Продукты</p>
-                                </md-button>
-                                <ul class="dropdown-menu dropdown-with-icons">
-                                    <li>
-                                        <a href="#/landing">
-                                            <i class="material-icons">view_day</i>
-                                            <p>Landing Page</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#/login">
-                                            <i class="material-icons">fingerprint</i>
-                                            <p>Login Page</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#/profile">
-                                            <i class="material-icons">account_circle</i>
-                                            <p>Profile Page</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </drop-down>
-                        </div>
-                    </a>
-                </li>
-                <md-list-item v-if="this.$route.path !== '/'">
-                    <router-link exact to="/">
-                        <p>Главная</p>
-                    </router-link>
-                </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
-                    <router-link exact to="/products/">
+              <li class="md-list-item" v-if="!showDownload">
+                <a
+                  href="javascript:void(0)"
+                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                >
+                  <div class="md-list-item-content">
+                    <drop-down direction="down">
+                      <md-button
+                        slot="title"
+                        class="md-button md-button-link md-white md-simple dropdown-toggle"
+                        data-toggle="dropdown"
+                      >
+                        <i class="material-icons">view_carousel</i>
                         <p>Продукты</p>
-                    </router-link>
-                </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
-                    <router-link exact to="/trainings/">
-                        <p>Тренинги</p>
-                    </router-link>
-                </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
-                    <router-link exact to="/contacts/">
-                        <p>Контакты</p>
-                    </router-link>
-                </md-list-item>
-                <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
-                    <router-link exact to="/about/">
-                        <p>О нас</p>
-                    </router-link>
-                </md-list-item>
+                      </md-button>
+                      <ul class="dropdown-menu dropdown-with-icons">
+                        <li>
+                          <a href="#/landing">
+                            <i class="material-icons">view_day</i>
+                            <p>Landing Page</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#/login">
+                            <i class="material-icons">fingerprint</i>
+                            <p>Login Page</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#/profile">
+                            <i class="material-icons">account_circle</i>
+                            <p>Profile Page</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </drop-down>
+                  </div>
+                </a>
+              </li>
+              <md-list-item v-if="this.$route.path !== '/'">
+                <router-link exact to="/">
+                  <p>Главная</p>
+                </router-link>
+              </md-list-item>
+              <md-list-item
+                v-if="this.$route.path !== '/' || this.window.width <= 990"
+              >
+                <router-link exact to="/products/">
+                  <p>Продукты</p>
+                </router-link>
+              </md-list-item>
+              <md-list-item
+                v-if="this.$route.path !== '/' || this.window.width <= 990"
+              >
+                <router-link exact to="/trainings/">
+                  <p>Тренинги</p>
+                </router-link>
+              </md-list-item>
+              <md-list-item
+                v-if="this.$route.path !== '/' || this.window.width <= 990"
+              >
+                <router-link exact to="/contacts/">
+                  <p>Контакты</p>
+                </router-link>
+              </md-list-item>
+              <md-list-item
+                v-if="this.$route.path !== '/' || this.window.width <= 990"
+              >
+                <router-link exact to="/about/">
+                  <p>О нас</p>
+                </router-link>
+              </md-list-item>
 
+              <md-list-item
+                href="/"
+                target="_blank"
+                v-if="this.$route.path === '/' && this.window.width > 990"
+              >
+                <md-icon>mail</md-icon>
+                <p>support@megratec.ru</p>
+              </md-list-item>
 
-                <md-list-item href="/" target="_blank"
-                              v-if="this.$route.path === '/' && this.window.width > 990">
-                    <md-icon>mail</md-icon>
-                    <p>support@megratec.ru</p>
-                </md-list-item>
-
-                <md-list-item href="javascript:void(0)"
-                              @click="scrollToElement()"
-                              v-if="this.$route.path === '/' && this.window.width > 990">
-                    <md-icon>phone_android</md-icon>
-                    <p>+7 (495) 787-59-40</p>
-                </md-list-item>
+              <md-list-item
+                href="javascript:void(0)"
+                @click="scrollToElement()"
+                v-if="this.$route.path === '/' && this.window.width > 990"
+              >
+                <md-icon>phone_android</md-icon>
+                <p>+7 (495) 787-59-40</p>
+              </md-list-item>
             </md-list>
           </div>
         </div>
@@ -184,16 +208,16 @@ export default {
       extraNavClasses: "",
       toggledClass: false,
       imgLogo: require("@/assets/img/logo.png"),
-      colorLogo: '#fff',
+      colorLogo: "#fff",
       window: {
-          width: 0,
-          height: 0
+        width: 0,
+        height: 0
       }
     };
   },
   created() {
-      window.addEventListener('resize', this.handleResize);
-      this.handleResize();
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   },
   computed: {
     showDownload() {
@@ -247,8 +271,8 @@ export default {
       }
     },
     handleResize() {
-        this.window.width = window.innerWidth;
-        this.window.height = window.innerHeight;
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
     }
   },
   mounted() {
@@ -260,26 +284,28 @@ export default {
 };
 </script>
 <style>
-    .logo a{
-        font-size: 3.3rem;
-        position: relative;
-        height: 40px;
-        color: #2e5790 !important;
-    }
-    .logo a:hover, .logo a:active{
-        color: #2e5790 !important;
-    }
-    .md-transparent .logo a{
-        color: #fff !important;
-    }
-    .md-transparent .logo a:hover, .logo a:active{
-        color: #fff !important;
-    }
-    .logo_mini{
-        position: absolute;
-        font-size: 0.45rem;
-        font-weight: 600;
-        bottom: -10px;
-        right: 2px;
-    }
+.logo a {
+  font-size: 3.3rem;
+  position: relative;
+  height: 40px;
+  color: #2e5790 !important;
+}
+.logo a:hover,
+.logo a:active {
+  color: #2e5790 !important;
+}
+.md-transparent .logo a {
+  color: #fff !important;
+}
+.md-transparent .logo a:hover,
+.logo a:active {
+  color: #fff !important;
+}
+.logo_mini {
+  position: absolute;
+  font-size: 0.45rem;
+  font-weight: 600;
+  bottom: -10px;
+  right: 2px;
+}
 </style>

@@ -29,7 +29,7 @@
           </li>
         </ul>
       </nav>
-      <div class="copyright">&copy; {{ year }}</div>
+      <div class="copyright">&copy; 2020 - {{ year }}</div>
     </div>
   </footer>
 </template>

@@ -1,75 +1,98 @@
 <template>
   <div class="wrapper">
-      <parallax class="section page-header">
-          <div class="header-background"></div>
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9d6d0e5d7de6282289225ecd34d2c7e141d20e4b775ca761992f0a5b77ade574&amp;source=constructor" width="100%" style="height:45vh" frameborder="0"></iframe>
-      </parallax>
+    <parallax class="section page-header">
+      <div class="header-background"></div>
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?um=constructor%3A9d6d0e5d7de6282289225ecd34d2c7e141d20e4b775ca761992f0a5b77ade574&amp;source=constructor"
+        width="100%"
+        style="height:45vh"
+        frameborder="0"
+      ></iframe>
+    </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-          <div class="container">
-              <div class="md-layout">
-                  <div class="md-layout-item md-size-50 md-small-size-100 ml-auto block-1">
-                      <h2 class="title" style="margin-top:0">Отправить нам сообщение</h2>
-                      <form class="contact-form">
-                          <md-field>
-                              <label>Имя</label>
-                              <md-input v-model="name" type="text"></md-input>
-                          </md-field>
-                          <md-field>
-                              <label>Email</label>
-                              <md-input v-model="email" type="email"></md-input>
-                          </md-field>
-                          <md-field>
-                              <label>Телефон</label>
-                              <md-input v-model="phone" type="phone"></md-input>
-                          </md-field>
-                          <md-field maxlength="5">
-                              <label>Комментарий</label>
-                              <md-textarea v-model="message"></md-textarea>
-                          </md-field>
-                          <div class="md-layout">
-                              <div class="md-layout-item md-size-33 mx-auto text-center">
-                                  <md-button class="md-primary">Отправить</md-button>
-                              </div>
-                          </div>
-                      </form>
+        <div class="container">
+          <div class="md-layout">
+            <div
+              class="md-layout-item md-size-50 md-small-size-100 ml-auto block-1"
+            >
+              <h2 class="title" style="margin-top:0">
+                Отправить нам сообщение
+              </h2>
+              <form class="contact-form">
+                <md-field>
+                  <label>Имя</label>
+                  <md-input v-model="name" type="text"></md-input>
+                </md-field>
+                <md-field>
+                  <label>Email</label>
+                  <md-input v-model="email" type="email"></md-input>
+                </md-field>
+                <md-field>
+                  <label>Телефон</label>
+                  <md-input v-model="phone" type="phone"></md-input>
+                </md-field>
+                <md-field maxlength="5">
+                  <label>Комментарий</label>
+                  <md-textarea v-model="message"></md-textarea>
+                </md-field>
+                <div class="md-layout">
+                  <div class="md-layout-item md-size-33 mx-auto text-center">
+                    <md-button class="md-primary">Отправить</md-button>
                   </div>
-                  <div class="md-layout-item md-size-33 md-small-size-100 ml-auto block-2">
-                      <div class="md-layout contacts">
-                          <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
-                              <i class="md-icon md-icon-font md-theme-default">pin_drop</i>
-                          </div>
-                          <div class="md-layout-item md-size-80 md-small-size-100 ml-auto">
-                              <h4 class="title">Адрес</h4>
-                              <p class="muted-text">
-                                  Россия, 123007, Москва<br>
-                                  Хорошевское ш., 38, корп. 1, эт. 4, пом. 1, ком. 18
-                              </p>
-                          </div>
-                      </div>
-                      <div class="md-layout contacts">
-                          <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
-                              <i class="md-icon md-icon-font md-theme-default">phone</i>
-                          </div>
-                          <div class="md-layout-item md-size-80 md-small-size-100 ml-auto">
-                              <h4 class="title">Контактная информация</h4>
-                              <p class="muted-text">
-                                  Тел: 495-7875940<br>
-                                  Факс: 495-7875935<br>
-                                  e-mail: lokhov@megratec.ru
-                              </p>
-                          </div>
-                      </div>
-                      <div class="md-layout contacts">
-                          <div class="md-layout-item md-size-20 md-small-size-100 ml-auto">
-                              <i class="md-icon md-icon-font md-theme-default">contacts</i>
-                          </div>
-                          <div class="md-layout-item md-size-80 md-small-size-100 ml-auto">
-                              <h4 class="title">Техническая поддержка</h4>
-                              <p class="muted-text">
-                                  support@megratec.ru
-                              </p>
-                              <!--<h6>Продажи и административная поддержка:</h6>
+                </div>
+              </form>
+            </div>
+            <div
+              class="md-layout-item md-size-33 md-small-size-100 ml-auto block-2"
+            >
+              <div class="md-layout contacts">
+                <div
+                  class="md-layout-item md-size-20 md-small-size-100 ml-auto"
+                >
+                  <i class="md-icon md-icon-font md-theme-default">pin_drop</i>
+                </div>
+                <div
+                  class="md-layout-item md-size-80 md-small-size-100 ml-auto"
+                >
+                  <h4 class="title">Адрес</h4>
+                  <p class="muted-text">
+                    Россия, 123007, Москва<br />
+                    Хорошевское ш., 38, корп. 1, эт. 4, пом. 1, ком. 18
+                  </p>
+                </div>
+              </div>
+              <div class="md-layout contacts">
+                <div
+                  class="md-layout-item md-size-20 md-small-size-100 ml-auto"
+                >
+                  <i class="md-icon md-icon-font md-theme-default">phone</i>
+                </div>
+                <div
+                  class="md-layout-item md-size-80 md-small-size-100 ml-auto"
+                >
+                  <h4 class="title">Контактная информация</h4>
+                  <p class="muted-text">
+                    Тел: 495-7875940<br />
+                    Факс: 495-7875935<br />
+                    e-mail: lokhov@megratec.ru
+                  </p>
+                </div>
+              </div>
+              <div class="md-layout contacts">
+                <div
+                  class="md-layout-item md-size-20 md-small-size-100 ml-auto"
+                >
+                  <i class="md-icon md-icon-font md-theme-default">contacts</i>
+                </div>
+                <div
+                  class="md-layout-item md-size-80 md-small-size-100 ml-auto"
+                >
+                  <h4 class="title">Техническая поддержка</h4>
+                  <p class="muted-text">
+                    support@megratec.ru
+                  </p>
+                  <!--<h6>Продажи и административная поддержка:</h6>
                 <p class="muted-text">
                     Лохов Андрей Львович<br>
                     lokhov@megratec.ru
@@ -89,40 +112,48 @@
                     Селиванов Иван Витальевич<br>
                     selivanov@megratec.ru
                 </p>-->
-                          </div>
-                      </div>
-                  </div>
+                </div>
+              </div>
+            </div>
 
-                  <div class="md-layout-item md-size-100 block-3">
-                      <div class="md-layout">
-                          <div class="md-layout-item md-size-20 md-xsmall-size-100 my-auto ml-auto text-center">
-                              <img src="@/assets/img/about/1.svg" />
-                              <h4 class="title">Лохов Андрей Львович</h4>
-                              Продажи и администр. поддержка
-                              <span class="text-danger">lokhov@megratec.ru</span>
-                          </div>
-                          <div class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center">
-                              <img src="@/assets/img/about/2.svg" />
-                              <h4 class="title">Филиппов Александр Анатольевич</h4>
-                              Техническая поддержка, консалтинг, проекты
-                              <span class="text-danger">fill@megratec.ru</span>
-                          </div>
-                          <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
-                              <img src="@/assets/img/about/3.svg" />
-                              <h4 class="title">Селиванов Иван Витальевич</h4>
-                              Цифровое и аналого-цифровое моделирование
-                              <span class="text-danger">selivanov@megratec.ru</span>
-                          </div>
-                          <div class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center">
-                              <img src="@/assets/img/about/4.svg" />
-                              <h4 class="title">Селиванов Иван Витальевич</h4>
-                              Печатные платы, синтез C, верификация, DFT
-                              <span class="text-danger">selivanov@megratec.ru</span>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
+            <div class="md-layout-item md-size-100 block-3">
+              <div class="md-layout">
+                <div
+                  class="md-layout-item md-size-20 md-xsmall-size-100 my-auto ml-auto text-center"
+                >
+                  <img src="@/assets/img/about/1.svg" />
+                  <h4 class="title">Лохов Андрей Львович</h4>
+                  Продажи и администр. поддержка
+                  <span class="text-danger">lokhov@megratec.ru</span>
+                </div>
+                <div
+                  class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center"
+                >
+                  <img src="@/assets/img/about/2.svg" />
+                  <h4 class="title">Филиппов Александр Анатольевич</h4>
+                  Техническая поддержка, консалтинг, проекты
+                  <span class="text-danger">fill@megratec.ru</span>
+                </div>
+                <div
+                  class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center"
+                >
+                  <img src="@/assets/img/about/3.svg" />
+                  <h4 class="title">Селиванов Иван Витальевич</h4>
+                  Цифровое и аналого-цифровое моделирование
+                  <span class="text-danger">selivanov@megratec.ru</span>
+                </div>
+                <div
+                  class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center"
+                >
+                  <img src="@/assets/img/about/4.svg" />
+                  <h4 class="title">Селиванов Иван Витальевич</h4>
+                  Печатные платы, синтез C, верификация, DFT
+                  <span class="text-danger">selivanov@megratec.ru</span>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -179,57 +210,63 @@ export default {
   margin-top: 15px;
 }
 @media screen and (min-width: 960px) {
-  .page-header  {
+  .page-header {
     height: 45vh;
   }
 }
-.section-contacts i{
-    color:#2e5790 !important;
-    font-size: 36px !important;
+.section-contacts i {
+  color: #2e5790 !important;
+  font-size: 36px !important;
 }
-.section-contacts .title{
-    margin-top: 0px;
-    margin-bottom: 10px;
+.section-contacts .title {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
-.section-contacts .contacts{
-    margin-top: 15px;
-    margin-bottom: 40px
+.section-contacts .contacts {
+  margin-top: 15px;
+  margin-bottom: 40px;
 }
-.section-contacts h6{
-    margin-bottom: 0px
+.section-contacts h6 {
+  margin-bottom: 0px;
 }
-.header-background{
-    height: 100px;
-    background: #2e5790;
-    width: 100%;
-    opacity: 0.3;
-    position: absolute;
-    top: 0;
+.header-background {
+  height: 100px;
+  background: #2e5790;
+  width: 100%;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
 }
-.block-3{
+.block-3 {
+  margin-top: 50px;
+}
+@media screen and (max-width: 900px) {
+  .page-header {
+    height: 300px;
+  }
+  .block-1 {
+    order: 3;
+  }
+  .block-2 {
+    order: 1;
+  }
+  .block-3 {
+    order: 2;
+  }
+  .header-background {
+    height: 80px;
+  }
+  .block-3 {
+    margin-top: 0;
+  }
+  .block-3 .md-layout-item {
+    margin-top: 20px;
+  }
+  .block-1 {
     margin-top: 50px;
+  }
+  .block-2 .title {
+    margin-top: 10px;
+  }
 }
-    @media screen and (max-width: 900px) {
-         .page-header  {
-            height: 300px;
-         }
-        .block-1 { order: 3; }
-        .block-2 { order: 1; }
-        .block-3 { order: 2; }
-        .header-background {
-            height: 80px;
-        }
-        .block-3{
-            margin-top: 0;
-        }
-        .block-3 .md-layout-item{
-            margin-top: 20px;
-        }
-        .block-1{
-            margin-top: 50px;
-        }
-        .block-2 .title{
-            margin-top: 10px;
-        }
-    }
 </style>

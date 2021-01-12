@@ -17,28 +17,28 @@ import News from "./views/News.vue";
 Vue.use(Router);
 
 export default new Router({
-    linkExactActiveClass: "active",
-    mode: "history",
+  linkExactActiveClass: "active",
+  mode: "history",
   routes: [
     {
       path: "/",
       name: "index",
-      components: { default: Index, header: MainNavbar, footer: MainFooter },
+      components: { default: Index, header: MainNavbar, footer: MainFooter }
     },
     {
       path: "/landing",
       name: "landing",
-      components: { default: Landing, header: MainNavbar, footer: MainFooter },
+      components: { default: Landing, header: MainNavbar, footer: MainFooter }
     },
     {
       path: "/login",
       name: "login",
-      components: { default: Login, header: MainNavbar, footer: MainFooter },
+      components: { default: Login, header: MainNavbar, footer: MainFooter }
     },
     {
       path: "/profile",
       name: "profile",
-      components: { default: Profile, header: MainNavbar, footer: MainFooter },
+      components: { default: Profile, header: MainNavbar, footer: MainFooter }
     },
     {
       path: "/components",
@@ -58,9 +58,9 @@ export default new Router({
     {
       path: "/product/:id",
       name: "product",
-      components: { default: Product, header: MainNavbar, footer: MainFooter },
+      components: { default: Product, header: MainNavbar, footer: MainFooter }
     },
-	{
+    {
       path: "/trainings",
       name: "trainings",
       components: {
@@ -69,7 +69,7 @@ export default new Router({
         footer: MainFooter
       }
     },
-	{
+    {
       path: "/contacts",
       name: "contacts",
       components: {
@@ -78,7 +78,7 @@ export default new Router({
         footer: MainFooter
       }
     },
-	{
+    {
       path: "/about",
       name: "about",
       components: {
@@ -90,8 +90,8 @@ export default new Router({
     {
       path: "/news/:id",
       name: "news",
-      components: { default: News, header: MainNavbar, footer: MainFooter },
-    },
+      components: { default: News, header: MainNavbar, footer: MainFooter }
+    }
   ],
   scrollBehavior: to => {
     if (to.hash) {
