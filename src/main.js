@@ -27,7 +27,7 @@ Vue.mixin({
     };
   },
   methods: {
-    getSection: function(entity, categoryId) {
+    getSection: function(entity, sectionId) {
       let res = [];
       let params = {
         params: {
@@ -36,9 +36,9 @@ Vue.mixin({
           "FILTER[ACTIVE]": "Y"
         }
       };
-      if (categoryId > 0) {
-        params["params"]["FILTER[ID]"] = categoryId;
-      } else if (categoryId == -1) {
+      if (sectionId > 0) {
+        params["params"]["FILTER[ID]"] = sectionId;
+      } else if (sectionId == -1) {
         params["params"]["FILTER[ID]"] = 3;
       }
       axios
@@ -48,7 +48,7 @@ Vue.mixin({
         });
       return res;
     },
-    getItem: function(entity, productId) {
+    getItem: function(entity, itemId) {
       let res = [];
       let params = {
         params: {
@@ -57,9 +57,9 @@ Vue.mixin({
           "FILTER[ACTIVE]": "Y"
         }
       };
-      if (productId > 0) {
-        params["params"]["FILTER[ID]"] = productId;
-      } else if (productId == -1) {
+      if (itemId > 0) {
+        params["params"]["FILTER[ID]"] = itemId;
+      } else if (itemId == -1) {
         params["params"]["FILTER[PROPERTY_VIEWMAIN]"] = 1;
       }
       this.axios
@@ -68,7 +68,7 @@ Vue.mixin({
           res.push(response.data.result);
 
           let categoryName = [];
-          if (productId > 0) {
+            if (itemId > 0) {
             categoryName = this.getSection(
               entity,
               response.data.result[0]["SECTION"]

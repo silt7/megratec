@@ -103,14 +103,34 @@
         </md-toolbar>
         <nav-tabs-card no-label tabs-plain id="tabs-menu">
           <template slot="content">
-            <md-tabs class="md-secondary" md-alignment="centered">
+            <md-tabs class="md-secondary" md-alignment="centered" :md-active-tab="'md-' + active">
               <md-tab
                 v-for="item in category[0]"
                 :key="item.ID"
                 :md-label="item.NAME"
+                :id="'md-' + item.ID"
               >
                 <div class="container">
                   <div class="md-layout md-gutter md-alignment-left">
+                  <router-link
+                      class="md-layout-item md-size-20 md-small-size-100"
+                      v-for="product in productsMain[0]"
+                      :key="product.ID"
+                      :to="'product/' + product.ID"
+                      v-if="item.ID == 10"
+                    >
+                      <md-card class="product">
+                        <img
+                          v-if="product.PROPERTY_VALUES.icon != ''"
+                          :src="product.PROPERTY_VALUES.icon"
+                        />
+                        <img v-else src="@/assets/img/icon/noimg.svg" />
+                        <md-card-header-text>
+                          <div class="md-title">{{ product.NAME }}</div>
+                          <div class="md-subhead">Подробнее</div>
+                        </md-card-header-text>
+                      </md-card>
+                    </router-link>
                     <router-link
                       class="md-layout-item md-size-20 md-small-size-100"
                       v-for="product in products[0]"
@@ -134,6 +154,8 @@
                 </div>
               </md-tab>
             </md-tabs>
+            <i v-on:click="tabChanged('prev')" class='material-icons tabChanged-left'>keyboard_arrow_left</i>
+            <i v-on:click="tabChanged('next')" class='material-icons tabChanged-right'>keyboard_arrow_right</i>
             <div class="md-layout text-center">
               <div class="md-layout-item md-size-33 mx-auto">
                 <router-link exact to="/products/"
@@ -303,9 +325,11 @@ export default {
       productImg: require("@/assets/img/products/1.jpg"),
       category: "N",
       products: [],
+      productsMain: [],
       news: [],
       clickCategory: 0,
-      turn: 0
+      turn: 0,
+      active: 10
     };
   },
   methods: {
@@ -328,6 +352,28 @@ export default {
         this.clickCategory = 0;
         this.turn = 0;
       }
+    },
+      tabChanged(direction) {
+          let arr = []
+          let cat = this.category.slice()
+          cat.shift().forEach((element) => {
+              arr.push(element['ID'])
+          })
+
+          let i = arr.indexOf(String(this.active))
+          if (direction == 'next') {
+              if (arr[i + 1] === undefined) {
+                  this.active = arr[0]
+              } else {
+                  this.active = arr[i + 1]
+              }
+          } else {
+             if (arr[i - 1] === undefined) {
+                  this.active = arr.pop()
+              } else {
+                  this.active = arr[i - 1]
+              }
+          }
     }
   },
   computed: {
@@ -347,7 +393,8 @@ export default {
     window.addEventListener("resize", this.leafActive);
     document.title = "Megratec";
     this.category = this.getSection("products", 0);
-    this.products = this.getItem("products", -1);
+    this.products = this.getItem("products", 0);
+    this.productsMain = this.getItem("products", -1); // -1 Вывести продукты с пометкой на главную
     this.news = this.getItem("news", 0);
   },
   beforeDestroy() {
@@ -439,6 +486,7 @@ export default {
 
   img {
     width: 60px !important;
+    height: 65px !important;
     margin: 15px;
   }
 }
@@ -518,7 +566,23 @@ export default {
     right: 0 !important;
 }
 .partnerSlide .VueCarousel-navigation-button {outline:none !important}
-
+.tabChanged-left, .tabChanged-right {
+    position: absolute;
+    font-size: 50px;
+    top: 30%;
+    cursor:pointer;
+    color: #000;
+    opacity: 0.5;
+}
+.tabChanged-left:hover, .tabChanged-right:hover {
+    opacity: 1;
+}
+.tabChanged-left{
+    left: 15%;
+}
+.tabChanged-right{
+    right: 15%;
+}
 @media screen and (min-width: 901px) {
   .main-carusel.VueCarousel {
     height: 65vh;
@@ -537,7 +601,7 @@ export default {
   }
 }
 @media screen and (max-width: 900px) {
-  .mainMenu button {
+  .mainMenu button,.tabChanged-left, .tabChanged-right {
     display: none;
   }
   .partnerSlide .VueCarousel-navigation{
