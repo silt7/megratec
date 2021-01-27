@@ -1,52 +1,24 @@
 <template>
   <div class="wrapper">
-    <carousel
-      :per-page="1"
-      loop
-      :speed="1"
-      autoplay
-      :autoplay-timeout="5000"
-      :mouse-drag="false"
-      navigationEnabled
-      navigationNextLabel="<i class='material-icons' style='display:none'>keyboard_arrow_right</i>"
-      navigationPrevLabel="<i class='material-icons' style='display:none'>keyboard_arrow_left</i>"
-      class="main-carusel"
-    >
-      <slide>
-        <div class="carousel-caption">
-          <h3>#1 Новость</h3>
-          <h2>
-            Вышли новые версии XpeditionEnterprise,<br />
-            PADS и HyperLynx подробнее
-          </h2>
-          <div class="line-slider"></div>
-        </div>
-        <img width="100%" :src="carousel1" alt="carousel1" />
-      </slide>
-      <slide>
-        <div class="filtr"></div>
-        <div class="carousel-caption">
-          <h3>#2 Новость</h3>
-          <h2>
-            Вышли новые версии XpeditionEnterprise,<br />
-            PADS и HyperLynx подробнее
-          </h2>
-          <div class="line-slider"></div>
-        </div>
-        <img width="100%" :src="carousel2" alt="carousel2" />
-      </slide>
-      <slide>
-        <div class="carousel-caption">
-          <h3>#3 Новость</h3>
-          <h2>
-            Вышли новые версии XpeditionEnterprise,<br />
-            PADS и HyperLynx подробнее
-          </h2>
-          <div class="line-slider"></div>
-        </div>
-        <img width="100%" :src="carousel3" alt="carousel3" />
-      </slide>
-    </carousel>
+      <carousel :per-page="1"
+                loop
+                :speed="1"
+                autoplay
+                :autoplay-timeout="5000"
+                :mouse-drag="false"
+                navigationEnabled
+                navigationNextLabel="<i class='material-icons' style='display:none'>keyboard_arrow_right</i>"
+                navigationPrevLabel="<i class='material-icons' style='display:none'>keyboard_arrow_left</i>"
+                class="main-carusel">
+          <slide v-for="item in banners" :key="item.ID">
+              <div class="carousel-caption">
+                  <h3>{{item.NAME}}</h3>
+                  <h2 v-html="item.PREVIEW_TEXT"></h2>
+                  <div class="line-slider"></div>
+              </div>
+              <img width="100%" :src="item.PREVIEW_PICTURE" alt="carousel1" />
+          </slide>
+      </carousel>
     <div class="main main-raised">
       <div class="section" style="padding: 0;">
         <md-toolbar class="md-primary mainMenu">
@@ -103,7 +75,7 @@
         </md-toolbar>
         <nav-tabs-card no-label tabs-plain id="tabs-menu">
           <template slot="content">
-            <md-tabs class="md-secondary" md-alignment="centered" :md-active-tab="'md-' + active">
+            <md-tabs class="md-secondary" md-alignment="left" :md-active-tab="'md-' + active">
               <md-tab
                 v-for="item in category[0]"
                 :key="item.ID"
@@ -150,12 +122,13 @@
                         </md-card-header-text>
                       </md-card>
                     </router-link>
+                    <i v-on:click="tabChanged('prev')" class='material-icons tabChanged-left'>keyboard_arrow_left</i>
+                    <i v-on:click="tabChanged('next')" class='material-icons tabChanged-right'>keyboard_arrow_right</i>
                   </div>
                 </div>
               </md-tab>
             </md-tabs>
-            <i v-on:click="tabChanged('prev')" class='material-icons tabChanged-left'>keyboard_arrow_left</i>
-            <i v-on:click="tabChanged('next')" class='material-icons tabChanged-right'>keyboard_arrow_right</i>
+
             <div class="md-layout text-center">
               <div class="md-layout-item md-size-33 mx-auto">
                 <router-link exact to="/products/"
@@ -329,7 +302,8 @@ export default {
       news: [],
       clickCategory: 0,
       turn: 0,
-      active: 10
+      active: 10,
+      banners: []
     };
   },
   methods: {
@@ -353,7 +327,7 @@ export default {
         this.turn = 0;
       }
     },
-      tabChanged(direction) {
+    tabChanged(direction) {
           let arr = []
           let cat = this.category.slice()
           cat.shift().forEach((element) => {
@@ -396,6 +370,20 @@ export default {
     this.products = this.getItem("products", 0);
     this.productsMain = this.getItem("products", -1); // -1 Вывести продукты с пометкой на главную
     this.news = this.getItem("news", 0);
+
+    let params = {
+        params: {
+          ENTITY: 'pages',
+          "FILTER[SECTION]": '13',
+          "SORT[SORT]": "ASC",
+          "FILTER[ACTIVE]": "Y"
+        }
+    };
+      this.axios
+        .get(this.$root.baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params)
+        .then(response => {
+            this.banners = response.data.result
+        });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.leafActive);
@@ -569,19 +557,22 @@ export default {
 .tabChanged-left, .tabChanged-right {
     position: absolute;
     font-size: 50px;
-    top: 30%;
     cursor:pointer;
     color: #000;
     opacity: 0.5;
+    height:100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 .tabChanged-left:hover, .tabChanged-right:hover {
     opacity: 1;
 }
 .tabChanged-left{
-    left: 15%;
+    left: -70px;
 }
 .tabChanged-right{
-    right: 15%;
+    right: -70px;
 }
 @media screen and (min-width: 901px) {
   .main-carusel.VueCarousel {
@@ -589,7 +580,7 @@ export default {
   }
 
   .md-tabs-navigation {
-    padding-left: 11vw !important;
+    padding-left: 18vw !important;
   }
   .news .md-card-content .md-button {
     position: absolute;
@@ -606,6 +597,19 @@ export default {
   }
   .partnerSlide .VueCarousel-navigation{
       display: none;
+  }
+}
+@media screen and (max-width: 1400px) {
+    .tabChanged-left{
+        left: -30px;
+    }
+    .tabChanged-right{
+        right: -30px;
+    }
+}
+@media screen and (max-width: 1100px) {
+  .tabChanged-left, .tabChanged-right {
+    display: none;
   }
 }
 </style>

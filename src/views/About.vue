@@ -13,61 +13,7 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-        <div class="container text-center">
-          <h5>
-            Компания МЕГРАТЕК (Megratec - Mentor Graphics Technologies)
-            зарегистрирована в марте 2001 года и имеет статус официального
-            представителя компании Mentor Graphics с правом распространения
-            всего спектра продукции Mentor Graphics на рынке России и СНГ.
-            Персонал компании имеет двадцатилетний опыт работы с программным
-            обеспечением Mentor Graphics.
-          </h5>
-          <div class="md-layout support">
-            <h2 class="title" style="margin: 10px auto;margin-top: 70px">
-              Наша поддержка
-            </h2>
-            <h5 style="margin-bottom: 50px">
-              В функции компании МЕГРАТЕК входит маркетинг, продажа, техническая
-              и административная поддержка и сопровождение программных продуктов
-              Mentor Graphics. С этой целью создано два технических центра,
-              специализирующихся, соответственно, в области средств
-              проектирования систем и печатных плат и в области проектирования
-              интегральных схем.
-            </h5>
-            <div
-              class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center"
-            >
-              <img src="@/assets/img/about/1.svg" />
-              <h4 class="title">Лохов Андрей Львович</h4>
-              Продажи и администр. поддержка
-              <span class="text-danger">lokhov@megratec.ru</span>
-            </div>
-            <div
-              class="md-layout-item md-size-25 md-xsmall-size-100 ml-auto text-center"
-            >
-              <img src="@/assets/img/about/2.svg" />
-              <h4 class="title">Филиппов Александр Анатольевич</h4>
-              Техническая поддержка, консалтинг, проекты
-              <span class="text-danger">fill@megratec.ru</span>
-            </div>
-            <div
-              class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center"
-            >
-              <img src="@/assets/img/about/3.svg" />
-              <h4 class="title">Селиванов Иван Витальевич</h4>
-              Цифровое и аналого-цифровое моделирование
-              <span class="text-danger">selivanov@megratec.ru</span>
-            </div>
-            <div
-              class="md-layout-item md-size-20 md-xsmall-size-100 ml-auto text-center"
-            >
-              <img src="@/assets/img/about/4.svg" />
-              <h4 class="title">Селиванов Иван Витальевич</h4>
-              Печатные платы, синтез C, верификация, DFT
-              <span class="text-danger">selivanov@megratec.ru</span>
-            </div>
-          </div>
-        </div>
+        <div v-html="page[0][0].DETAIL_TEXT"></div>
         <div class="container" style="padding: 70px 15px">
           <h2 class="text-center title">Партнёры</h2>
           <h5>
@@ -75,38 +21,51 @@
             программного обеспечения, электронных компонентов и аппаратных
             платформ любой конфигурации через своих партнеров.
           </h5>
-          <div class="md-layout">
-            <div class="md-layout-item md-small-size-33">
-              <a href="#" target="_blank">
-                <img src="@/assets/img/partner/1.png" />
-              </a>
-            </div>
-            <div class="md-layout-item  md-small-size-33">
-              <a href="#" target="_blank">
-                <img src="@/assets/img/partner/2.png" />
-              </a>
-            </div>
-            <div class="md-layout-item  md-small-size-33">
-              <a href="#" target="_blank">
-                <img src="@/assets/img/partner/3.png" />
-              </a>
-            </div>
-            <div class="md-layout-item  md-small-size-33">
-              <a href="#" target="_blank">
-                <img src="@/assets/img/partner/4.png" />
-              </a>
-            </div>
-            <div class="md-layout-item  md-small-size-33">
-              <a href="#" target="_blank">
-                <img src="@/assets/img/partner/5.png" />
-              </a>
-            </div>
-            <div class="md-layout-item  md-small-size-33">
-              <a href="#" target="_blank">
-                <img src="@/assets/img/partner/6.png" />
-              </a>
-            </div>
-          </div>
+          <carousel :perPageCustom ="[[900, 5]]"
+                    loop
+                    :speed="700"
+                    :navigationEnabled="true"
+                    :paginationEnabled="false"
+                    navigationNextLabel="<i class='material-icons' style='color:#000 !important'>keyboard_arrow_right</i>"
+                    navigationPrevLabel="<i class='material-icons' style='color:#000 !important'>keyboard_arrow_left</i>"
+                    class="partnerSlide">
+            <slide>
+                <img src="@/assets/img/partner/huawei.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/baikal.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/depo.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/ineum.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/ka.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/miet.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/elbrus.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/odul.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/oak.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/rti.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/elvis.png" />
+            </slide>
+            <slide>
+                <img src="@/assets/img/partner/pai.png" />
+            </slide>
+        </carousel>
         </div>
         <div class="container">
           <h2 class="title" style="margin: 10px auto">Оставить заявку</h2>
@@ -170,7 +129,8 @@ export default {
     return {
       name: null,
       email: null,
-      message: null
+      message: null,
+      page: ''
     };
   },
   computed: {
@@ -179,6 +139,9 @@ export default {
         backgroundImage: `url(${this.header})`
       };
     }
+  },
+  mounted() {
+      this.page = this.getItem("pages", 58);
   }
 };
 </script>

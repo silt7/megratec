@@ -23,7 +23,8 @@ const $baseURL = "https://megratec-dev.ru";
 Vue.mixin({
   data() {
     return {
-      NavbarStore
+      NavbarStore,
+      baseURL: $baseURL
     };
   },
   methods: {
@@ -77,6 +78,21 @@ Vue.mixin({
           }
         });
       return res;
+    },
+    getUserField: function (iblock, id) {
+        let res = [];
+        let params = {
+            params: {
+                IBLOCK: iblock,
+                ID: id
+            }
+        };
+        this.axios
+            .get($baseURL + "/rest-custom/userfield.php", params)
+            .then(response => {
+                res.push(response.data);
+            });
+        return res;
     }
   }
 });

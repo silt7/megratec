@@ -12,125 +12,96 @@
       </div>
     </parallax>
     <div class="main main-raised">
-      <div class="section profile-content">
-        <div class="container">
-          <md-list class="filtr">
-            <li class="md-list-item">
-              <a
-                href="javascript:void(0)"
-                class="md-list-item-router md-list-item-container md-button-clean dropdown"
-              >
-                <div class="md-list-item-content">
-                  <drop-down direction="down">
-                    <md-button
-                      slot="title"
-                      class="md-button md-button-link md-primary md-simple dropdown-toggle text-primary"
-                      data-toggle="dropdown"
-                    >
-                      <i class="md-icon md-icon-font md-theme-default">list</i>
-                      <p style="font-size: 14px;">Фильтр</p>
-                    </md-button>
-                    <ul class="dropdown-menu dropdown-with-icons">
-                      <li>
-                        <a v-on:click="category = getSection('products', 0)">
-                          <i class="material-icons">view_day</i>
-                          <p>Все</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 3)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Функциональная верификация</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 5)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Физическая верификация ИС</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 2)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Системное проектирование</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 4)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Физическое проектирование ИС</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 6)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Подготовка производства ИС</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 7)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Тестирование и диагностика ИС</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 8)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Проектирование FPGA</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a v-on:click="category = getSection('products', 9)">
-                          <i class="material-icons">account_circle</i>
-                          <p>Проектирование систем на печатных платах</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </drop-down>
+        <div class="section profile-content">
+            <md-toolbar class="md-primary mainMenu">
+                <div class="md-toolbar-row">
+                    <div class="md-toolbar-section-start">
+                        <md-list>
+                            <md-list-item href="javascript:void(0)"
+                                          v-on:click="openCategory">
+                                <md-icon>list</md-icon>
+                                <p style="font-size:14px">ПРОДУКТЫ</p>
+                                <md-icon :style="{ transform: 'rotate(' + turn + 'turn)' }">keyboard_arrow_down</md-icon>
+                            </md-list-item>
+                        </md-list>
+                    </div>
                 </div>
-              </a>
-            </li>
-          </md-list>
-          <div v-for="item in category[0]" :key="item.ID" class="catalog">
-            <h2>{{ item.NAME }}</h2>
-            <div class="container">
-              <div class="md-layout md-gutter md-alignment-left">
-                <router-link
-                  class="md-layout-item md-size-20 md-small-size-100"
-                  v-for="product in products[0]"
-                  :key="product.ID"
-                  :to="'/product/' + product.ID"
-                  v-if="product.SECTION == item.ID"
-                >
-                  <md-card class="product text-center">
-                    <img
-                      v-if="product.PROPERTY_VALUES.icon != ''"
-                      :src="product.PROPERTY_VALUES.icon"
-                    />
-                    <img v-else src="@/assets/img/icon/noimg.svg" />
-                    <md-card-header-text>
-                      <div class="md-title">{{ product.NAME }}</div>
-                      <div class="md-subhead">Подробнее</div>
-                    </md-card-header-text>
-                  </md-card>
-                </router-link>
-              </div>
-            </div>
-          </div>
+            </md-toolbar>
+            <nav-tabs-card no-label tabs-plain id="tabs-menu">
+                <template slot="content">
+                    <md-tabs class="md-secondary" md-alignment="centered" >
+                        <md-tab md-label="Все">
+                            <div v-for="item in category[0]" :key="item.ID" class="container catalog" v-if="item.ID != 10">
+                            <h2 style="text-align:left">{{ item.NAME }}</h2>
+                                <div class="md-layout md-gutter md-alignment-left">
+                                <router-link
+                                    class="md-layout-item md-size-20 md-small-size-100"
+                                    v-for="product in products[0]"
+                                    :key="product.ID"
+                                    :to="'/product/' + product.ID"
+                                    v-if="product.SECTION == item.ID"
+                                >
+                                    <md-card class="product text-center">
+                                    <img
+                                        v-if="product.PROPERTY_VALUES.icon != ''"
+                                        :src="product.PROPERTY_VALUES.icon"
+                                    />
+                                    <img v-else src="@/assets/img/icon/noimg.svg" />
+                                    <md-card-header-text>
+                                        <div class="md-title">{{ product.NAME }}</div>
+                                        <div class="md-subhead">Подробнее</div>
+                                    </md-card-header-text>
+                                    </md-card>
+                                </router-link>
+                                </div>
+                        </div>
+                        </md-tab>
+                        <md-tab v-for="item in category[0]"
+                                :key="item.ID"
+                                :md-label="item.NAME"
+                                :id="'md-' + item.ID"
+                                v-if="item.ID != 10">
+                            <div class="container">
+                                <div class="md-layout md-gutter md-alignment-left">
+                                    <router-link class="md-layout-item md-size-20 md-small-size-100"
+                                                    v-for="product in products[0]"
+                                                    :key="product.ID"
+                                                    :to="'product/' + product.ID"
+                                                    v-if="product.SECTION == item.ID">
+                                        <md-card class="product">
+                                            <img v-if="product.PROPERTY_VALUES.icon != ''"
+                                                    :src="product.PROPERTY_VALUES.icon" />
+                                            <img v-else src="@/assets/img/icon/noimg.svg" />
+                                            <md-card-header-text>
+                                                <div class="md-title">{{ product.NAME }}</div>
+                                                <div class="md-subhead">Подробнее</div>
+                                            </md-card-header-text>
+                                        </md-card>
+                                    </router-link>
+                                </div>
+                            </div>
+                        </md-tab>
+                    </md-tabs>
+                </template>
+            </nav-tabs-card>
         </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import { NavTabsCard } from "@/components";
 export default {
+  components: {
+    NavTabsCard
+  },
   bodyClass: "profile-page",
   data() {
     return {
       category: [],
-      products: []
+      products: [],
+      turn: 0,
+      clickCategory: 0,
     };
   },
   props: {
@@ -146,8 +117,27 @@ export default {
       };
     }
   },
-  beforeRouteEnter(to, from, next) {
-    let categoryId = 0;
+  mounted() {
+    this.category = this.getSection("products", 0);
+    this.products = this.getItem("products", 0);
+  },
+  methods:{
+    openCategory: function(event) {
+      let parent = document.getElementById("tabs-menu");
+      let tabsMenu = parent.querySelector(".md-tabs-navigation");
+      if (this.clickCategory == 0) {
+        tabsMenu.classList.add("activeTabs");
+        this.clickCategory = 1;
+        this.turn = 0.5;
+      } else {
+        tabsMenu.classList.remove("activeTabs");
+        this.clickCategory = 0;
+        this.turn = 0;
+      }
+    },
+  }
+   /*beforeRouteEnter(to, from, next) {
+   let categoryId = 0;
 
     if (typeof to.params.filtr !== "undefined") {
       categoryId = to.params.filtr;
@@ -156,8 +146,8 @@ export default {
     next(vm => {
       (vm.products = vm.getItem("products", 0)),
         (vm.category = vm.getSection("products", categoryId));
-    });
-  }
+    })
+  };*/
 };
 </script>
 
@@ -192,6 +182,30 @@ export default {
   width: 140px;
   position: absolute;
   right: 15px;
+}
+#tabs-menu {
+  padding: 0 10px;
+  .md-tabs-navigation {
+    background: #4b8edb !important;
+    box-shadow: 0 0 black;
+    border-radius: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+  }
+
+  button {
+    width: 30%;
+    max-width: inherit !important;
+  }
+
+  .activeTabs {
+    max-height: 500px;
+    transition: max-height 0.7s ease-out;
+  }
 }
 @media screen and (max-width: 900px) {
   .filtr {
