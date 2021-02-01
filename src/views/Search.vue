@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div id="search" class="wrapper">
         <parallax class="section page-header header-filter" :style="headerStyle">
             <div class="container">
                 <div class="md-layout md-alignment-center">
@@ -70,15 +70,15 @@
         methods: {
             getSearch() {
                 let params = {
-                params: {
-                    q: this.$route.query.q
-                }
-            };
-            this.axios
-                .get(this.$root.baseURL + "/rest-custom/search/", params)
-                .then(response => {
-                    this.result = response.data
-                })
+                    params: {
+                        q: this.$route.query.q
+                    }
+                };
+                this.axios
+                    .get(this.$root.baseURL + "/rest-custom/search/", params)
+                    .then(response => {
+                        this.result = response.data
+                    })
             },
             search() {
                 this.$route.query.q = this.searchText
@@ -98,12 +98,12 @@
 
 <style>
 @media screen and (min-width: 960px) {
-  .page-header {
+  #search .page-header {
     height: 40vh !important;
   }
 }
 @media screen and (max-width: 959px) {
-  .page-header {
+  #search .page-header {
     height: 300px !important;
   }
 }

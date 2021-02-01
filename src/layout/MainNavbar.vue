@@ -141,7 +141,7 @@
         </div>
         <modal v-if="classicModal" @close="classicModalHide">
             <template slot="body">
-                <form class="contact-form md-layout">
+                <form class="contact-form md-layout" @submit="validateBeforeSubmit">
                     <md-icon class="text-primary md-layout-item"
                              style="font-size: 32px !important;">search</md-icon>
                     <md-field class="md-layout-item md-size-55">
@@ -278,7 +278,11 @@ export default {
     search(){
         this.classicModalHide()
         this.$router.push({ name: 'search', query: { q: this.searchText }  });
-    }
+     },
+     validateBeforeSubmit(e) {
+        e.preventDefault();
+        this.search()
+     }
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);

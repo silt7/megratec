@@ -39,9 +39,11 @@
                   <label>Сообщение</label>
                   <md-textarea v-model="message"></md-textarea>
                 </md-field>
+                <p v-if="messOk" class="text-success">Отправлено</p>
+                <p v-if="messErr" class="text-danger">Ошибка при отправке</p>
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50 mx-auto text-center">
-                    <md-button class="md-primary">Отправить</md-button>
+                    <md-button class="md-primary" @click="sendForm()">Отправить</md-button>
                   </div>
                 </div>
               </form>
@@ -79,7 +81,9 @@ export default {
       name: null,
       email: null,
       message: null,
-      page: ''
+      page: '',
+      messOk: false,
+      messErr: false
     };
   },
   computed: {
@@ -91,6 +95,30 @@ export default {
   },
   mounted() {
       this.page = this.getItem("pages", 57);
+  },
+  methods:{
+      sendForm() {
+        let params = {
+            params: {
+                form: 'training',
+                name: this.name,
+                phone: this.phone,
+                email: this.email,
+                comment: this.message,
+            }
+        };
+        this.axios
+            .get(this.$root.baseURL + "/rest-custom/form/", params)
+            .then(response => {
+                if (response.data == 'success') {
+                    this.messErr = false
+                    this.messOk = true
+                } else {
+                    this.messOk = false
+                    this.messErr = true
+                }
+            })
+      }
   }
 };
 </script>
