@@ -13,6 +13,7 @@ import Trainings from "./views/Trainings.vue";
 import Contacts from "./views/Contacts.vue";
 import About from "./views/About.vue";
 import News from "./views/News.vue";
+import Search from "./views/Search.vue";
 
 Vue.use(Router);
 
@@ -91,7 +92,16 @@ export default new Router({
       path: "/news/:id",
       name: "news",
       components: { default: News, header: MainNavbar, footer: MainFooter }
-    }
+    },
+    {
+      path: "/search",
+      name: "search",
+      components: {
+        default: Search,
+        header: MainNavbar,
+        footer: MainFooter
+      }
+    },
   ],
   scrollBehavior: to => {
     if (to.hash) {

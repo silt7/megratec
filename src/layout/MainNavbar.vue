@@ -1,166 +1,160 @@
 <template>
-  <md-toolbar
-    id="toolbar"
-    md-elevation="0"
-    class="md-transparent md-absolute"
-    :class="extraNavClasses"
-    :color-on-scroll="colorOnScroll"
-  >
-    <div class="md-toolbar-row md-collapse-lateral">
-      <div class="md-toolbar-section-start logo">
-        <router-link to="/"
-          ><b>megra</b>tec<span class="logo_mini"
-            >MENTOR GRAPHIC TECHNOLOGES</span
-          ></router-link
-        >
-      </div>
-      <div class="md-toolbar-section-end">
-        <md-button
-          class="md-just-icon md-simple md-toolbar-toggle"
-          :class="{ toggled: toggledClass }"
-          @click="toggleNavbarMobile()"
-        >
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </md-button>
+    <md-toolbar id="toolbar"
+                md-elevation="0"
+                class="md-transparent md-absolute"
+                :class="extraNavClasses"
+                :color-on-scroll="colorOnScroll">
+        <div class="md-toolbar-row md-collapse-lateral">
+            <div class="md-toolbar-section-start logo">
+                <router-link to="/">
+                    <b>megra</b>tec<span class="logo_mini">MENTOR GRAPHIC TECHNOLOGES</span>
+                </router-link>
+            </div>
+            <div class="md-toolbar-section-end">
+                <md-button class="md-just-icon md-simple md-toolbar-toggle"
+                           :class="{ toggled: toggledClass }"
+                           @click="toggleNavbarMobile()">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </md-button>
 
-        <div class="md-collapse">
-          <div class="md-collapse-wrapper">
-            <mobile-menu nav-mobile-section-start="false">
-              <!-- Here you can add your items from the section-start of your toolbar -->
-            </mobile-menu>
-            <md-list>
-              <li class="md-list-item" v-if="!showDownload">
-                <a
-                  href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
-                >
-                  <div class="md-list-item-content">
-                    <drop-down direction="down">
-                      <md-button
-                        slot="title"
-                        class="md-button md-button-link md-white md-simple dropdown-toggle"
-                        data-toggle="dropdown"
-                      >
-                        <i class="material-icons">apps</i>
-                        <p>Components</p>
-                      </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                          <a href="#/">
-                            <i class="material-icons">layers</i>
-                            <p>All Components</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="№">
-                            <i class="material-icons">content_paste</i>
-                            <p>Главная</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </drop-down>
-                  </div>
-                </a>
-              </li>
+                <div class="md-collapse">
+                    <div class="md-collapse-wrapper">
+                        <mobile-menu nav-mobile-section-start="false">
+                            <!-- Here you can add your items from the section-start of your toolbar -->
+                        </mobile-menu>
+                        <md-list>
+                            <li class="md-list-item" v-if="!showDownload">
+                                <a href="javascript:void(0)"
+                                   class="md-list-item-router md-list-item-container md-button-clean dropdown">
+                                    <div class="md-list-item-content">
+                                        <drop-down direction="down">
+                                            <md-button slot="title"
+                                                       class="md-button md-button-link md-white md-simple dropdown-toggle"
+                                                       data-toggle="dropdown">
+                                                <i class="material-icons">apps</i>
+                                                <p>Components</p>
+                                            </md-button>
+                                            <ul class="dropdown-menu dropdown-with-icons">
+                                                <li>
+                                                    <a href="#/">
+                                                        <i class="material-icons">layers</i>
+                                                        <p>All Components</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="№">
+                                                        <i class="material-icons">content_paste</i>
+                                                        <p>Главная</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </drop-down>
+                                    </div>
+                                </a>
+                            </li>
 
-              <li class="md-list-item" v-if="!showDownload">
-                <a
-                  href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
-                >
-                  <div class="md-list-item-content">
-                    <drop-down direction="down">
-                      <md-button
-                        slot="title"
-                        class="md-button md-button-link md-white md-simple dropdown-toggle"
-                        data-toggle="dropdown"
-                      >
-                        <i class="material-icons">view_carousel</i>
-                        <p>Продукты</p>
-                      </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                          <a href="#/landing">
-                            <i class="material-icons">view_day</i>
-                            <p>Landing Page</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/login">
-                            <i class="material-icons">fingerprint</i>
-                            <p>Login Page</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/profile">
-                            <i class="material-icons">account_circle</i>
-                            <p>Profile Page</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </drop-down>
-                  </div>
-                </a>
-              </li>
-              <md-list-item v-if="this.$route.path !== '/'">
-                <router-link exact to="/">
-                  <p>Главная</p>
-                </router-link>
-              </md-list-item>
-              <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
-              >
-                <router-link exact to="/products/">
-                  <p>Продукты</p>
-                </router-link>
-              </md-list-item>
-              <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
-              >
-                <router-link exact to="/trainings/">
-                  <p>Тренинги</p>
-                </router-link>
-              </md-list-item>
-              <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
-              >
-                <router-link exact to="/contacts/">
-                  <p>Контакты</p>
-                </router-link>
-              </md-list-item>
-              <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
-              >
-                <router-link exact to="/about/">
-                  <p>О нас</p>
-                </router-link>
-              </md-list-item>
+                            <li class="md-list-item" v-if="!showDownload">
+                                <a href="javascript:void(0)"
+                                   class="md-list-item-router md-list-item-container md-button-clean dropdown">
+                                    <div class="md-list-item-content">
+                                        <drop-down direction="down">
+                                            <md-button slot="title"
+                                                       class="md-button md-button-link md-white md-simple dropdown-toggle"
+                                                       data-toggle="dropdown">
+                                                <i class="material-icons">view_carousel</i>
+                                                <p>Продукты</p>
+                                            </md-button>
+                                            <ul class="dropdown-menu dropdown-with-icons">
+                                                <li>
+                                                    <a href="#/landing">
+                                                        <i class="material-icons">view_day</i>
+                                                        <p>Landing Page</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#/login">
+                                                        <i class="material-icons">fingerprint</i>
+                                                        <p>Login Page</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#/profile">
+                                                        <i class="material-icons">account_circle</i>
+                                                        <p>Profile Page</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </drop-down>
+                                    </div>
+                                </a>
+                            </li>
+                            <md-list-item v-if="this.$route.path !== '/'">
+                                <router-link exact to="/">
+                                    <p>Главная</p>
+                                </router-link>
+                            </md-list-item>
+                            <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
+                                <router-link exact to="/products/">
+                                    <p>Продукты</p>
+                                </router-link>
+                            </md-list-item>
+                            <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
+                                <router-link exact to="/trainings/">
+                                    <p>Тренинги</p>
+                                </router-link>
+                            </md-list-item>
+                            <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
+                                <router-link exact to="/contacts/">
+                                    <p>Контакты</p>
+                                </router-link>
+                            </md-list-item>
+                            <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
+                                <router-link exact to="/about/">
+                                    <p>О нас</p>
+                                </router-link>
+                            </md-list-item>
 
-              <md-list-item
-                href="/"
-                target="_blank"
-                v-if="this.$route.path === '/' && this.window.width > 990"
-              >
-                <md-icon>mail</md-icon>
-                <p>support@megratec.ru</p>
-              </md-list-item>
+                            <md-list-item href="/"
+                                          target="_blank"
+                                          v-if="this.$route.path === '/' && this.window.width > 990">
+                                <md-icon>mail</md-icon>
+                                <p>support@megratec.ru</p>
+                            </md-list-item>
 
-              <md-list-item
-                href="javascript:void(0)"
-                @click="scrollToElement()"
-                v-if="this.$route.path === '/' && this.window.width > 990"
-              >
-                <md-icon>phone_android</md-icon>
-                <p>+7 (495) 787-59-40</p>
-              </md-list-item>
-            </md-list>
-          </div>
+                            <md-list-item href="javascript:void(0)"
+                                          @click="scrollToElement()"
+                                          v-if="this.$route.path === '/' && this.window.width > 990">
+                                <md-icon>phone_android</md-icon>
+                                <p>+7 (495) 787-59-40</p>
+                            </md-list-item>
+                            <md-list-item href="javascript:void(0)"
+                                          @click="scrollToElement(); classicModal = true"
+                                          v-if="!this.$route.path.includes('search')">
+                                <md-icon>search</md-icon>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </md-toolbar>
+        <modal v-if="classicModal" @close="classicModalHide">
+            <template slot="body">
+                <form class="contact-form md-layout">
+                    <md-icon class="text-primary md-layout-item"
+                             style="font-size: 32px !important;">search</md-icon>
+                    <md-field class="md-layout-item md-size-55">
+                        <label>Текст для поиска...</label>
+                        <md-input v-model="searchText" type="text"></md-input>
+                    </md-field>
+                    <div class="md-layout-item md-size-30">
+                        <md-button class="md-primary" @click="search()">Искать</md-button>
+                    </div>
+                </form>
+            </template>
+        </modal>
+    </md-toolbar>
 </template>
 
 <script>
@@ -178,9 +172,11 @@ function resizeThrottler(actualResizeHandler) {
 }
 
 import MobileMenu from "@/layout/MobileMenu";
+import { Modal } from "@/components";
 export default {
   components: {
-    MobileMenu
+     MobileMenu,
+     Modal
   },
   props: {
     type: {
@@ -212,7 +208,9 @@ export default {
       window: {
         width: 0,
         height: 0
-      }
+      },
+      classicModal: false,
+      searchText: ''
     };
   },
   created() {
@@ -273,6 +271,13 @@ export default {
     handleResize() {
       this.window.width = window.innerWidth;
       this.window.height = window.innerHeight;
+    },
+    classicModalHide() {
+      this.classicModal = false;
+    },
+    search(){
+        this.classicModalHide()
+        this.$router.push({ name: 'search', query: { q: this.searchText }  });
     }
   },
   mounted() {
@@ -307,5 +312,15 @@ export default {
   font-weight: 600;
   bottom: -10px;
   right: 2px;
+}
+.modal-mask{
+    height:100vh !important;
+}
+.modal-wrapper {
+    display: block !important;
+    margin-top: 10%;
+}
+.modal-body{
+    padding: 0 15px !important;
 }
 </style>
