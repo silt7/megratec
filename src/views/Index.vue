@@ -49,6 +49,12 @@
               <div class="md-collapse">
                 <md-list>
                   <md-list-item>
+                    <router-link exact to="/dizayn-centr/">
+                        <md-icon>memory</md-icon>
+                      <p>Дизайн-центр</p>
+                    </router-link>
+                  </md-list-item>
+                  <md-list-item>
                     <router-link exact to="/trainings/">
                       <md-icon>explore</md-icon>
                       <p>Тренинги</p>
@@ -98,8 +104,9 @@
                         />
                         <img v-else src="@/assets/img/icon/noimg.svg" />
                         <md-card-header-text>
-                          <div class="md-title">{{ product.NAME }}</div>
-                          <div class="md-subhead">Подробнее</div>
+                            <div class="md-title">{{ product.NAME }}</div>
+                            <div class="sub-title">{{ product.PREVIEW_TEXT }}</div>
+                            <div class="md-subhead">Подробнее</div>
                         </md-card-header-text>
                       </md-card>
                     </router-link>
@@ -398,7 +405,7 @@ export default {
 }
 
 .main-carusel .VueCarousel-pagination {
-  margin-bottom: 10vh !important;
+  bottom: 50% !important;
 }
 
 .main-carusel .VueCarousel-inner {
@@ -424,7 +431,7 @@ export default {
 }
 
 .carousel-caption {
-  bottom: 35vh !important;
+  top: 15%;
   animation: carousel-caption 2s 1 ease-in-out;
 }
 
@@ -457,7 +464,6 @@ export default {
     rgba(242, 243, 248, 0) 100%
   );
 }
-
 .product {
   height: 200px;
   margin-left: 1%;
@@ -576,9 +582,8 @@ export default {
 }
 @media screen and (min-width: 901px) {
   .main-carusel.VueCarousel {
-    height: 65vh;
+     height: 450px;
   }
-
   .md-tabs-navigation {
     padding-left: 18vw !important;
   }
@@ -591,11 +596,19 @@ export default {
     margin: auto;
   }
 }
+@media screen and (min-width: 1600px) {
+    .main-carusel.VueCarousel {
+        height: 600px;
+    }
+}
 @media screen and (max-width: 900px) {
   .mainMenu button,.tabChanged-left, .tabChanged-right {
     display: none;
   }
   .partnerSlide .VueCarousel-navigation{
+      display: none;
+  }
+  .carousel-caption{
       display: none;
   }
 }

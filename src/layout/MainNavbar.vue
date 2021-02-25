@@ -96,6 +96,11 @@
                                 </router-link>
                             </md-list-item>
                             <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
+                                <router-link exact to="/dizayn-centr/">
+                                    <p>Дизайн-центр</p>
+                                </router-link>
+                            </md-list-item>
+                            <md-list-item v-if="this.$route.path !== '/' || this.window.width <= 990">
                                 <router-link exact to="/products/">
                                     <p>Продукты</p>
                                 </router-link>
@@ -249,7 +254,7 @@ export default {
         document.body.scrollTop || document.documentElement.scrollTop;
       let navbarColor = document.getElementById("toolbar");
       this.currentScrollValue = scrollValue;
-      if (scrollValue > 100) {
+      if (scrollValue > 1) {
         this.extraNavClasses = `md-${this.type}`;
         navbarColor.classList.remove("md-transparent");
       } else {

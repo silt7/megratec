@@ -49,6 +49,7 @@
                                     <img v-else src="@/assets/img/icon/noimg.svg" />
                                     <md-card-header-text>
                                         <div class="md-title">{{ product.NAME }}</div>
+                                        <div class="sub-title">{{ product.PREVIEW_TEXT }}</div>
                                         <div class="md-subhead">Подробнее</div>
                                     </md-card-header-text>
                                     </md-card>

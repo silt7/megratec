@@ -14,6 +14,7 @@ import Contacts from "./views/Contacts.vue";
 import About from "./views/About.vue";
 import News from "./views/News.vue";
 import Search from "./views/Search.vue";
+import Design from "./views/Design.vue";
 
 Vue.use(Router);
 
@@ -102,6 +103,15 @@ export default new Router({
         footer: MainFooter
       }
     },
+      {
+          path: "/dizayn-centr",
+          name: "design",
+          components: {
+              default: Design,
+              header: MainNavbar,
+              footer: MainFooter
+          }
+      },
   ],
   scrollBehavior: to => {
     if (to.hash) {
