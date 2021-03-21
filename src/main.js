@@ -18,7 +18,7 @@ const NavbarStore = {
   showNavbar: false
 };
 
-const $baseURL = "https://megratec-dev.ru";
+const $baseURL = "https://megratec.ru";
 
 Vue.mixin({
   data() {
@@ -62,6 +62,10 @@ Vue.mixin({
         params["params"]["FILTER[ID]"] = itemId;
       } else if (itemId == -1) {
         params["params"]["FILTER[PROPERTY_VIEWMAIN]"] = 1;
+      }
+      if (entity == 'news') {
+          delete params["params"]["SORT[SORT]"];
+          params["params"]["SORT[ID]"] = 'DESC';
       }
       this.axios
         .get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params)

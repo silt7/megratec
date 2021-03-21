@@ -125,7 +125,7 @@
                                           target="_blank"
                                           v-if="this.$route.path === '/' && this.window.width > 990">
                                 <md-icon>mail</md-icon>
-                                <p>support@megratec.ru</p>
+                                <p><a href="mailto:support@megratec.ru">support@megratec.ru</a></p>
                             </md-list-item>
 
                             <md-list-item href="javascript:void(0)"

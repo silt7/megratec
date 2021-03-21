@@ -12,8 +12,8 @@
               <div class="profile">
                 <div class="avatar">
                   <img
-                    v-if="item.PREVIEW_PICTURE"
-                    :src="item.PREVIEW_PICTURE"
+                    v-if="item.DETAIL_PICTURE"
+                    :src="item.DETAIL_PICTURE"
                     class="img-raised rounded img-fluid"
                   />
                   <img
