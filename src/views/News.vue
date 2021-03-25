@@ -29,6 +29,7 @@
             </div>
           </div>
           <div class="container" v-html="item.DETAIL_TEXT"></div>
+          <Form v-if="item.PROPERTY_VALUES.FORM == 'Да'"></Form>
         </div>
       </div>
     </div>
@@ -36,8 +37,12 @@
 </template>
 
 <script>
+import Form from "./components/Form.vue";
+
 export default {
-  components: {},
+  components: {
+    Form
+  },
   bodyClass: "profile-page",
   data() {
     return {

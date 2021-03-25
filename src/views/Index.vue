@@ -338,6 +338,8 @@
             this.productsMain = this.getItem("products", -1); // -1 Вывести продукты с пометкой на главную
             this.news = this.getItem("news", 0);
 
+
+
             let params = {
                 params: {
                     ENTITY: 'pages',
