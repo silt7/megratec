@@ -15,6 +15,7 @@ import About from "./views/About.vue";
 import News from "./views/News.vue";
 import Search from "./views/Search.vue";
 import Design from "./views/Design.vue";
+import Pages from "./views/Pages.vue";
 
 Vue.use(Router);
 
@@ -25,7 +26,7 @@ export default new Router({
     {
       path: "/",
       name: "index",
-      components: { default: Index, header: MainNavbar, footer: MainFooter }
+      components: { default: Index, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/landing",
@@ -112,6 +113,15 @@ export default new Router({
               footer: MainFooter
           }
       },
+      {
+        path: '*',
+        name:'pages', 
+        components: {
+          default: Pages,
+          header: MainNavbar,
+          footer: MainFooter
+      }
+    }
   ],
   scrollBehavior: to => {
     if (to.hash) {

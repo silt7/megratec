@@ -68,6 +68,13 @@ Vue.mixin({
           delete params["params"]["SORT[SORT]"];
           params["params"]["SORT[ID]"] = 'DESC';
       }
+
+      /***********Вывод по CODE*****************/
+      if((/\D/.test(itemId) && (entity == 'pages'))){
+        delete params["params"]["FILTER[ID]"];
+        params["params"]["FILTER[CODE]"] = itemId;
+      }
+      console.log(params["params"]);
       this.axios
         .get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params)
         .then(response => {
