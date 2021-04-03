@@ -26,7 +26,10 @@
           <p v-if="messErr" class="text-danger">Ошибка при отправке</p>
           <div class="md-layout">
             <div class="md-layout-item md-size-33 mx-auto text-center">
-              <md-button class="md-primary" :disabled="messOk" @click="sendForm()"
+              <md-button
+                class="md-primary"
+                :disabled="messOk"
+                @click="sendForm()"
                 >Отправить</md-button
               >
             </div>
@@ -45,7 +48,7 @@ export default {
       message: null,
       page: "",
       messOk: false,
-      messErr: false,
+      messErr: false
     };
   },
   methods: {
@@ -56,12 +59,12 @@ export default {
           name: this.name,
           phone: this.phone,
           email: this.email,
-          comment: this.message,
-        },
+          comment: this.message
+        }
       };
       this.axios
         .get(this.$root.baseURL + "/rest-custom/form/", params)
-        .then((response) => {
+        .then(response => {
           if (response.data == "success") {
             this.messErr = false;
             this.messOk = true;
@@ -70,7 +73,7 @@ export default {
             this.messErr = true;
           }
         });
-    },
-  },
+    }
+  }
 };
 </script>

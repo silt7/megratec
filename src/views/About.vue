@@ -21,53 +21,55 @@
             программного обеспечения, электронных компонентов и аппаратных
             платформ любой конфигурации через своих партнеров.
           </h5>
-          <carousel :perPageCustom ="[[900, 5]]"
-                    loop
-                    :speed="700"
-                    :navigationEnabled="true"
-                    :paginationEnabled="false"
-                    navigationNextLabel="<i class='material-icons' style='color:#000 !important'>keyboard_arrow_right</i>"
-                    navigationPrevLabel="<i class='material-icons' style='color:#000 !important'>keyboard_arrow_left</i>"
-                    class="partnerSlide">
+          <carousel
+            :perPageCustom="[[900, 5]]"
+            loop
+            :speed="700"
+            :navigationEnabled="true"
+            :paginationEnabled="false"
+            navigationNextLabel="<i class='material-icons' style='color:#000 !important'>keyboard_arrow_right</i>"
+            navigationPrevLabel="<i class='material-icons' style='color:#000 !important'>keyboard_arrow_left</i>"
+            class="partnerSlide"
+          >
             <slide>
-                <img src="@/assets/img/partner/huawei.png" />
+              <img src="@/assets/img/partner/huawei.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/baikal.png" />
+              <img src="@/assets/img/partner/baikal.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/depo.png" />
+              <img src="@/assets/img/partner/depo.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/ineum.png" />
+              <img src="@/assets/img/partner/ineum.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/ka.png" />
+              <img src="@/assets/img/partner/ka.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/miet.png" />
+              <img src="@/assets/img/partner/miet.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/elbrus.png" />
+              <img src="@/assets/img/partner/elbrus.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/odul.png" />
+              <img src="@/assets/img/partner/odul.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/oak.png" />
+              <img src="@/assets/img/partner/oak.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/rti.png" />
+              <img src="@/assets/img/partner/rti.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/elvis.png" />
+              <img src="@/assets/img/partner/elvis.png" />
             </slide>
             <slide>
-                <img src="@/assets/img/partner/pai.png" />
+              <img src="@/assets/img/partner/pai.png" />
             </slide>
-        </carousel>
+          </carousel>
         </div>
-        
+
         <Form></Form>
       </div>
     </div>
@@ -78,7 +80,7 @@
 import Form from "./components/Form.vue";
 
 export default {
-  components:{
+  components: {
     Form
   },
   bodyClass: "landing-page",
@@ -102,7 +104,7 @@ export default {
   },
   data() {
     return {
-      page: '',
+      page: ""
     };
   },
   computed: {
@@ -113,7 +115,7 @@ export default {
     }
   },
   mounted() {
-      this.page = this.getItem("pages", 58);
+    this.page = this.getItem("pages", 58);
   }
 };
 </script>

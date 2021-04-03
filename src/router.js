@@ -26,7 +26,7 @@ export default new Router({
     {
       path: "/",
       name: "index",
-      components: { default: Index, header: MainNavbar, footer: MainFooter },
+      components: { default: Index, header: MainNavbar, footer: MainFooter }
     },
     {
       path: "/landing",
@@ -104,22 +104,22 @@ export default new Router({
         footer: MainFooter
       }
     },
-      {
-          path: "/dizayn-centr",
-          name: "design",
-          components: {
-              default: Design,
-              header: MainNavbar,
-              footer: MainFooter
-          }
-      },
-      {
-        path: '*',
-        name:'pages', 
-        components: {
-          default: Pages,
-          header: MainNavbar,
-          footer: MainFooter
+    {
+      path: "/dizayn-centr",
+      name: "design",
+      components: {
+        default: Design,
+        header: MainNavbar,
+        footer: MainFooter
+      }
+    },
+    {
+      path: "*",
+      name: "pages",
+      components: {
+        default: Pages,
+        header: MainNavbar,
+        footer: MainFooter
       }
     }
   ],

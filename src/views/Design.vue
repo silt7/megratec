@@ -26,10 +26,10 @@ export default {
       type: String,
       default: require("@/assets/img/banner-bg.jpg")
     }
-  }, 
+  },
   data() {
     return {
-      page: '',
+      page: ""
     };
   },
   computed: {
@@ -40,8 +40,8 @@ export default {
     }
   },
   mounted() {
-      this.page = this.getItem("pages", 76);
-  },
+    this.page = this.getItem("pages", 76);
+  }
 };
 </script>
 

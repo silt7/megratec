@@ -7,7 +7,9 @@
             <div
               class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
             >
-              <h1 class="title" style="text-align: center">{{ page[0][0].NAME }}</h1>
+              <h1 class="title" style="text-align: center">
+                {{ page[0][0].NAME }}
+              </h1>
             </div>
           </div>
         </div>
@@ -19,13 +21,15 @@
       </div>
     </div>
     <div v-else>
-    <parallax class="section page-header header-filter" :style="headerStyle">
+      <parallax class="section page-header header-filter" :style="headerStyle">
         <div class="container">
           <div class="md-layout md-alignment-center">
             <div
               class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
             >
-              <h1 class="title" style="text-align: center">Страницы не существует</h1>
+              <h1 class="title" style="text-align: center">
+                Страницы не существует
+              </h1>
             </div>
           </div>
         </div>
@@ -38,26 +42,26 @@ export default {
   props: {
     header: {
       type: String,
-      default: require("@/assets/img/banner-bg.jpg"),
-    },
+      default: require("@/assets/img/banner-bg.jpg")
+    }
   },
   data() {
     return {
-      page: [],
+      page: []
     };
   },
   computed: {
     headerStyle() {
       return {
         backgroundImage: `url(${this.header})`,
-        height: "300px",
+        height: "300px"
       };
-    },
+    }
   },
   beforeRouteEnter(to, from, next) {
-    next((vm) => {
+    next(vm => {
       vm.page = vm.getItem("pages", to.path.replace(/(\\|\/)/g, ""));
     });
-  },
+  }
 };
 </script>

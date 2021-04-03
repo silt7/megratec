@@ -7,14 +7,17 @@
             class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
             v-if="page[0]"
             v-html="page[0][0].PREVIEW_TEXT"
-          >
-          </div>
+          ></div>
         </div>
       </div>
     </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-        <div class="container" v-if="page[0]" v-html="page[0][0].DETAIL_TEXT"></div>
+        <div
+          class="container"
+          v-if="page[0]"
+          v-html="page[0][0].DETAIL_TEXT"
+        ></div>
         <div class="container">
           <div class="md-layout">
             <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
@@ -43,7 +46,9 @@
                 <p v-if="messErr" class="text-danger">Ошибка при отправке</p>
                 <div class="md-layout">
                   <div class="md-layout-item md-size-50 mx-auto text-center">
-                    <md-button class="md-primary" @click="sendForm()">Отправить</md-button>
+                    <md-button class="md-primary" @click="sendForm()"
+                      >Отправить</md-button
+                    >
                   </div>
                 </div>
               </form>
@@ -81,7 +86,7 @@ export default {
       name: null,
       email: null,
       message: null,
-      page: '',
+      page: "",
       messOk: false,
       messErr: false
     };
@@ -94,31 +99,31 @@ export default {
     }
   },
   mounted() {
-      this.page = this.getItem("pages", 57);
+    this.page = this.getItem("pages", 57);
   },
-  methods:{
-      sendForm() {
-        let params = {
-            params: {
-                form: 'training',
-                name: this.name,
-                phone: this.phone,
-                email: this.email,
-                comment: this.message,
-            }
-        };
-        this.axios
-            .get(this.$root.baseURL + "/rest-custom/form/", params)
-            .then(response => {
-                if (response.data == 'success') {
-                    this.messErr = false
-                    this.messOk = true
-                } else {
-                    this.messOk = false
-                    this.messErr = true
-                }
-            })
-      }
+  methods: {
+    sendForm() {
+      let params = {
+        params: {
+          form: "training",
+          name: this.name,
+          phone: this.phone,
+          email: this.email,
+          comment: this.message
+        }
+      };
+      this.axios
+        .get(this.$root.baseURL + "/rest-custom/form/", params)
+        .then(response => {
+          if (response.data == "success") {
+            this.messErr = false;
+            this.messOk = true;
+          } else {
+            this.messOk = false;
+            this.messErr = true;
+          }
+        });
+    }
   }
 };
 </script>

@@ -1,7 +1,7 @@
 // =========================================================
 // * Vue Material Kit - v1.2.2
 // =========================================================
-import 'babel-polyfill';
+import "babel-polyfill";
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -61,16 +61,19 @@ Vue.mixin({
       };
       if (itemId > 0) {
         params["params"]["FILTER[ID]"] = itemId;
-      } else if (itemId == -1) {
+      }
+
+      if (itemId == -1) {
         params["params"]["FILTER[PROPERTY_VIEWMAIN]"] = 1;
       }
-      if (entity == 'news') {
-          delete params["params"]["SORT[SORT]"];
-          params["params"]["SORT[ID]"] = 'DESC';
+
+      if (entity == "news") {
+        delete params["params"]["SORT[SORT]"];
+        params["params"]["SORT[ID]"] = "DESC";
       }
 
       /***********Вывод по CODE*****************/
-      if((/\D/.test(itemId) && (entity == 'pages'))){
+      if (/\D/.test(itemId) && entity == "pages") {
         delete params["params"]["FILTER[ID]"];
         params["params"]["FILTER[CODE]"] = itemId;
       }
@@ -81,7 +84,7 @@ Vue.mixin({
           res.push(response.data.result);
 
           let categoryName = [];
-            if (itemId > 0) {
+          if (itemId > 0) {
             categoryName = this.getSection(
               entity,
               response.data.result[0]["SECTION"]
@@ -91,20 +94,20 @@ Vue.mixin({
         });
       return res;
     },
-    getUserField: function (iblock, id) {
-        let res = [];
-        let params = {
-            params: {
-                IBLOCK: iblock,
-                ID: id
-            }
-        };
-        this.axios
-            .get($baseURL + "/rest-custom/userfield.php", params)
-            .then(response => {
-                res.push(response.data);
-            });
-        return res;
+    getUserField: function(iblock, id) {
+      let res = [];
+      let params = {
+        params: {
+          IBLOCK: iblock,
+          ID: id
+        }
+      };
+      this.axios
+        .get($baseURL + "/rest-custom/userfield.php", params)
+        .then(response => {
+          res.push(response.data);
+        });
+      return res;
     }
   }
 });
