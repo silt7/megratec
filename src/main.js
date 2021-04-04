@@ -50,7 +50,7 @@ Vue.mixin({
         });
       return res;
     },
-    getItem: function(entity, itemId) {
+    async getItem(entity, code) {
       let res = [];
       let params = {
         params: {
@@ -59,12 +59,9 @@ Vue.mixin({
           "FILTER[ACTIVE]": "Y"
         }
       };
-      if (itemId > 0) {
-        params["params"]["FILTER[ID]"] = itemId;
-      }
 
-      if (itemId == -1) {
-        params["params"]["FILTER[PROPERTY_VIEWMAIN]"] = 1;
+      if (code != 0) {
+        params["params"]["FILTER[CODE]"] = code;
       }
 
       if (entity == "news") {
@@ -72,27 +69,13 @@ Vue.mixin({
         params["params"]["SORT[ID]"] = "DESC";
       }
 
-      /***********Вывод по CODE*****************/
-      if (/\D/.test(itemId) && entity == "pages") {
-        delete params["params"]["FILTER[ID]"];
-        params["params"]["FILTER[CODE]"] = itemId;
+      if (entity == "banners") {
+        params["params"]["ENTITY"] = "pages",
+        params["params"]["FILTER[SECTION]"] = "13"
       }
-      console.log(params["params"]);
-      this.axios
-        .get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params)
-        .then(response => {
-          res.push(response.data.result);
 
-          let categoryName = [];
-          if (itemId > 0) {
-            categoryName = this.getSection(
-              entity,
-              response.data.result[0]["SECTION"]
-            );
-            res.push(categoryName);
-          }
-        });
-      return res;
+      let { data } = await this.axios.get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params);
+      return data.result;
     },
     getUserField: function(iblock, id) {
       let res = [];

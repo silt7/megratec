@@ -32,149 +32,14 @@
     </carousel>
     <div class="main main-raised">
       <div class="section" style="padding: 0;">
-        <md-toolbar class="md-primary mainMenu">
-          <div class="md-toolbar-row">
-            <div class="md-toolbar-section-start">
-              <md-list>
-                <md-list-item
-                  href="javascript:void(0)"
-                  v-on:click="openCategory"
-                >
-                  <md-icon>list</md-icon>
-                  <p style="font-size:14px">ПРОДУКТЫ</p>
-                  <md-icon :style="{ transform: 'rotate(' + turn + 'turn)' }"
-                    >keyboard_arrow_down</md-icon
-                  >
-                </md-list-item>
-              </md-list>
-            </div>
-            <div class="md-toolbar-section-end">
-              <md-button
-                class="md-just-icon md-simple md-white md-toolbar-toggle"
-              >
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </md-button>
-              <div class="md-collapse">
-                <md-list>
-                  <md-list-item>
-                    <router-link exact to="/dizayn-centr/">
-                      <md-icon>memory</md-icon>
-                      <p>Дизайн-центр</p>
-                    </router-link>
-                  </md-list-item>
-                  <md-list-item>
-                    <router-link exact to="/trainings/">
-                      <md-icon>explore</md-icon>
-                      <p>Тренинги</p>
-                    </router-link>
-                  </md-list-item>
-                  <md-list-item>
-                    <router-link exact to="/contacts/">
-                      <md-icon>account_circle</md-icon>
-                      <p>Контакты</p>
-                    </router-link>
-                  </md-list-item>
-                  <md-list-item>
-                    <router-link exact to="/about/">
-                      <md-icon>settings</md-icon>
-                      <p>О нас</p>
-                    </router-link>
-                  </md-list-item>
-                </md-list>
-              </div>
-            </div>
-          </div>
-        </md-toolbar>
-        <nav-tabs-card no-label tabs-plain id="tabs-menu">
-          <template slot="content">
-            <md-tabs
-              class="md-secondary"
-              md-alignment="left"
-              :md-active-tab="'md-' + active"
-            >
-              <md-tab
-                v-for="item in category[0]"
-                :key="item.ID"
-                :md-label="item.NAME"
-                :id="'md-' + item.ID"
-              >
-                <div class="container">
-                  <div class="md-layout md-gutter md-alignment-left">
-                    <router-link
-                      class="md-layout-item md-size-20 md-small-size-100"
-                      v-for="product in productsMain[0]"
-                      :key="product.ID"
-                      :to="'product/' + product.ID"
-                      v-if="item.ID == 10"
-                    >
-                      <md-card class="product">
-                        <img
-                          v-if="product.PROPERTY_VALUES.icon != ''"
-                          :src="product.PROPERTY_VALUES.icon"
-                        />
-                        <img v-else src="@/assets/img/icon/noimg.svg" />
-                        <md-card-header-text>
-                          <div class="md-title">{{ product.NAME }}</div>
-                          <div class="sub-title">
-                            {{ product.PREVIEW_TEXT }}
-                          </div>
-                          <div class="md-subhead">Подробнее</div>
-                        </md-card-header-text>
-                      </md-card>
-                    </router-link>
-                    <router-link
-                      class="md-layout-item md-size-20 md-small-size-100"
-                      v-for="product in products[0]"
-                      :key="product.ID"
-                      :to="'product/' + product.ID"
-                      v-if="product.SECTION == item.ID"
-                    >
-                      <md-card class="product">
-                        <img
-                          v-if="product.PROPERTY_VALUES.icon != ''"
-                          :src="product.PROPERTY_VALUES.icon"
-                        />
-                        <img v-else src="@/assets/img/icon/noimg.svg" />
-                        <md-card-header-text>
-                          <div class="md-title">{{ product.NAME }}</div>
-                          <div class="md-subhead">Подробнее</div>
-                        </md-card-header-text>
-                      </md-card>
-                    </router-link>
-                    <i
-                      v-on:click="tabChanged('prev')"
-                      class="material-icons tabChanged-left"
-                      >keyboard_arrow_left</i
-                    >
-                    <i
-                      v-on:click="tabChanged('next')"
-                      class="material-icons tabChanged-right"
-                      >keyboard_arrow_right</i
-                    >
-                  </div>
-                </div>
-              </md-tab>
-            </md-tabs>
-
-            <div class="md-layout text-center">
-              <div class="md-layout-item md-size-33 mx-auto">
-                <router-link exact to="/products/">
-                  <md-button class="md-primary all-products">Все</md-button>
-                </router-link>
-              </div>
-            </div>
-          </template>
-        </nav-tabs-card>
+        <CatalogMenu></CatalogMenu>
         <div class="container news" style="padding-bottom:25px">
           <h2>Последние события</h2>
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
-              v-for="(item, index) in news[0]"
+              v-for="item in newsFiltr(1)"
               :key="item.ID"
-              v-if="index < 2"
             >
               <div
                 class="md-card md-card-background md-theme-default"
@@ -212,9 +77,8 @@
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
-              v-for="(item, index) in news[0]"
+              v-for="item in newsFiltr(2)"
               :key="item.ID"
-              v-if="index > 2 && index <= 5"
             >
               <div
                 class="md-card md-card-background md-theme-default"
@@ -308,11 +172,11 @@
 </template>
 
 <script>
-import { NavTabsCard } from "@/components";
+import CatalogMenu from "./components/CatalogMenu.vue";
 
 export default {
   components: {
-    NavTabsCard
+    CatalogMenu
   },
   name: "index",
   data() {
@@ -325,13 +189,7 @@ export default {
       carousel2: require("@/assets/img/slider-2.jpg"),
       carousel3: require("@/assets/img/slider-2.jpg"),
       productImg: require("@/assets/img/products/1.jpg"),
-      category: "N",
-      products: [],
-      productsMain: [],
       news: [],
-      clickCategory: 0,
-      turn: 0,
-      active: 10,
       banners: [],
       autoplay: true
     };
@@ -344,40 +202,18 @@ export default {
         this.leafShow = true;
       }
     },
-    openCategory: function(event) {
-      let parent = document.getElementById("tabs-menu");
-      let tabsMenu = parent.querySelector(".md-tabs-navigation");
-      if (this.clickCategory == 0) {
-        tabsMenu.classList.add("activeTabs");
-        this.clickCategory = 1;
-        this.turn = 0.5;
-      } else {
-        tabsMenu.classList.remove("activeTabs");
-        this.clickCategory = 0;
-        this.turn = 0;
+    newsFiltr(number) {
+      let result = [];
+      if (number == 1){
+        result = this.news.slice(0,2);
+      } else if (number == 2) {
+        result = this.news.slice(2,5);
       }
+      return result;
     },
-    tabChanged(direction) {
-      let arr = [];
-      let cat = this.category.slice();
-      cat.shift().forEach(element => {
-        arr.push(element["ID"]);
-      });
-
-      let i = arr.indexOf(String(this.active));
-      if (direction == "next") {
-        if (arr[i + 1] === undefined) {
-          this.active = arr[0];
-        } else {
-          this.active = arr[i + 1];
-        }
-      } else {
-        if (arr[i - 1] === undefined) {
-          this.active = arr.pop();
-        } else {
-          this.active = arr[i - 1];
-        }
-      }
+    async loadContent(){
+      this.banners = await this.getItem("banners", 0);
+      this.news = await this.getItem("news", 0);
     }
   },
   computed: {
@@ -390,40 +226,24 @@ export default {
       return {
         backgroundImage: `url(${this.signup})`
       };
-    }
+    },
   },
   mounted() {
     this.leafActive();
     window.addEventListener("resize", this.leafActive);
     document.title = "Megratec";
 
-    this.category = this.getSection("products", 0);
-    this.products = this.getItem("products", 0);
-    this.productsMain = this.getItem("products", -1); // -1 Вывести продукты с пометкой на главную
-    this.news = this.getItem("news", 0);
-
-    let params = {
-      params: {
-        ENTITY: "pages",
-        "FILTER[SECTION]": "13",
-        "SORT[SORT]": "ASC",
-        "FILTER[ACTIVE]": "Y"
-      }
-    };
-    this.axios
-      .get(
-        this.$root.baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?",
-        params
-      )
-      .then(response => {
-        this.banners = response.data.result;
-      });
     if (window.screen.width < 900) {
       this.autoplay = false;
     }
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.leafActive);
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+        vm.loadContent()
+    });
   }
 };
 </script>
@@ -495,54 +315,6 @@ export default {
   );
 }
 
-.product {
-  height: 200px;
-  margin-left: 1%;
-  box-shadow: 0 0 black !important;
-  border: 1px solid #c5c5c5;
-  .md-card-header {
-    background: #4b8edb !important;
-  }
-
-  .md-title {
-    color: #3d434b;
-    font-size: 14pt !important;
-  }
-
-  img {
-    width: 60px !important;
-    height: 65px !important;
-    margin: 15px;
-  }
-}
-
-.product:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.md-layout-item:nth-child(2n + 1) .product {
-  border-top: 10px solid #2e5790;
-}
-
-.md-layout-item:nth-child(2n) .product {
-  border-top: 10px solid #4b8edb;
-}
-
-.md-toolbar {
-  margin-bottom: 0 !important;
-}
-
-.md-card.md-card-nav-tabs {
-  /*position: relative;
-    top: -60px;*/
-}
-
-.all-products .md-button-content {
-  margin: auto;
-}
-
 .news .card-title {
   color: #fff !important;
 }
@@ -564,30 +336,6 @@ export default {
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
-}
-#tabs-menu {
-  padding: 0 10px;
-  .md-tabs-navigation {
-    background: #4b8edb !important;
-    box-shadow: 0 0 black;
-    border-radius: 0;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.15s ease-out;
-  }
-
-  button {
-    width: 30%;
-    max-width: inherit !important;
-  }
-
-  .activeTabs {
-    max-height: 500px;
-    transition: max-height 0.7s ease-out;
-  }
 }
 
 .md-button .md-ripple {
