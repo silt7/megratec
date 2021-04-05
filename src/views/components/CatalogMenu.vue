@@ -179,9 +179,6 @@ export default {
         }
       }
     },
-    async loadContent() {
-      this.products = await this.getItem("products", 0);
-    },
     productsFiltr(categ_id) {
       let result = [];
       if (categ_id == 10) {
@@ -195,13 +192,15 @@ export default {
     },
   },
   mounted() {
-    this.loadContent();
     this.category = this.getSection("products", 0);
+    this.getItem("products", 0).then(data=>{
+      this.products = data;
+    })
 
     if(this.isShow == 0){
         this.productsShow = 0;
     }
-  },
+  }
 };
 </script>
 <style lang="scss">

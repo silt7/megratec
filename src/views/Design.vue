@@ -13,7 +13,7 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-        <div v-if="page[0]" v-html="page[0][0].DETAIL_TEXT"></div>
+        <div v-if="page" v-html="page.DETAIL_TEXT"></div>
       </div>
     </div>
   </div>
@@ -21,15 +21,10 @@
 
 <script>
 export default {
-  props: {
-    header: {
-      type: String,
-      default: require("@/assets/img/banner-bg.jpg")
-    }
-  },
   data() {
     return {
-      page: ""
+      page: "",
+      header: require("@/assets/img/banner-bg.jpg")
     };
   },
   computed: {
@@ -40,7 +35,9 @@ export default {
     }
   },
   mounted() {
-    this.page = this.getItem("pages", 76);
+    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(data => {
+      this.page = data.shift();
+    })
   }
 };
 </script>

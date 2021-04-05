@@ -231,7 +231,6 @@ export default {
   mounted() {
     this.leafActive();
     window.addEventListener("resize", this.leafActive);
-    document.title = "Megratec";
 
     if (window.screen.width < 900) {
       this.autoplay = false;

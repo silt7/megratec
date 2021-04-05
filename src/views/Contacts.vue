@@ -122,7 +122,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="page[0]" v-html="page[0][0].DETAIL_TEXT"></div>
+            <div v-html="page.DETAIL_TEXT"></div>
           </div>
         </div>
       </div>
@@ -132,25 +132,6 @@
 
 <script>
 export default {
-  bodyClass: "landing-page",
-  props: {
-    header: {
-      type: String,
-      default: require("@/assets/img/banner-bg.jpg")
-    },
-    teamImg1: {
-      type: String,
-      default: require("@/assets/img/faces/avatar.jpg")
-    },
-    teamImg2: {
-      type: String,
-      default: require("@/assets/img/faces/christian.jpg")
-    },
-    teamImg3: {
-      type: String,
-      default: require("@/assets/img/faces/kendall.jpg")
-    }
-  },
   data() {
     return {
       name: null,
@@ -172,7 +153,9 @@ export default {
   },
   mounted() {
     this.contacts = this.getUserField(5, 12);
-    this.page = this.getItem("pages", 59);
+    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(data => {
+      this.page = data.shift();
+    })
   },
   methods: {
     sendForm() {

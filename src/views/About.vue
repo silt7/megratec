@@ -13,7 +13,7 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-        <div v-if="page[0]" v-html="page[0][0].DETAIL_TEXT"></div>
+        <div v-if="page" v-html="page.DETAIL_TEXT"></div>
         <div class="container" style="padding: 70px 15px">
           <h2 class="text-center title">Партнёры</h2>
           <h5>
@@ -84,27 +84,10 @@ export default {
     Form
   },
   bodyClass: "landing-page",
-  props: {
-    header: {
-      type: String,
-      default: require("@/assets/img/banner-bg.jpg")
-    },
-    teamImg1: {
-      type: String,
-      default: require("@/assets/img/faces/avatar.jpg")
-    },
-    teamImg2: {
-      type: String,
-      default: require("@/assets/img/faces/christian.jpg")
-    },
-    teamImg3: {
-      type: String,
-      default: require("@/assets/img/faces/kendall.jpg")
-    }
-  },
   data() {
     return {
-      page: ""
+      page: "",
+      header: require("@/assets/img/banner-bg.jpg")
     };
   },
   computed: {
@@ -115,7 +98,9 @@ export default {
     }
   },
   mounted() {
-    this.page = this.getItem("pages", 58);
+    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(data => {
+      this.page = data.shift();
+    })
   }
 };
 </script>

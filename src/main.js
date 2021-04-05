@@ -8,12 +8,19 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
+import VueMeta from 'vue-meta'
+
 import MaterialKit from "./plugins/material-kit";
 
 Vue.config.productionTip = false;
 
 Vue.use(MaterialKit);
 Vue.use(VueAxios, axios);
+
+Vue.use(VueMeta, {
+  // optional pluginOptions
+  refreshOnceOnNavigation: true
+})
 
 const NavbarStore = {
   showNavbar: false
@@ -25,8 +32,18 @@ Vue.mixin({
   data() {
     return {
       NavbarStore,
-      baseURL: $baseURL
+      baseURL: $baseURL,
+      titleMeta: 'Megratec',
+      descriptionMeta: 'Megratec'
     };
+  },
+  metaInfo() {
+      return {
+          title: this.$root.titleMeta,
+          meta: [
+              { name: 'description', content: this.$root.descriptionMeta },
+          ]
+      }
   },
   methods: {
     getSection: function(entity, sectionId) {
@@ -73,7 +90,6 @@ Vue.mixin({
         params["params"]["ENTITY"] = "pages",
         params["params"]["FILTER[SECTION]"] = "13"
       }
-
       let { data } = await this.axios.get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params);
       return data.result;
     },
