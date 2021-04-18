@@ -65,7 +65,8 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.getItem("news", to.params.id).then(data=>{
-        vm.news = data
+        vm.news = data;
+        vm.getSeo();
       });
     });
   }

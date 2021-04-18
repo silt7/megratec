@@ -91,6 +91,7 @@ Vue.mixin({
         params["params"]["FILTER[SECTION]"] = "13"
       }
       let { data } = await this.axios.get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params);
+      
       return data.result;
     },
     getUserField: function(iblock, id) {
@@ -104,6 +105,31 @@ Vue.mixin({
       this.axios
         .get($baseURL + "/rest-custom/userfield.php", params)
         .then(response => {
+          res.push(response.data);
+        });
+      return res;
+    },
+    getSeo: function() {
+      let path = this.$route.path
+      if (path == '/'){
+        path = 'main';
+      }
+      if (Object.keys(this.$route.params).length != 0){
+        path = this.$route.params['id'];
+      }
+
+      path = path.replace(/(\\|\/)/g, "");
+      let res = [];
+      let params = {
+        params: {
+          CODE: path
+        }
+      };
+      this.axios
+        .get($baseURL + "/rest-custom/seoget.php", params)
+        .then(response => {
+          this.$root.titleMeta = response.data['ELEMENT_META_TITLE'];
+          this.$root.descriptionMeta = response.data['ELEMENT_META_DESCRIPTION'];
           res.push(response.data);
         });
       return res;

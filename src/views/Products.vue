@@ -77,7 +77,8 @@ export default {
   },
   mounted() {
     this.loadContent();
-    this.category = this.getSection("products", 0); 
+    this.category = this.getSection("products", 0);
+    this.getSeo(); 
   },
   methods: {
     async loadContent(){

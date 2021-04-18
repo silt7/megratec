@@ -83,6 +83,8 @@ export default {
     async loadContent(){
       this.product = await this.getItem("products", this.$route.params.id);
       this.product = this.product[0];
+
+      this.getSeo();
     }
   },
   beforeRouteEnter(to, from, next) {

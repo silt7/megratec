@@ -61,7 +61,8 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.getItem("pages", to.path.replace(/(\\|\/)/g, "")).then(data=>{
-        vm.page = data
+        vm.page = data;
+        vm.getSeo();
       });
     });
   }
