@@ -6,7 +6,7 @@
     ></parallax>
     <div class="main main-raised">
       <div class="section profile-content">
-        <div class="container" v-for="item in news[0]" :key="item.ID">
+        <div class="container" v-for="item in news" :key="item.ID">
           <div class="md-layout content">
             <div class="md-layout-item md-size-50 mx-auto">
               <div class="profile">
@@ -64,7 +64,9 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.news = vm.getItem("news", to.params.id);
+      vm.getItem("news", to.params.id).then(data=>{
+        vm.news = data
+      });
     });
   }
 };

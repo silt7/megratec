@@ -60,7 +60,7 @@
                     class="md-button md-white md-round md-theme-default"
                   >
                     <div class="event md-ripple">
-                      <router-link :to="'/news/' + item.ID" style="color: #999">
+                      <router-link :to="'/news/' + item.CODE" style="color: #999">
                         <div class="md-button-content">
                           <i class="md-icon md-icon-font md-theme-default"
                             >format_align_left</i
@@ -100,7 +100,7 @@
                   >
                     <div class="md-ripple">
                       <router-link
-                        :to="'/news/' + item.ID"
+                        :to="'/news/' + item.CODE"
                         style="color: white"
                       >
                         <div class="md-button-content">
