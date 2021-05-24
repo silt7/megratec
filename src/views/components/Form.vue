@@ -5,13 +5,25 @@
       <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
         <form class="contact-form">
           <div class="md-layout">
-            <div class="md-layout-item md-size-50">
+            <div class="md-layout-item md-size-50" v-if="fields.includes('Имя')">
               <md-field>
                 <label>Имя</label>
                 <md-input v-model="name" type="text"></md-input>
               </md-field>
             </div>
-            <div class="md-layout-item md-size-50">
+             <div class="md-layout-item md-size-50" v-if="fields.includes('Компания')">
+              <md-field>
+                <label>Компания</label>
+                <md-input v-model="company" type="text"></md-input>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-size-50" v-if="fields.includes('Телефон')">
+              <md-field>
+                <label>Телефон</label>
+                <md-input v-model="phone" type="number"></md-input>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-size-50" v-if="fields.includes('Почта')">
               <md-field>
                 <label>Email</label>
                 <md-input v-model="email" type="email"></md-input>
@@ -24,7 +36,7 @@
           </md-field>
           <p v-if="messOk" class="text-success">Отправлено</p>
           <p v-if="messErr" class="text-danger">Ошибка при отправке</p>
-          <div class="md-layout">
+          <div class="md-layout" style="margin-bottom:15px">
             <div class="md-layout-item md-size-33 mx-auto text-center">
               <md-button
                 class="md-primary"
@@ -41,9 +53,14 @@
 </template>
 <script>
 export default {
+  props:{
+    fields: Array
+  },
   data() {
     return {
       name: null,
+      phone: null,
+      company: null,
       email: null,
       message: null,
       page: "",
@@ -57,6 +74,7 @@ export default {
         params: {
           form: "callme",
           name: this.name,
+          company: this.company,
           phone: this.phone,
           email: this.email,
           comment: this.message,

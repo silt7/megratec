@@ -18,7 +18,7 @@
           v-if="page"
           v-html="page.DETAIL_TEXT"
         ></div>
-        <Form></Form>
+        <Form :fields="['Имя', 'Компания', 'Почта', 'Телефон']"></Form>
       </div>
     </div>
   </div>

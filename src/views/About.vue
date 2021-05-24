@@ -70,7 +70,7 @@
           </carousel>
         </div>
 
-        <Form></Form>
+        <Form :fields="['Имя', 'Компания', 'Почта', 'Телефон']"></Form>
       </div>
     </div>
   </div>
