@@ -29,7 +29,9 @@
             </div>
           </div>
           <div class="container" v-html="item.DETAIL_TEXT"></div>
-          <Form v-if="item.PROPERTY_VALUES.FORM == 'Да'"></Form>
+          <Form 
+            v-if="(item.PROPERTY_VALUES.FORM == 'Да') && (item.PROPERTY_VALUES.FORMFIELD != '')" 
+            :fields="item.PROPERTY_VALUES.FORMFIELD"></Form>
         </div>
       </div>
     </div>
