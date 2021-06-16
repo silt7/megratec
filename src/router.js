@@ -15,6 +15,7 @@ import About from "./views/About.vue";
 import News from "./views/News.vue";
 import Search from "./views/Search.vue";
 import Design from "./views/Design.vue";
+import Events from "./views/Events.vue";
 import Pages from "./views/Pages.vue";
 
 Vue.use(Router);
@@ -109,6 +110,15 @@ export default new Router({
       name: "design",
       components: {
         default: Design,
+        header: MainNavbar,
+        footer: MainFooter
+      }
+    },
+    {
+      path: "/meropriyatiya",
+      name: "events",
+      components: {
+        default: Events,
         header: MainNavbar,
         footer: MainFooter
       }

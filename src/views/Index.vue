@@ -55,21 +55,19 @@
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
                   <p class="card-description" v-html="item.PREVIEW_TEXT"></p>
-                  <a
-                    href="javascript:void(0)"
-                    class="md-button md-white md-round md-theme-default"
-                  >
-                    <div class="event md-ripple">
-                      <router-link :to="'/news/' + item.CODE" style="color: #999">
+                  <router-link 
+                    :to="'/news/' + item.CODE" 
+                    style="color: #999"
+                    class="md-button md-white md-round md-theme-default">
+                    <div class="event md-ripple">                   
                         <div class="md-button-content">
                           <i class="md-icon md-icon-font md-theme-default"
                             >format_align_left</i
                           >
                           Читать
                         </div>
-                      </router-link>
                     </div>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -93,28 +91,37 @@
                   <a href="javascript:void(0)"
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
-                  <p class="card-description" v-html="item.PREVIEW_TEXT"></p>
-                  <a
-                    href="javascript:void(0)"
+                  <p class="card-description truncate" v-html="item.PREVIEW_TEXT"></p>
+                  <router-link
+                    :to="'/news/' + item.CODE"
+                    style="color: white"
                     class="md-button md-danger md-round md-theme-default"
                   >
+
                     <div class="md-ripple">
-                      <router-link
-                        :to="'/news/' + item.CODE"
-                        style="color: white"
-                      >
                         <div class="md-button-content">
                           <i class="md-icon md-icon-font md-theme-default"
                             >format_align_left</i
                           >
                           Читать
                         </div>
-                      </router-link>
                     </div>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </div>
+          </div>
+          <div style="text-align:center">
+            <router-link 
+              :to="'/meropriyatiya/'" 
+              class="md-button md-simple"
+              style="border: 1px solid #2e5790; color:#2e5790 !important;">
+              <div class="event md-ripple">                   
+                  <div class="md-button-content">
+                    Перейти в раздел мероприятия
+                  </div>
+              </div>
+            </router-link>
           </div>
         </div>
         <div class="container" style="padding: 50px 0">
@@ -322,8 +329,15 @@ export default {
 
 .news .card-description {
   color: #fff !important;
-}
 
+}
+.news p.truncate{
+  margin: 0;
+  -webkit-line-clamp: 3; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+}
 .news .md-card-content {
   background-color: rgba(10, 30, 50, 0.7);
 }
