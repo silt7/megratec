@@ -8,7 +8,7 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
-import VueMeta from 'vue-meta'
+import VueMeta from "vue-meta";
 
 import MaterialKit from "./plugins/material-kit";
 
@@ -20,7 +20,7 @@ Vue.use(VueAxios, axios);
 Vue.use(VueMeta, {
   // optional pluginOptions
   refreshOnceOnNavigation: true
-})
+});
 
 const NavbarStore = {
   showNavbar: false
@@ -33,17 +33,15 @@ Vue.mixin({
     return {
       NavbarStore,
       baseURL: $baseURL,
-      titleMeta: 'Megratec',
-      descriptionMeta: 'Megratec'
+      titleMeta: "Megratec",
+      descriptionMeta: "Megratec"
     };
   },
   metaInfo() {
-      return {
-          title: this.$root.titleMeta,
-          meta: [
-              { name: 'description', content: this.$root.descriptionMeta },
-          ]
-      }
+    return {
+      title: this.$root.titleMeta,
+      meta: [{ name: "description", content: this.$root.descriptionMeta }]
+    };
   },
   methods: {
     getSection: function(entity, sectionId) {
@@ -87,11 +85,14 @@ Vue.mixin({
       }
 
       if (entity == "banners") {
-        params["params"]["ENTITY"] = "pages",
-        params["params"]["FILTER[SECTION]"] = "13"
+        (params["params"]["ENTITY"] = "pages"),
+          (params["params"]["FILTER[SECTION]"] = "13");
       }
-      let { data } = await this.axios.get($baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?", params);
-      
+      let { data } = await this.axios.get(
+        $baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?",
+        params
+      );
+
       return data.result;
     },
     getUserField: function(iblock, id) {
@@ -110,12 +111,14 @@ Vue.mixin({
       return res;
     },
     getSeo: function() {
-      let path = this.$route.path
-      if (path == '/'){
-        path = 'main';
+      let path = this.$route.path;
+      if (path == "/") {
+        path = "main";
       }
-      if (Object.keys(this.$route.params).length != 0){
-        path = this.$route.params['id'];
+      if (Object.keys(this.$route.params).length != 0) {
+        if (this.$route.params["id"] !== undefined) {
+          path = this.$route.params["id"];
+        }
       }
 
       path = path.replace(/(\\|\/)/g, "");
@@ -125,11 +128,13 @@ Vue.mixin({
           CODE: path
         }
       };
+
       this.axios
         .get($baseURL + "/rest-custom/seoget.php", params)
         .then(response => {
-          this.$root.titleMeta = response.data['ELEMENT_META_TITLE'];
-          this.$root.descriptionMeta = response.data['ELEMENT_META_DESCRIPTION'];
+          this.$root.titleMeta = response.data["ELEMENT_META_TITLE"];
+          this.$root.descriptionMeta =
+            response.data["ELEMENT_META_DESCRIPTION"];
           res.push(response.data);
         });
       return res;

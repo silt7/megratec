@@ -13,11 +13,7 @@
     </parallax>
     <div class="main main-raised">
       <div class="section section-contacts">
-        <div
-          class="container"
-          v-if="page"
-          v-html="page.DETAIL_TEXT"
-        ></div>
+        <div class="container" v-if="page" v-html="page.DETAIL_TEXT"></div>
         <Form :fields="['Имя', 'Компания', 'Почта', 'Телефон']"></Form>
       </div>
     </div>
@@ -45,11 +41,13 @@ export default {
     }
   },
   mounted() {
-    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(data => {
-      this.page = data.shift();
-      this.getSeo();
-    })
-  },
+    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
+      data => {
+        this.page = data.shift();
+        this.getSeo();
+      }
+    );
+  }
 };
 </script>
 

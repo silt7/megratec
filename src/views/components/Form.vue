@@ -5,25 +5,37 @@
       <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
         <form class="contact-form">
           <div class="md-layout">
-            <div class="md-layout-item md-size-50" v-if="fields.includes('Имя')">
+            <div
+              class="md-layout-item md-size-50"
+              v-if="fields.includes('Имя')"
+            >
               <md-field>
                 <label>Имя</label>
                 <md-input v-model="name" type="text"></md-input>
               </md-field>
             </div>
-             <div class="md-layout-item md-size-50" v-if="fields.includes('Компания')">
+            <div
+              class="md-layout-item md-size-50"
+              v-if="fields.includes('Компания')"
+            >
               <md-field>
                 <label>Компания</label>
                 <md-input v-model="company" type="text"></md-input>
               </md-field>
             </div>
-            <div class="md-layout-item md-size-50" v-if="fields.includes('Телефон')">
+            <div
+              class="md-layout-item md-size-50"
+              v-if="fields.includes('Телефон')"
+            >
               <md-field>
                 <label>Телефон</label>
                 <md-input v-model="phone" type="number"></md-input>
               </md-field>
             </div>
-            <div class="md-layout-item md-size-50" v-if="fields.includes('Почта')">
+            <div
+              class="md-layout-item md-size-50"
+              v-if="fields.includes('Почта')"
+            >
               <md-field>
                 <label>Email</label>
                 <md-input v-model="email" type="email"></md-input>
@@ -53,7 +65,7 @@
 </template>
 <script>
 export default {
-  props:{
+  props: {
     fields: Array
   },
   data() {

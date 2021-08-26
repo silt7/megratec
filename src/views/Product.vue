@@ -24,7 +24,7 @@
     </parallax>
     <div class="main main-raised">
       <div class="section profile-content">
-        <CatalogMenu :isShow=false></CatalogMenu>
+        <CatalogMenu :isShow="false"></CatalogMenu>
         <div class="container">
           <div class="md-layout content">
             <div class="md-layout-item md-size-50 mx-auto">
@@ -37,7 +37,10 @@
           </div>
           <div class="container" v-html="product.DETAIL_TEXT"></div>
           <div v-if="product.PROPERTY_VALUES">
-		      <Form v-if="product.PROPERTY_VALUES.FORM == 'Да'" :fields="['Имя', 'Компания', 'Почта', 'Телефон']"></Form>
+            <Form
+              v-if="product.PROPERTY_VALUES.FORM == 'Да'"
+              :fields="['Имя', 'Компания', 'Почта', 'Телефон']"
+            ></Form>
           </div>
         </div>
       </div>
@@ -80,7 +83,7 @@ export default {
     }
   },
   methods: {
-    async loadContent(){
+    async loadContent() {
       this.product = await this.getItem("products", this.$route.params.id);
       this.product = this.product[0];
 
@@ -89,7 +92,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-        vm.loadContent()
+      vm.loadContent();
     });
   }
 };

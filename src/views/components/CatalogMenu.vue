@@ -117,7 +117,7 @@ import { NavTabsCard } from "@/components";
 
 export default {
   components: {
-    NavTabsCard,
+    NavTabsCard
   },
   name: "index",
   data() {
@@ -127,40 +127,40 @@ export default {
       productsShow: 1,
       clickCategory: 0,
       turn: 0,
-      active: 10,
+      active: 10
     };
   },
   props: {
     isShow: {
       type: Boolean,
       default: true
-    },
+    }
   },
   methods: {
-    openCategory: function (event) {
+    openCategory: function(event) {
       let parent = document.getElementById("tabs-menu");
       let tabsMenu = parent.querySelector(".md-tabs-navigation");
       if (this.clickCategory == 0) {
         tabsMenu.classList.add("activeTabs");
         this.clickCategory = 1;
         this.turn = 0.5;
-        if(this.isShow == 0){
-            this.productsShow = 1;
+        if (this.isShow == 0) {
+          this.productsShow = 1;
         }
       } else {
         tabsMenu.classList.remove("activeTabs");
         this.clickCategory = 0;
         this.turn = 0;
 
-        if(this.isShow == 0){
-            this.productsShow = 0;
+        if (this.isShow == 0) {
+          this.productsShow = 0;
         }
       }
     },
     tabChanged(direction) {
       let arr = [];
       let cat = this.category.slice();
-      cat.shift().forEach((element) => {
+      cat.shift().forEach(element => {
         arr.push(element["ID"]);
       });
 
@@ -183,22 +183,22 @@ export default {
       let result = [];
       if (categ_id == 10) {
         result = this.products.filter(
-          (i) => i["PROPERTY_VALUES"]["VIEWMAIN"] == "Да"
+          i => i["PROPERTY_VALUES"]["VIEWMAIN"] == "Да"
         );
       } else {
-        result = this.products.filter((i) => i["SECTION"] == categ_id);
+        result = this.products.filter(i => i["SECTION"] == categ_id);
       }
       return result;
-    },
+    }
   },
   mounted() {
     this.category = this.getSection("products", 0);
-    this.getItem("products", 0).then(data=>{
+    this.getItem("products", 0).then(data => {
       this.products = data;
-    })
+    });
 
-    if(this.isShow == 0){
-        this.productsShow = 0;
+    if (this.isShow == 0) {
+      this.productsShow = 0;
     }
   }
 };

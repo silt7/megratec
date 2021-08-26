@@ -17,6 +17,13 @@
       <div class="main main-raised">
         <div class="section section-contacts">
           <div v-html="page[0].DETAIL_TEXT"></div>
+          <Form
+            v-if="
+              page[0].PROPERTY_VALUES.FORM == 'Да' &&
+                page[0].PROPERTY_VALUES.FORMFIELD != ''
+            "
+            :fields="page[0].PROPERTY_VALUES.FORMFIELD"
+          ></Form>
         </div>
       </div>
     </div>
@@ -38,7 +45,12 @@
   </div>
 </template>
 <script>
+import Form from "./components/Form.vue";
+
 export default {
+  components: {
+    Form
+  },
   props: {
     header: {
       type: String,
@@ -60,7 +72,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.getItem("pages", to.path.replace(/(\\|\/)/g, "")).then(data=>{
+      vm.getItem("pages", to.path.replace(/(\\|\/)/g, "")).then(data => {
         vm.page = data;
         vm.getSeo();
       });

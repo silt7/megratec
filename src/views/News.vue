@@ -29,9 +29,13 @@
             </div>
           </div>
           <div class="container" v-html="item.DETAIL_TEXT"></div>
-          <Form 
-            v-if="(item.PROPERTY_VALUES.FORM == 'Да') && (item.PROPERTY_VALUES.FORMFIELD != '')" 
-            :fields="item.PROPERTY_VALUES.FORMFIELD"></Form>
+          <Form
+            v-if="
+              item.PROPERTY_VALUES.FORM == 'Да' &&
+                item.PROPERTY_VALUES.FORMFIELD != ''
+            "
+            :fields="item.PROPERTY_VALUES.FORMFIELD"
+          ></Form>
         </div>
       </div>
     </div>
@@ -66,7 +70,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.getItem("news", to.params.id).then(data=>{
+      vm.getItem("news", to.params.id).then(data => {
         vm.news = data;
         vm.getSeo();
       });

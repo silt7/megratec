@@ -35,17 +35,18 @@
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
                   <p class="card-description" v-html="item.PREVIEW_TEXT"></p>
-                  <router-link 
-                    :to="'/news/' + item.CODE" 
+                  <router-link
+                    :to="'/news/' + item.CODE"
                     style="color: #999"
-                    class="md-button md-white md-round md-theme-default">
-                    <div class="event md-ripple">                   
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default"
-                            >format_align_left</i
-                          >
-                          Читать
-                        </div>
+                    class="md-button md-white md-round md-theme-default"
+                  >
+                    <div class="event md-ripple">
+                      <div class="md-button-content">
+                        <i class="md-icon md-icon-font md-theme-default"
+                          >format_align_left</i
+                        >
+                        Читать
+                      </div>
                     </div>
                   </router-link>
                 </div>
@@ -71,27 +72,28 @@
                   <a href="javascript:void(0)"
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
-                  <p class="card-description truncate" v-html="item.PREVIEW_TEXT"></p>
+                  <p
+                    class="card-description truncate"
+                    v-html="item.PREVIEW_TEXT"
+                  ></p>
                   <router-link
                     :to="'/news/' + item.CODE"
                     style="color: white"
                     class="md-button md-danger md-round md-theme-default"
                   >
-
                     <div class="md-ripple">
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default"
-                            >format_align_left</i
-                          >
-                          Читать
-                        </div>
+                      <div class="md-button-content">
+                        <i class="md-icon md-icon-font md-theme-default"
+                          >format_align_left</i
+                        >
+                        Читать
+                      </div>
                     </div>
                   </router-link>
                 </div>
               </div>
             </div>
           </div>
-
 
           <div class="md-layout text-center">
             <div
@@ -113,17 +115,18 @@
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
                   <p class="card-description" v-html="item.PREVIEW_TEXT"></p>
-                  <router-link 
-                    :to="'/news/' + item.CODE" 
+                  <router-link
+                    :to="'/news/' + item.CODE"
                     style="color: #999"
-                    class="md-button md-white md-round md-theme-default">
-                    <div class="event md-ripple">                   
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default"
-                            >format_align_left</i
-                          >
-                          Читать
-                        </div>
+                    class="md-button md-white md-round md-theme-default"
+                  >
+                    <div class="event md-ripple">
+                      <div class="md-button-content">
+                        <i class="md-icon md-icon-font md-theme-default"
+                          >format_align_left</i
+                        >
+                        Читать
+                      </div>
                     </div>
                   </router-link>
                 </div>
@@ -149,20 +152,22 @@
                   <a href="javascript:void(0)"
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
-                  <p class="card-description truncate" v-html="item.PREVIEW_TEXT"></p>
+                  <p
+                    class="card-description truncate"
+                    v-html="item.PREVIEW_TEXT"
+                  ></p>
                   <router-link
                     :to="'/news/' + item.CODE"
                     style="color: white"
                     class="md-button md-danger md-round md-theme-default"
                   >
-
                     <div class="md-ripple">
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default"
-                            >format_align_left</i
-                          >
-                          Читать
-                        </div>
+                      <div class="md-button-content">
+                        <i class="md-icon md-icon-font md-theme-default"
+                          >format_align_left</i
+                        >
+                        Читать
+                      </div>
                     </div>
                   </router-link>
                 </div>
@@ -176,14 +181,12 @@
 </template>
 
 <script>
-
 export default {
-
   data() {
     return {
       page: "",
       header: require("@/assets/img/banner-bg.jpg"),
-      news: [],
+      news: []
     };
   },
   computed: {
@@ -194,28 +197,30 @@ export default {
     }
   },
   mounted() {
-      this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(data => {
-      this.page = data.shift();
-      this.getSeo();
-      this.loadContent();
-    })
+    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
+      data => {
+        this.page = data.shift();
+        this.getSeo();
+        this.loadContent();
+      }
+    );
   },
   methods: {
     newsFiltr(number) {
       let result = [];
-      if (number == 1){
-        result = this.news.slice(0,2);
+      if (number == 1) {
+        result = this.news.slice(0, 2);
       } else if (number == 2) {
-        result = this.news.slice(2,5);
+        result = this.news.slice(2, 5);
       } else if (number == 3) {
-        result = this.news.slice(5,7);
+        result = this.news.slice(5, 7);
       } else if (number == 4) {
-        result = this.news.slice(7,10);
+        result = this.news.slice(7, 10);
       }
 
       return result;
     },
-    async loadContent(){
+    async loadContent() {
       this.news = await this.getItem("news", 0);
       console.log(this.news);
     }

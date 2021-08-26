@@ -55,17 +55,18 @@
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
                   <p class="card-description" v-html="item.PREVIEW_TEXT"></p>
-                  <router-link 
-                    :to="'/news/' + item.CODE" 
+                  <router-link
+                    :to="'/news/' + item.CODE"
                     style="color: #999"
-                    class="md-button md-white md-round md-theme-default">
-                    <div class="event md-ripple">                   
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default"
-                            >format_align_left</i
-                          >
-                          Читать
-                        </div>
+                    class="md-button md-white md-round md-theme-default"
+                  >
+                    <div class="event md-ripple">
+                      <div class="md-button-content">
+                        <i class="md-icon md-icon-font md-theme-default"
+                          >format_align_left</i
+                        >
+                        Читать
+                      </div>
                     </div>
                   </router-link>
                 </div>
@@ -91,20 +92,22 @@
                   <a href="javascript:void(0)"
                     ><h3 class="card-title">{{ item.NAME }}</h3></a
                   >
-                  <p class="card-description truncate" v-html="item.PREVIEW_TEXT"></p>
+                  <p
+                    class="card-description truncate"
+                    v-html="item.PREVIEW_TEXT"
+                  ></p>
                   <router-link
                     :to="'/news/' + item.CODE"
                     style="color: white"
                     class="md-button md-danger md-round md-theme-default"
                   >
-
                     <div class="md-ripple">
-                        <div class="md-button-content">
-                          <i class="md-icon md-icon-font md-theme-default"
-                            >format_align_left</i
-                          >
-                          Читать
-                        </div>
+                      <div class="md-button-content">
+                        <i class="md-icon md-icon-font md-theme-default"
+                          >format_align_left</i
+                        >
+                        Читать
+                      </div>
                     </div>
                   </router-link>
                 </div>
@@ -112,14 +115,15 @@
             </div>
           </div>
           <div style="text-align:center">
-            <router-link 
-              :to="'/meropriyatiya/'" 
+            <router-link
+              :to="'/meropriyatiya/'"
               class="md-button md-simple"
-              style="border: 1px solid #2e5790; color:#2e5790 !important;">
-              <div class="event md-ripple">                   
-                  <div class="md-button-content">
-                    Перейти в раздел мероприятия
-                  </div>
+              style="border: 1px solid #2e5790; color:#2e5790 !important;"
+            >
+              <div class="event md-ripple">
+                <div class="md-button-content">
+                  Перейти в раздел мероприятия
+                </div>
               </div>
             </router-link>
           </div>
@@ -211,14 +215,14 @@ export default {
     },
     newsFiltr(number) {
       let result = [];
-      if (number == 1){
-        result = this.news.slice(0,2);
+      if (number == 1) {
+        result = this.news.slice(0, 2);
       } else if (number == 2) {
-        result = this.news.slice(2,5);
+        result = this.news.slice(2, 5);
       }
       return result;
     },
-    async loadContent(){
+    async loadContent() {
       this.banners = await this.getItem("banners", 0);
       this.news = await this.getItem("news", 0);
 
@@ -235,7 +239,7 @@ export default {
       return {
         backgroundImage: `url(${this.signup})`
       };
-    },
+    }
   },
   mounted() {
     this.leafActive();
@@ -250,7 +254,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-        vm.loadContent()
+      vm.loadContent();
     });
   }
 };
@@ -291,6 +295,7 @@ export default {
 .carousel-caption {
   top: 15%;
   animation: carousel-caption 2s 1 ease-in-out;
+  z-index: 999;
 }
 
 @keyframes carousel-caption {
@@ -329,13 +334,12 @@ export default {
 
 .news .card-description {
   color: #fff !important;
-
 }
-.news p.truncate{
+.news p.truncate {
   margin: 0;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   display: -webkit-box;
-  -webkit-box-orient: vertical; 
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .news .md-card-content {

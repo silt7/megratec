@@ -35,9 +35,11 @@ export default {
     }
   },
   mounted() {
-    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(data => {
-      this.page = data.shift();
-    });
+    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
+      data => {
+        this.page = data.shift();
+      }
+    );
     this.getSeo();
   }
 };
