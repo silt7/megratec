@@ -23,7 +23,7 @@
                   />
                 </div>
                 <div class="name">
-                  <h3 class="title">{{ item.NAME }}</h3>
+                  <h1 class="title h2">{{ item.NAME }}</h1>
                 </div>
               </div>
             </div>

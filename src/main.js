@@ -11,17 +11,19 @@ import VueAxios from "vue-axios";
 import VueMeta from "vue-meta";
 
 import MaterialKit from "./plugins/material-kit";
-
+import { CollapsePlugin } from 'bootstrap-vue'
+import Breadcrumbs from "./views/components/Breadcrumbs.vue";
 Vue.config.productionTip = false;
 
 Vue.use(MaterialKit);
 Vue.use(VueAxios, axios);
-
+Vue.use(CollapsePlugin)
 Vue.use(VueMeta, {
   // optional pluginOptions
   refreshOnceOnNavigation: true
 });
 
+Vue.component('Breadcrumbs', Breadcrumbs)
 const NavbarStore = {
   showNavbar: false
 };

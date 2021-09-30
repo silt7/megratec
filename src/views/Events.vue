@@ -222,7 +222,6 @@ export default {
     },
     async loadContent() {
       this.news = await this.getItem("news", 0);
-      console.log(this.news);
     }
   }
 };

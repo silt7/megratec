@@ -10,7 +10,7 @@
       <div class="md-toolbar-section-start logo">
         <router-link to="/">
           <b>megra</b>tec<span class="logo_mini"
-            >MENTOR GRAPHIC TECHNOLOGES</span
+            >MENTOR GRAPHICS TECHNOLOGIES</span
           >
         </router-link>
       </div>
