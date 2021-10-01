@@ -15,6 +15,7 @@
       <Breadcrumbs/>
       <div class="section section-contacts">
         <div class="container" v-if="page" v-html="page.DETAIL_TEXT"></div>
+        <Trainings count="6"/>
         <Form :fields="['Имя', 'Компания', 'Почта', 'Телефон']"></Form>
       </div>
     </div>
@@ -23,10 +24,12 @@
 
 <script>
 import Form from "./components/Form.vue";
+import Trainings from "./components/Trainings.vue";
 
 export default {
   components: {
-    Form
+    Form,
+    Trainings
   },
   data() {
     return {

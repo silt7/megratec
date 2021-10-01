@@ -86,7 +86,6 @@ export default {
   methods: {
     async loadContent() {
       this.product = await this.getItem("trainings", this.$route.params.id);
-      console.log(this.product);
       this.product = this.product[0];
 
       this.getSeo();

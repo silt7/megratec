@@ -128,6 +128,8 @@
             </router-link>
           </div>
         </div>
+        <div class="container" style="padding: 50px 0 0 0"><h2>Популярные курсы</h2></div>
+        <Trainings count="3"/>
         <div class="container" style="padding: 50px 0">
           <carousel
             :perPageCustom="[[900, 5]]"
@@ -184,10 +186,12 @@
 
 <script>
 import CatalogMenu from "./components/CatalogMenu.vue";
+import Trainings from "./components/Trainings.vue";
 
 export default {
   components: {
-    CatalogMenu
+    CatalogMenu,
+    Trainings
   },
   name: "index",
   data() {
