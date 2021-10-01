@@ -174,6 +174,13 @@
               >
                 <md-icon>search</md-icon>
               </md-list-item>
+              <md-list-item
+                href="/chasto-zadavaemye-voprosy"
+                @click="scrollToElement();"
+                v-if="this.$route.path === '/' && this.window.width > 990"
+              >
+                <md-icon>help_outline</md-icon>
+              </md-list-item>
             </md-list>
           </div>
         </div>

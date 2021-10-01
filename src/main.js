@@ -88,6 +88,11 @@ Vue.mixin({
         params["params"]["SORT[ID]"] = "DESC";
       }
 
+      if (entity == "trainings") {
+        params["params"]["ENTITY"] = "pages"
+        params["params"]["FILTER[SECTION]"] = "18"
+      }
+
       if (entity == "banners") {
         (params["params"]["ENTITY"] = "pages"),
           (params["params"]["FILTER[SECTION]"] = "13");

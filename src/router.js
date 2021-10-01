@@ -10,6 +10,7 @@ import MainFooter from "./layout/MainFooter.vue";
 import Products from "./views/Products.vue";
 import Product from "./views/Product.vue";
 import Trainings from "./views/Trainings.vue";
+import Training from "./views/Training.vue";
 import Contacts from "./views/Contacts.vue";
 import About from "./views/About.vue";
 import News from "./views/News.vue";
@@ -66,9 +67,18 @@ export default new Router({
     },
     {
       path: "/trainings",
-      name: "trainings",
+      name: "Тренинги",
       components: {
         default: Trainings,
+        header: MainNavbar,
+        footer: MainFooter
+      }
+    },
+    {
+      path: "/training/:id",
+      name: "training",
+      components: {
+        default: Training,
         header: MainNavbar,
         footer: MainFooter
       }
