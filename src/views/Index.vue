@@ -116,7 +116,7 @@
           </div>
           <div style="text-align:center">
             <router-link
-              :to="'/meropriyatiya/'"
+              :to="'/news'"
               class="md-button md-simple"
               style="border: 1px solid #2e5790; color:#2e5790 !important;"
             >

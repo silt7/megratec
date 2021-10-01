@@ -5,6 +5,7 @@
       :style="headerStyle"
     ></parallax>
     <div class="main main-raised">
+      <Breadcrumbs/>
       <div class="section profile-content">
         <div class="container" v-for="item in news" :key="item.ID">
           <div class="md-layout content">
@@ -39,15 +40,18 @@
         </div>
       </div>
     </div>
+    <Jsonld v-if="Object.keys(news).length != 0" :param="news[0]"/>
   </div>
 </template>
 
 <script>
 import Form from "./components/Form.vue";
+import Jsonld from "./components/Jsonld.vue";
 
 export default {
   components: {
-    Form
+    Form,
+    Jsonld
   },
   bodyClass: "profile-page",
   data() {

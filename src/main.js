@@ -13,11 +13,13 @@ import VueMeta from "vue-meta";
 import MaterialKit from "./plugins/material-kit";
 import { CollapsePlugin } from 'bootstrap-vue'
 import Breadcrumbs from "./views/components/Breadcrumbs.vue";
+import VueJsonLD from 'vue-jsonld'
 Vue.config.productionTip = false;
 
 Vue.use(MaterialKit);
 Vue.use(VueAxios, axios);
 Vue.use(CollapsePlugin)
+Vue.use(VueJsonLD)
 Vue.use(VueMeta, {
   // optional pluginOptions
   refreshOnceOnNavigation: true

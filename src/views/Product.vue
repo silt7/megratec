@@ -25,6 +25,7 @@
     <div class="main main-raised">
       <div class="section profile-content">
         <CatalogMenu :isShow="false"></CatalogMenu>
+        <Breadcrumbs/>
         <div class="container">
           <div class="md-layout content">
             <div class="md-layout-item md-size-50 mx-auto">
@@ -128,6 +129,10 @@ export default {
   color: #2e5790 !important;
   padding-right: 5px;
   padding-left: 5px;
+}
+::v-deep nav{
+  top: -40px !important;
+  left: 20px !important;
 }
 @media screen and (max-width: 900px) {
   .profile-page .page-header {

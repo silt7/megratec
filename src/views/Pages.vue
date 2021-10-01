@@ -15,6 +15,7 @@
         </div>
       </parallax>
       <div class="main main-raised">
+        <Breadcrumbs/>
         <Faq v-if="$route.fullPath.includes('chasto-zadavaemye-voprosy')"/>
         <div class="section section-contacts">
           <div v-html="page[0].DETAIL_TEXT"></div>
@@ -48,11 +49,13 @@
 <script>
 import Form from "./components/Form.vue";
 import Faq from "./components/Faq.vue";
+import Breadcrumbs from './components/Breadcrumbs.vue';
 
 export default {
   components: {
     Form,
-    Faq
+    Faq,
+    Breadcrumbs
   },
   props: {
     header: {

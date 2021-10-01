@@ -54,8 +54,8 @@ export default new Router({
       }
     },
     {
-      path: "/products/",
-      name: "products",
+      path: "/products",
+      name: "Продукты",
       components: { default: Products, header: MainNavbar, footer: MainFooter },
       props: true
     },
@@ -115,8 +115,8 @@ export default new Router({
       }
     },
     {
-      path: "/meropriyatiya",
-      name: "events",
+      path: "/news",
+      name: "Новости",
       components: {
         default: Events,
         header: MainNavbar,
