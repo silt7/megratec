@@ -13,7 +13,7 @@
       </div>
     </parallax>
     <div class="main main-raised">
-      <Breadcrumbs/>
+      <Breadcrumbs title="Новости"/>
       <div class="section section-contacts">
         <div class="container news" style="padding-bottom:25px">
           <div class="md-layout text-center">

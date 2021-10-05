@@ -12,7 +12,7 @@
       </div>
     </parallax>
     <div class="main main-raised">
-      <Breadcrumbs/>
+      <Breadcrumbs title="Тренинги"/>
       <div class="section section-contacts">
         <div class="container" v-if="page" v-html="page.DETAIL_TEXT"></div>
         <Trainings count="6"/>

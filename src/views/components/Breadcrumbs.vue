@@ -1,57 +1,74 @@
 <template>
-<div class="section">
-  <div class="container">
+  <div class="section">
+    <div class="container">
       <nav>
-          <ul itemscope itemtype="https://schema.org/BreadcrumbList">
-              <li
-              itemprop="itemListElement"
-              itemscope
-              itemtype="https://schema.org/ListItem"
-              >
-              <router-link to="/" title="Главная" itemprop="item">
-                  <span itemprop="name"><md-icon>home</md-icon>Главная</span>
-                  <meta itemprop="position" content="0" />
-              </router-link>
-              </li>
-              <li
-              itemprop="itemListElement"
-              itemscope
-              itemtype="https://schema.org/ListItem"
-              v-if="subPath[0]"
-              >
-              <router-link :to="subPath[0]['path']" itemprop="item">
-                  <span itemprop="name"> {{ subPath[0]["name"] }} </span>
-                  <meta itemprop="position" content="1" />
-              </router-link>
-              </li>
-          </ul>
+        <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <router-link to="/" title="Главная" itemprop="item">
+              <span itemprop="name"><md-icon>home</md-icon>Главная</span>
+              <meta itemprop="position" content="0" />
+            </router-link>
+          </li>
+          <li
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            v-if="subPath[0]"
+          >
+            <router-link :to="subPath[0]['path']" itemprop="item">
+              <span itemprop="name"> {{ subPath[0]["name"] }} </span>
+              <meta itemprop="position" content="1" />
+            </router-link>
+          </li>
+          <li
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            v-if="title"
+          >
+            <span class="title" itemprop="item">
+              <span itemprop="name"> {{ title }} </span>
+              <meta itemprop="position" content="2" v-if="subPath[0]" />
+              <meta itemprop="position" content="1" v-else />
+            </span>
+          </li>
+        </ul>
       </nav>
+    </div>
   </div>
-</div>
 </template>
 <script>
 export default {
+  props:{
+    title:String
+  },
   data() {
     return {
-      subPath: []
+      subPath: [],
     };
   },
   mounted() {
     if (this.$route.params.id != undefined) {
       let uri = this.$route.path.split("/");
-      this.subPath = this.$router.options.routes.filter(function(item) {
-        if (uri[1] == 'news'){uri[1] = 'new'}
+      this.subPath = this.$router.options.routes.filter(function (item) {
+        if (uri[1] == "news") {
+          uri[1] = "new";
+        }
         return item.path == `/${uri[1]}s`;
       });
     }
-  }
+  },
 };
 </script>
 <style scoped>
-.section{
-  padding:0;
+.section {
+  padding: 0;
 }
-.container{
+.container {
   position: relative;
 }
 .container i {
@@ -77,7 +94,7 @@ ul li {
 ul li a {
   color: #000 !important;
 }
-ul li:not(:first-child) a::before {
+ul li:not(:first-child) a::before, ul li span.title::before{
   content: "/";
   padding-right: 7px;
 }

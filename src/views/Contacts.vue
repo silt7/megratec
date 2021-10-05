@@ -10,7 +10,7 @@
       ></iframe>
     </parallax>
     <div class="main main-raised">
-      <Breadcrumbs/>
+      <Breadcrumbs title="Контакты"/>
       <div class="section section-contacts">
         <div class="container">
           <div class="md-layout">

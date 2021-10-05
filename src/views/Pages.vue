@@ -15,7 +15,7 @@
         </div>
       </parallax>
       <div class="main main-raised">
-        <Breadcrumbs/>
+        <Breadcrumbs :title="page[0].NAME"/>
         <Faq v-if="$route.fullPath.includes('chasto-zadavaemye-voprosy')"/>
         <div class="section section-contacts">
           <div v-html="page[0].DETAIL_TEXT"></div>

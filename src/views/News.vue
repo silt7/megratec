@@ -5,11 +5,11 @@
       :style="headerStyle"
     ></parallax>
     <div class="main main-raised">
-      <Breadcrumbs/>
+      <Breadcrumbs :title="news[0].NAME"/>
       <div class="section profile-content">
         <div class="container" v-for="item in news" :key="item.ID">
           <div class="md-layout content">
-            <div class="md-layout-item md-size-50 mx-auto">
+            <div class="md-layout-item md-size-50 mx-auto" style="z-index:101">
               <div class="profile">
                 <div class="avatar">
                   <img
