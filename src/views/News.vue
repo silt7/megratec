@@ -89,9 +89,13 @@ export default {
 }
 
 .profile-page .profile img {
-  max-width: 280px;
+  max-width: 200px;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
 }
-
+.profile-page .profile .name {
+    margin-top: -150px;
+}
 .profile-tabs::v-deep {
   .md-card-content .md-list {
     justify-content: center;

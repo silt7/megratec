@@ -162,7 +162,7 @@
                 v-if="this.$route.path === '/' && this.window.width > 990"
               >
                 <md-icon>phone_android</md-icon>
-                <p>+7 (495) 787-59-40</p>
+                <p>+7 (495) 580-77-46</p>
               </md-list-item>
               <md-list-item
                 href="javascript:void(0)"

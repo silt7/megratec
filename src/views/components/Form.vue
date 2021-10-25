@@ -9,36 +9,36 @@
               class="md-layout-item md-size-50"
               v-if="fields.includes('Имя')"
             >
-              <md-field>
+              <md-field :class="className">
                 <label>Имя</label>
-                <md-input v-model="name" type="text"></md-input>
+                <md-input v-model="name" type="text" required></md-input>
               </md-field>
             </div>
             <div
               class="md-layout-item md-size-50"
               v-if="fields.includes('Компания')"
             >
-              <md-field>
+              <md-field :class="classCompany">
                 <label>Компания</label>
-                <md-input v-model="company" type="text"></md-input>
+                <md-input v-model="company" type="text" required></md-input>
               </md-field>
             </div>
             <div
               class="md-layout-item md-size-50"
               v-if="fields.includes('Телефон')"
             >
-              <md-field>
+              <md-field :class="classPhone">
                 <label>Телефон</label>
-                <md-input v-model="phone" type="number"></md-input>
+                <md-input v-model="phone" type="number" required></md-input>
               </md-field>
             </div>
             <div
               class="md-layout-item md-size-50"
               v-if="fields.includes('Почта')"
             >
-              <md-field>
+              <md-field :class="classEmail">
                 <label>Email</label>
-                <md-input v-model="email" type="email"></md-input>
+                <md-input v-model="email" type="email" required></md-input>
               </md-field>
             </div>
           </div>
@@ -77,11 +77,42 @@ export default {
       message: null,
       page: "",
       messOk: false,
-      messErr: false
+      messErr: false,
+      nameError: false,
+      companyError: false,
+      phoneError: false,
+      emailError: false,
     };
   },
+  computed: {
+    className () {
+      return {
+        'md-invalid': this.nameError
+      }
+    },
+    classCompany () {
+      return {
+        'md-invalid': this.companyError
+      }
+    },
+    classPhone () {
+      return {
+        'md-invalid': this.phoneError
+      }
+    },
+    classEmail () {
+      return {
+        'md-invalid': this.emailError
+      }
+    }
+  },
   methods: {
-    sendForm() {
+    sendForm() {  
+      !this.name ? this.nameError = 1 : this.nameError = 0
+      !this.company ? this.companyError = 1 : this.companyError = 0
+      !this.phone ? this.phoneError = 1 : this.phoneError = 0
+      !this.email ? this.emailError = 1 : this.emailError = 0
+
       let params = {
         params: {
           form: "callme",
@@ -108,3 +139,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.md-field.md-theme-default.md-invalid label {
+    color: #ff1744 !important;
+}
+</style>

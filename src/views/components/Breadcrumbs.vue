@@ -25,15 +25,10 @@
             </router-link>
           </li>
           <li
-            itemprop="itemListElement"
-            itemscope
-            itemtype="https://schema.org/ListItem"
             v-if="title"
           >
-            <span class="title" itemprop="item">
-              <span itemprop="name"> {{ title }} </span>
-              <meta itemprop="position" content="2" v-if="subPath[0]" />
-              <meta itemprop="position" content="1" v-else />
+            <span class="title" >
+              <span > {{ title }} </span>
             </span>
           </li>
         </ul>

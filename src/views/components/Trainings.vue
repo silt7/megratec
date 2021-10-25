@@ -13,7 +13,7 @@
               'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
             }"
           >
-            <div class="md-card-content" style="height:210px">
+            <div class="md-card-content" style="height:230px">
               <a href="javascript:void(0)"
                 ><h3  class="card-title">{{ item.NAME }}</h3></a
               >

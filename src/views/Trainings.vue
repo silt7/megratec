@@ -66,7 +66,7 @@ export default {
 
 @media screen and (min-width: 900px) {
   .page-header {
-    height: 40vh;
+    height: 50vh;
   }
 }
 @media screen and (max-width: 900px) {
