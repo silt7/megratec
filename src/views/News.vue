@@ -15,6 +15,7 @@
                   <img
                     v-if="item.DETAIL_PICTURE"
                     :src="item.DETAIL_PICTURE"
+                    :alt="item.NAME"
                     class="img-raised rounded img-fluid"
                   />
                   <img

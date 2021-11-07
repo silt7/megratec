@@ -60,6 +60,15 @@ export default ({
   methods: {
     async loadContent() {
       this.items = await this.getItem("trainings", 0);
+
+      for(let key in this.items){
+        if((this.items[key].ID == 169) 
+          ||(this.items[key].ID == 170)
+           ||(this.items[key].ID == 171)){
+            this.items.splice(key)
+        }
+      }
+      // this.items.splice(key)
     }
   },
 })

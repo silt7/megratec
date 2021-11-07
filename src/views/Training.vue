@@ -8,6 +8,7 @@
               <img
                 v-if="product.DETAIL_PICTURE"
                 :src="product.DETAIL_PICTURE"
+                :alt="product.NAME"
                 class="img-raised rounded img-fluid"
                 style="transform: inherit"
               />
@@ -31,7 +32,7 @@
             <div class="md-layout-item md-size-50 mx-auto">
               <div class="profile">
                 <div class="name">
-                  <h3 class="title">{{ product.NAME }}</h3>
+                  <h1 class="title">{{ product.NAME }}</h1>
                 </div>
               </div>
             </div>
@@ -100,6 +101,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1.title{
+  font-size: 1.5625rem;
+  margin-top:55px;
+}
 .section {
   padding: 0;
 }

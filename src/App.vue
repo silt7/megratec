@@ -29,7 +29,7 @@
   font-size: 32px;
   font-weight: 600;
   font-family: Roboto Slab, serif;
-  margin: 16px 0;
+  margin: 0 0 16px 0;
 }
 .article-content h3 {
   font-size: 22px;

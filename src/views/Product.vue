@@ -9,6 +9,7 @@
                 v-if="product.DETAIL_PICTURE"
                 :src="product.DETAIL_PICTURE"
                 class="img-raised rounded img-fluid"
+                :alt="product.NAME"
                 style="transform: inherit"
               />
               <img
