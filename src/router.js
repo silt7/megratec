@@ -28,22 +28,22 @@ export default new Router({
     {
       path: "/",
       name: "index",
-      components: { default: Index, header: MainNavbar, footer: MainFooter }
+      components: { default: Index, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/landing",
       name: "landing",
-      components: { default: Landing, header: MainNavbar, footer: MainFooter }
+      components: { default: Landing, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/login",
       name: "login",
-      components: { default: Login, header: MainNavbar, footer: MainFooter }
+      components: { default: Login, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/profile",
       name: "profile",
-      components: { default: Profile, header: MainNavbar, footer: MainFooter }
+      components: { default: Profile, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/components",
@@ -51,19 +51,19 @@ export default new Router({
       components: {
         default: Components,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/products",
       name: "Продукты",
       components: { default: Products, header: MainNavbar, footer: MainFooter },
-      props: true
+      props: true,
     },
     {
       path: "/product/:id",
       name: "product",
-      components: { default: Product, header: MainNavbar, footer: MainFooter }
+      components: { default: Product, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/trainings",
@@ -71,8 +71,8 @@ export default new Router({
       components: {
         default: Trainings,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/training/:id",
@@ -80,8 +80,8 @@ export default new Router({
       components: {
         default: Training,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/contacts",
@@ -89,8 +89,8 @@ export default new Router({
       components: {
         default: Contacts,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/about",
@@ -98,13 +98,13 @@ export default new Router({
       components: {
         default: About,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/news/:id",
       name: "news",
-      components: { default: News, header: MainNavbar, footer: MainFooter }
+      components: { default: News, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "/search",
@@ -112,8 +112,8 @@ export default new Router({
       components: {
         default: Search,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/dizayn-centr",
@@ -121,8 +121,8 @@ export default new Router({
       components: {
         default: Design,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
     },
     {
       path: "/news",
@@ -130,8 +130,60 @@ export default new Router({
       components: {
         default: Events,
         header: MainNavbar,
-        footer: MainFooter
-      }
+        footer: MainFooter,
+      },
+    },
+    {
+      path: "/eng",
+      name: "index-eng",
+      components: { default: Index, header: MainNavbar, footer: MainFooter },
+    },
+    {
+      path: "/eng/products",
+      name: "Продукты-eng",
+      components: { default: Products, header: MainNavbar, footer: MainFooter },
+      props: true,
+    },
+    {
+      path: "/eng/product/:id",
+      name: "product-eng",
+      components: { default: Product, header: MainNavbar, footer: MainFooter },
+    },
+    {
+      path: "/eng/dizayn-centr",
+      name: "design-eng",
+      components: {
+        default: Design,
+        header: MainNavbar,
+        footer: MainFooter,
+      },
+    },
+    {
+      path: "/eng/trainings",
+      name: "Тренинги-eng",
+      components: {
+        default: Trainings,
+        header: MainNavbar,
+        footer: MainFooter,
+      },
+    },
+    {
+      path: "/eng/contacts",
+      name: "contacts-eng",
+      components: {
+        default: Contacts,
+        header: MainNavbar,
+        footer: MainFooter,
+      },
+    },
+    {
+      path: "/eng/about",
+      name: "about-eng",
+      components: {
+        default: About,
+        header: MainNavbar,
+        footer: MainFooter,
+      },
     },
     {
       path: "*",
@@ -139,15 +191,15 @@ export default new Router({
       components: {
         default: Pages,
         header: MainNavbar,
-        footer: MainFooter
-      }
-    }
+        footer: MainFooter,
+      },
+    },
   ],
-  scrollBehavior: to => {
+  scrollBehavior: (to) => {
     if (to.hash) {
       return { selector: to.hash };
     } else {
       return { x: 0, y: 0 };
     }
-  }
+  },
 });

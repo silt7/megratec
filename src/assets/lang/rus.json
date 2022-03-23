@@ -1,0 +1,36 @@
+{
+    "menu": {
+        "main": {
+            "url": "/",
+            "title": "Главная"
+        },
+        "dizayncentr": {
+            "url": "/dizayn-centr/",
+            "title": "Дизайн-центр"
+        },
+        "products": {
+            "url": "/products/",
+            "title": "Продукты"
+        },
+        "product": {
+            "url": "/product/",
+            "title": "Продукт"
+        },
+        "trainings": {
+            "url": "/trainings/",
+            "title": "Тренинги"
+        },
+        "contacts": {
+            "url": "/contacts/",
+            "title": "Контакты"
+        },
+        "about": {
+            "url": "/about/",
+            "title": "О нас"
+        },
+        "search": {
+            "url": "/eng/search/",
+            "title": "Текст для поиска"
+        }
+    }
+}

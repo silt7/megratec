@@ -1,0 +1,36 @@
+{
+    "menu": {
+        "main": {
+            "url": "/eng",
+            "title": "Home"
+        },
+        "dizayncentr": {
+            "url": "/eng/dizayn-centr/",
+            "title": "Design Center"
+        },
+        "products": {
+            "url": "/eng/products/",
+            "title": "Products"
+        },
+        "product": {
+            "url": "/eng/product/",
+            "title": "product"
+        },
+        "trainings": {
+            "url": "/eng/trainings/",
+            "title": "Trainings"
+        },
+        "contacts": {
+            "url": "/eng/contacts/",
+            "title": "Contacts"
+        },
+        "about": {
+            "url": "/eng/about/",
+            "title": "About"
+        },
+        "search": {
+            "url": "/eng/search/",
+            "title": "Search"
+        }
+    }
+}

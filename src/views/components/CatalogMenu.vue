@@ -6,7 +6,7 @@
           <md-list>
             <md-list-item href="javascript:void(0)" v-on:click="openCategory">
               <md-icon>list</md-icon>
-              <p style="font-size: 14px">ПРОДУКТЫ</p>
+              <p style="font-size: 14px">{{$root.dictionary.menu.products.title}}</p>
               <md-icon :style="{ transform: 'rotate(' + turn + 'turn)' }"
                 >keyboard_arrow_down</md-icon
               >
@@ -22,27 +22,27 @@
           <div class="md-collapse">
             <md-list>
               <md-list-item>
-                <router-link exact to="/dizayn-centr/">
+                <router-link exact :to="$root.dictionary.menu.dizayncentr.url">
                   <md-icon>memory</md-icon>
-                  <p>Дизайн-центр</p>
+                  <p>{{$root.dictionary.menu.dizayncentr.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item>
-                <router-link exact to="/trainings/">
+                <router-link exact :to="$root.dictionary.menu.trainings.url">
                   <md-icon>explore</md-icon>
-                  <p>Тренинги</p>
+                  <p>{{$root.dictionary.menu.trainings.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item>
-                <router-link exact to="/contacts/">
+                <router-link exact :to="$root.dictionary.menu.contacts.url">
                   <md-icon>account_circle</md-icon>
-                  <p>Контакты</p>
+                  <p>{{$root.dictionary.menu.contacts.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item>
-                <router-link exact to="/about/">
+                <router-link exact :to="$root.dictionary.menu.about.url">
                   <md-icon>settings</md-icon>
-                  <p>О нас</p>
+                  <p>{{$root.dictionary.menu.about.title}}</p>
                 </router-link>
               </md-list-item>
             </md-list>
@@ -58,23 +58,24 @@
           :md-active-tab="'md-' + active"
         >
           <md-tab
-            v-for="categ in category[0]"
-            :key="categ.ID"
-            :md-label="categ.NAME"
-            :id="'md-' + categ.ID"
+            v-for="(value, index, i) in products"
+            :key="index"
+            :md-label="index.slice(4)"
+            :id="'md-' + i"
+            @click="active = i"
           >
             <div class="container" v-if="productsShow">
               <div class="md-layout md-gutter md-alignment-left">
                 <router-link
                   class="md-layout-item md-size-20 md-small-size-100"
-                  v-for="product in productsFiltr(categ.ID)"
+                  v-for="product in value"
                   :key="product.ID"
-                  :to="'/product/' + product.CODE"
+                  :to="$root.dictionary.menu.product.url + product.CODE"
                 >
                   <md-card class="product">
                     <img
-                      v-if="product.PROPERTY_VALUES.icon != ''"
-                      :src="product.PROPERTY_VALUES.icon"
+                      v-if="product.PROPERTY_ICON != null"
+                      :src="$root.baseURL + product.PROPERTY_ICON"
                     />
                     <img v-else src="@/assets/img/icon/noimg.svg" />
                     <md-card-header-text>
@@ -87,12 +88,12 @@
                   </md-card>
                 </router-link>
                 <i
-                  v-on:click="tabChanged('prev')"
+                  v-on:click.stop="tabChanged('prev')"
                   class="material-icons tabChanged-left"
                   >keyboard_arrow_left</i
                 >
                 <i
-                  v-on:click="tabChanged('next')"
+                  v-on:click.stop="tabChanged('next')"
                   class="material-icons tabChanged-right"
                   >keyboard_arrow_right</i
                 >
@@ -122,12 +123,11 @@ export default {
   name: "index",
   data() {
     return {
-      category: "N",
-      products: [],
       productsShow: 1,
       clickCategory: 0,
       turn: 0,
-      active: 10
+      active: 0,
+      products: this.$root.getCatalog().then(response=>this.products = response)
     };
   },
   props: {
@@ -158,49 +158,33 @@ export default {
       }
     },
     tabChanged(direction) {
-      let arr = [];
-      let cat = this.category.slice();
-      cat.shift().forEach(element => {
-        arr.push(element["ID"]);
-      });
-
-      let i = arr.indexOf(String(this.active));
+      let count = Object.keys(this.products).length;
+      console.log(count)
       if (direction == "next") {
-        if (arr[i + 1] === undefined) {
-          this.active = arr[0];
+        if(this.active + 1 >= count){
+          this.active = 0
         } else {
-          this.active = arr[i + 1];
-        }
+          this.active = this.active + 1
+        }  
       } else {
-        if (arr[i - 1] === undefined) {
-          this.active = arr.pop();
+        if(this.active - 1 < 0){
+          this.active = count - 1
         } else {
-          this.active = arr[i - 1];
+          this.active = this.active - 1
         }
       }
     },
-    productsFiltr(categ_id) {
-      let result = [];
-      if (categ_id == 10) {
-        result = this.products.filter(
-          i => i["PROPERTY_VALUES"]["VIEWMAIN"] == "Да"
-        );
-      } else {
-        result = this.products.filter(i => i["SECTION"] == categ_id);
-      }
-      return result;
-    }
   },
   mounted() {
-    this.category = this.getSection("products", 0);
-    this.getItem("products", 0).then(data => {
-      this.products = data;
-    });
-
     if (this.isShow == 0) {
       this.productsShow = 0;
     }
-  }
+  },
+  watch: {
+    "$root.language": function() {
+      this.$root.getCatalog().then(response=>this.products = response)
+    }
+  },
 };
 </script>
 <style lang="scss">

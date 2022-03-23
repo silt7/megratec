@@ -15,22 +15,22 @@
       <div class="section profile-content">
         <CatalogMenu :isShow="false"></CatalogMenu>
         <div
-          v-for="item in categoryFiltr(category[0])"
-          :key="item.ID"
+          v-for="(category, index) in products"
+          :key="index"
           class="container catalog"
         >
-          <h2 style="text-align:left">{{ item.NAME }}</h2>
+          <h2 style="text-align:left">{{ index.slice(4) }}</h2>
           <div class="md-layout md-gutter md-alignment-left">
             <router-link
               class="md-layout-item md-size-20 md-small-size-100"
-              v-for="product in productsFiltr(item.ID)"
+              v-for="product in category"
               :key="product.ID"
               :to="'/product/' + product.CODE"
             >
               <md-card class="product text-center">
                 <img
-                  v-if="product.PROPERTY_VALUES.icon != ''"
-                  :src="product.PROPERTY_VALUES.icon"
+                  v-if="product.PROPERTY_ICON != null"
+                  :src="$root.baseURL + product.PROPERTY_ICON"
                 />
                 <img v-else src="@/assets/img/icon/noimg.svg" />
                 <md-card-header-text>
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       category: [],
-      products: []
+      products: this.$root.getCatalog().then(response=>this.products = response)
     };
   },
   props: {
@@ -76,23 +76,13 @@ export default {
     }
   },
   mounted() {
-    this.loadContent();
-    this.category = this.getSection("products", 0);
     this.getSeo();
   },
-  methods: {
-    async loadContent() {
-      this.products = await this.getItem("products", 0);
-    },
-    productsFiltr(categ_id) {
-      return this.products.filter(i => i["SECTION"] == categ_id);
-    },
-    categoryFiltr(category) {
-      if (category) {
-        return category.filter(i => i["ID"] != 10);
-      }
+  watch: {
+    "$root.language": function() {
+      this.$root.getCatalog().then(response=>this.products = response)
     }
-  }
+  },
 };
 </script>
 

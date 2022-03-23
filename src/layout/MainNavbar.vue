@@ -8,7 +8,7 @@
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start logo">
-        <router-link to="/">
+        <router-link :to="$root.dictionary.menu.main.url">
           <b>megra</b>tec<span class="logo_mini"
             >MENTOR GRAPHICS TECHNOLOGIES</span
           >
@@ -31,41 +31,7 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
-              <li class="md-list-item" v-if="!showDownload">
-                <a
-                  href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
-                >
-                  <div class="md-list-item-content">
-                    <drop-down direction="down">
-                      <md-button
-                        slot="title"
-                        class="md-button md-button-link md-white md-simple dropdown-toggle"
-                        data-toggle="dropdown"
-                      >
-                        <i class="material-icons">apps</i>
-                        <p>Components</p>
-                      </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                          <a href="#/">
-                            <i class="material-icons">layers</i>
-                            <p>All Components</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="№">
-                            <i class="material-icons">content_paste</i>
-                            <p>Главная</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </drop-down>
-                  </div>
-                </a>
-              </li>
-
-              <li class="md-list-item" v-if="!showDownload">
+              <li class="md-list-item">
                 <a
                   href="javascript:void(0)"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
@@ -78,25 +44,19 @@
                         data-toggle="dropdown"
                       >
                         <i class="material-icons">view_carousel</i>
-                        <p>Продукты</p>
+                        <p></p>
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="#/landing">
+                          <a @click="$root.changeLang('rus')">
                             <i class="material-icons">view_day</i>
-                            <p>Landing Page</p>
+                            <p>Rus</p>
                           </a>
                         </li>
                         <li>
-                          <a href="#/login">
+                          <a @click="$root.changeLang('eng')">
                             <i class="material-icons">fingerprint</i>
-                            <p>Login Page</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/profile">
-                            <i class="material-icons">account_circle</i>
-                            <p>Profile Page</p>
+                            <p>Eng</p>
                           </a>
                         </li>
                       </ul>
@@ -104,51 +64,51 @@
                   </div>
                 </a>
               </li>
-              <md-list-item v-if="this.$route.path !== '/'">
-                <router-link exact to="/">
-                  <p>Главная</p>
+              <md-list-item v-if="this.$route.path !== '/' && this.$route.path !== '/eng'">
+                <router-link exact :to="$root.dictionary.menu.main.url">
+                  <p>{{$root.dictionary.menu.main.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
+                v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
-                <router-link exact to="/dizayn-centr/">
-                  <p>Дизайн-центр</p>
+                <router-link exact :to="$root.dictionary.menu.dizayncentr.url">
+                  <p>{{$root.dictionary.menu.dizayncentr.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
+                v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
-                <router-link exact to="/products/">
-                  <p>Продукты</p>
+                <router-link exact :to="$root.dictionary.menu.products.url">
+                  <p>{{$root.dictionary.menu.products.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
+                v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
-                <router-link exact to="/trainings/">
-                  <p>Тренинги</p>
+                <router-link exact :to="$root.dictionary.menu.trainings.url">
+                  <p>{{$root.dictionary.menu.trainings.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
+                v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
-                <router-link exact to="/contacts/">
-                  <p>Контакты</p>
+                <router-link exact :to="$root.dictionary.menu.contacts.url">
+                  <p>{{$root.dictionary.menu.contacts.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
-                v-if="this.$route.path !== '/' || this.window.width <= 990"
+                v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
-                <router-link exact to="/about/">
-                  <p>О нас</p>
+                <router-link exact :to="$root.dictionary.menu.about.url">
+                  <p>{{$root.dictionary.menu.about.title}}</p>
                 </router-link>
               </md-list-item>
 
               <md-list-item
                 href="/"
                 target="_blank"
-                v-if="this.$route.path === '/' && this.window.width > 990"
+                v-if="(this.$route.path === '/' || this.$route.path === '/eng') && this.window.width > 990"
               >
                 <md-icon>mail</md-icon>
                 <p>
@@ -159,7 +119,7 @@
               <md-list-item
                 href="javascript:void(0)"
                 @click="scrollToElement()"
-                v-if="this.$route.path === '/' && this.window.width > 990"
+                v-if="(this.$route.path === '/' || this.$route.path === '/eng') && this.window.width > 990"
               >
                 <md-icon>phone_android</md-icon>
                 <p>+7 (495) 580-77-46</p>
@@ -177,7 +137,7 @@
               <md-list-item
                 href="/chasto-zadavaemye-voprosy"
                 @click="scrollToElement();"
-                v-if="this.$route.path === '/' && this.window.width > 990"
+                v-if="(this.$route.path === '/' || this.$route.path === '/eng') && this.window.width > 990"
               >
                 <md-icon>help_outline</md-icon>
               </md-list-item>
@@ -195,11 +155,11 @@
             >search</md-icon
           >
           <md-field class="md-layout-item md-size-55">
-            <label>Текст для поиска...</label>
+            <label>{{$root.dictionary.menu.search.title}}...</label>
             <md-input v-model="searchText" type="text"></md-input>
           </md-field>
           <div class="md-layout-item md-size-30">
-            <md-button class="md-primary" @click="search()">Искать</md-button>
+            <md-button class="md-primary" @click="search()">{{$root.dictionary.menu.search.title}}</md-button>
           </div>
         </form>
       </template>
@@ -332,7 +292,7 @@ export default {
     validateBeforeSubmit(e) {
       e.preventDefault();
       this.search();
-    }
+    },
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);
