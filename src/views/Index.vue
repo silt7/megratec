@@ -25,16 +25,16 @@
           style="margin-top: -10%"
           v-if="item.PROPERTY_VALUES['BANNER_VIDEO']"
         >
-          <source :src="item.PROPERTY_VALUES['BANNER_VIDEO']" />
+          <source :src="$root.baseURL + item.PROPERTY_VALUES['BANNER_VIDEO']" />
         </video>
-        <img v-else width="100%" :src="item.PREVIEW_PICTURE" alt="carousel1" />
+        <img v-else width="100%" :src="$root.baseURL + item.PREVIEW_PICTURE" alt="carousel1" />
       </slide>
     </carousel>
     <div class="main main-raised">
       <div class="section" style="padding: 0;">
         <CatalogMenu></CatalogMenu>
         <div class="container news" style="padding-bottom:25px">
-          <h2>Последние события</h2>
+          <h2>{{$root.dictionary.title.lastEvents}}</h2>
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
@@ -44,7 +44,7 @@
               <div
                 class="md-card md-card-background md-theme-default"
                 :style="{
-                  'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+                  'background-image': 'url(' + $root.baseURL + item.PREVIEW_PICTURE + ')'
                 }"
               >
                 <div class="md-card-content" style="min-height:290px">
@@ -56,7 +56,7 @@
                   >
                   <p class="card-description" v-html="item.PREVIEW_TEXT"></p>
                   <router-link
-                    :to="'/news/' + item.CODE"
+                    :to="$root.dictionary.link.news + item.CODE"
                     style="color: #999"
                     class="md-button md-white md-round md-theme-default"
                   >
@@ -65,7 +65,7 @@
                         <i class="md-icon md-icon-font md-theme-default"
                           >format_align_left</i
                         >
-                        Читать
+                        {{$root.dictionary.button.read}}
                       </div>
                     </div>
                   </router-link>
@@ -82,7 +82,7 @@
               <div
                 class="md-card md-card-background md-theme-default"
                 :style="{
-                  'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+                  'background-image': 'url(' + $root.baseURL + item.PREVIEW_PICTURE + ')'
                 }"
               >
                 <div class="md-card-content" style="height:300px">
@@ -97,7 +97,7 @@
                     v-html="item.PREVIEW_TEXT"
                   ></p>
                   <router-link
-                    :to="'/news/' + item.CODE"
+                    :to="$root.dictionary.link.news + item.CODE"
                     style="color: white"
                     class="md-button md-danger md-round md-theme-default"
                   >
@@ -106,7 +106,7 @@
                         <i class="md-icon md-icon-font md-theme-default"
                           >format_align_left</i
                         >
-                        Читать
+                        {{$root.dictionary.button.read}}
                       </div>
                     </div>
                   </router-link>
@@ -116,21 +116,21 @@
           </div>
           <div style="text-align:center">
             <router-link
-              :to="'/news'"
+              :to="$root.dictionary.link.news"
               class="md-button md-simple"
               style="border: 1px solid #2e5790; color:#2e5790 !important;"
             >
               <div class="event md-ripple">
                 <div class="md-button-content">
-                  Перейти в раздел мероприятия
+                  {{$root.dictionary.button.events}}
                 </div>
               </div>
             </router-link>
           </div>
         </div>
-        <div class="container" style="padding: 50px 0 0 0"><h2>Популярные курсы</h2></div>
+        <div class="container" style="padding: 50px 0 0 0"><h2>{{$root.dictionary.title.popularCourse}}</h2></div>
         <Trainings count="3"/>
-        <div class="container" style="padding: 50px 0">
+        <div class="container" style="padding: 50px 0" v-if="false">
           <carousel
             :perPageCustom="[[900, 5]]"
             loop
@@ -227,8 +227,8 @@ export default {
       return result;
     },
     async loadContent() {
-      this.banners = await this.getItem("banners", 0);
-      this.news = await this.getItem("news", 0);
+      this.banners = await this.getItem("banners", '');
+      this.news = await this.getItem("news", '');
 
       this.getSeo();
     }

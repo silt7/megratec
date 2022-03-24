@@ -168,6 +168,15 @@ export default new Router({
       },
     },
     {
+      path: "/eng/training/:id",
+      name: "training-eng",
+      components: {
+        default: Training,
+        header: MainNavbar,
+        footer: MainFooter,
+      },
+    },
+    {
       path: "/eng/contacts",
       name: "contacts-eng",
       components: {
@@ -184,6 +193,20 @@ export default new Router({
         header: MainNavbar,
         footer: MainFooter,
       },
+    },
+    {
+      path: "/eng/news",
+      name: "Новости-eng",
+      components: {
+        default: Events,
+        header: MainNavbar,
+        footer: MainFooter,
+      },
+    },
+    {
+      path: "/eng/news/:id",
+      name: "news-eng",
+      components: { default: News, header: MainNavbar, footer: MainFooter },
     },
     {
       path: "*",

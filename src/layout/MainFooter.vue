@@ -9,22 +9,22 @@
         <ul>
           <li>
             <a href="/products/">
-              Продукты
+              {{$root.dictionary.menu.products.title}}
             </a>
           </li>
           <li>
             <a href="/trainings/">
-              Тренинги
+              {{$root.dictionary.menu.trainings.title}}
             </a>
           </li>
           <li>
             <a href="/contacts/">
-              Контакты
+              {{$root.dictionary.menu.contacts.title}}
             </a>
           </li>
           <li>
             <a href="/about/">
-              О нас
+              {{$root.dictionary.menu.about.title}}
             </a>
           </li>
         </ul>

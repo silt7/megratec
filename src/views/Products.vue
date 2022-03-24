@@ -25,7 +25,7 @@
               class="md-layout-item md-size-20 md-small-size-100"
               v-for="product in category"
               :key="product.ID"
-              :to="'/product/' + product.CODE"
+              :to="$root.dictionary.link.product + product.CODE"
             >
               <md-card class="product text-center">
                 <img
@@ -38,7 +38,7 @@
                   <div class="sub-title">
                     {{ product.PREVIEW_TEXT }}
                   </div>
-                  <div class="md-subhead">Подробнее</div>
+                  <div class="md-subhead">{{$root.dictionary.button.detail}}</div>
                 </md-card-header-text>
               </md-card>
             </router-link>
@@ -77,6 +77,7 @@ export default {
   },
   mounted() {
     this.getSeo();
+
   },
   watch: {
     "$root.language": function() {

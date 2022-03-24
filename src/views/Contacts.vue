@@ -18,31 +18,31 @@
               class="md-layout-item md-size-50 md-small-size-100 ml-auto block-1"
             >
               <h2 class="title" style="margin-top:0">
-                Отправить нам сообщение
+                {{$root.dictionary.title.sendmessage}}
               </h2>
               <form class="contact-form">
                 <md-field>
-                  <label>Имя</label>
+                  <label>{{$root.dictionary.static.name}}</label>
                   <md-input v-model="name" type="text"></md-input>
                 </md-field>
                 <md-field>
-                  <label>Email</label>
+                  <label>{{$root.dictionary.static.email}}</label>
                   <md-input v-model="email" type="email"></md-input>
                 </md-field>
                 <md-field>
-                  <label>Телефон</label>
+                  <label>{{$root.dictionary.static.phone}}</label>
                   <md-input v-model="phone" type="phone"></md-input>
                 </md-field>
                 <md-field maxlength="5">
-                  <label>Комментарий</label>
+                  <label>{{$root.dictionary.static.comment}}</label>
                   <md-textarea v-model="message"></md-textarea>
                 </md-field>
-                <p v-if="messOk" class="text-success">Отправлено</p>
-                <p v-if="messErr" class="text-danger">Ошибка при отправке</p>
+                <p v-if="messOk" class="text-success">{{$root.dictionary.static.sent}}</p>
+                <p v-if="messErr" class="text-danger">{{$root.dictionary.static.errorsent}}</p>
                 <div class="md-layout">
                   <div class="md-layout-item md-size-33 mx-auto text-center">
                     <md-button class="md-primary" @click="sendForm()"
-                      >Отправить</md-button
+                      >{{$root.dictionary.button.send}}</md-button
                     >
                   </div>
                 </div>
@@ -60,7 +60,7 @@
                 <div
                   class="md-layout-item md-size-80 md-small-size-100 ml-auto"
                 >
-                  <h4 class="title">Адрес</h4>
+                  <h4 class="title">{{$root.dictionary.static.address}}</h4>
                   <p
                     class="muted-text"
                     v-if="contacts[0]"
@@ -77,7 +77,7 @@
                 <div
                   class="md-layout-item md-size-80 md-small-size-100 ml-auto"
                 >
-                  <h4 class="title">Контактная информация</h4>
+                  <h4 class="title">{{$root.dictionary.static.contactinfo}}</h4>
                   <p
                     class="muted-text"
                     v-if="contacts[0]"
@@ -94,36 +94,16 @@
                 <div
                   class="md-layout-item md-size-80 md-small-size-100 ml-auto"
                 >
-                  <h4 class="title">Техническая поддержка</h4>
+                  <h4 class="title">{{$root.dictionary.static.support}}</h4>
                   <p
                     class="muted-text"
                     v-if="contacts[0]"
                     v-html="contacts[0].UF_SUPPORT"
                   ></p>
-                  <!--<h6>Продажи и административная поддержка:</h6>
-                <p class="muted-text">
-                    Лохов Андрей Львович<br>
-                    lokhov@megratec.ru
-                </p>
-                <h6>Техническая поддержка, консалтинг, проекты:</h6>
-                <p class="muted-text">
-                    Филиппов Александр Анатольевич<br>
-                    fill@megratec.ru
-                </p>
-                <h6>Цифровое и аналого-цифровое моделирование, синтез VHDL, верификация:</h6>
-                <p class="muted-text">
-                    Селиванов Иван Витальевич<br>
-                    selivanov@megratec.ru
-                </p>
-                <h6>Печатные платы, синтез C, верификация, DFT:</h6>
-                <p class="muted-text">
-                    Селиванов Иван Витальевич<br>
-                    selivanov@megratec.ru
-                </p>-->
                 </div>
               </div>
             </div>
-            <div v-html="page.DETAIL_TEXT"></div>
+            <div v-if="page" v-html="page.DETAIL_TEXT"></div>
           </div>
         </div>
       </div>

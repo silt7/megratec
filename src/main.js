@@ -42,7 +42,7 @@ Vue.mixin({
       baseURL: $baseURL,
       titleMeta: "Megratec",
       descriptionMeta: "Megratec",
-      language: "rus",
+      language: this.$route.path.includes("/eng") ? "eng" : "rus",
       dictionary: LangRus,
     };
   },
@@ -52,58 +52,44 @@ Vue.mixin({
       meta: [{ name: "description", content: this.$root.descriptionMeta }],
     };
   },
+  created() {
+    if (this.$root.language == "rus") {
+      this.$root.dictionary = LangRus;
+    } else {
+      this.$root.dictionary = LangEng;
+    }
+  },
   methods: {
     async getCatalog() {
-      let lang = "rus";
-      if (this.$route.path.includes("/eng")) {
-        lang = "eng";
-      }
-
       let params = {
         params: {
-          lang: lang,
+          lang: this.$root.language,
         },
       };
       let { data } = await this.axios.get(
         $baseURL + "/rest-custom/getCatalog.php",
         params
       );
+
+      console.log(data);
+
       return data;
     },
     async getItem(entity, code) {
-      let res = [];
       let params = {
         params: {
           ENTITY: entity,
-          "SORT[SORT]": "ASC",
-          "FILTER[ACTIVE]": "Y",
+          CODE: code,
+          lang: this.$root.language,
         },
       };
 
-      if (code != 0) {
-        params["params"]["FILTER[CODE]"] = code;
-      }
-
-      if (entity == "news") {
-        delete params["params"]["SORT[SORT]"];
-        params["params"]["SORT[ID]"] = "DESC";
-      }
-
-      if (entity == "trainings") {
-        params["params"]["ENTITY"] = "pages";
-        params["params"]["FILTER[SECTION]"] = "18";
-      }
-
-      if (entity == "banners") {
-        (params["params"]["ENTITY"] = "pages"),
-          (params["params"]["FILTER[SECTION]"] = "13");
-      }
       let { data } = await this.axios.get(
-        $baseURL + "/rest/1/1szw54c9zzx4ab1d/entity.item.get?",
+        $baseURL + "/rest-custom/getItem.php",
         params
       );
 
-      return data.result;
+      return data;
     },
     getUserField: function(iblock, id) {
       let res = [];
@@ -165,15 +151,6 @@ Vue.mixin({
       }
       this.$router.push({ name: uri }).catch((err) => {});
     },
-  },
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      if (to.path.includes("/eng")) {
-        vm.changeLang("eng");
-      } else {
-        vm.changeLang("rus");
-      }
-    });
   },
 });
 

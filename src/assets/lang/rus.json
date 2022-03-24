@@ -30,7 +30,40 @@
         },
         "search": {
             "url": "/eng/search/",
-            "title": "Текст для поиска"
+            "title": "Искать"
         }
+    },
+    "button":{
+        "detail": "Подробнее",
+        "all": "Все",
+        "read": "Читать",
+        "events": "Перейти в раздел мероприятия",
+        "send": "Отправить"
+    },
+    "title":{
+        "popularCourse": "Популярные курсы",
+        "lastEvents": "Последние события",
+        "application": "Оставить заявку",
+        "sendmessage": "Отправить нам сообщение"
+    },
+    "link":{
+       "products": "/products/",
+       "product": "/product/",
+       "news": "/news/",
+       "training": "/training/"
+    },
+    "static":{
+        "name":"Имя",
+        "company":"Компания",
+        "phone":"Телефон",
+        "email":"Email",
+        "message":"Сообщение",
+        "comment":"Комментарий",
+        "sent":"Отправлено",
+        "errorsent": "Ошибка при отправке",
+        "address":"Адрес",
+        "contactinfo":"Контактная информация",
+        "support":"Техническая поддержка",
+        "about": "О нас"
     }
 }

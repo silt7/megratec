@@ -43,20 +43,21 @@
                         class="md-button md-button-link md-white md-simple dropdown-toggle"
                         data-toggle="dropdown"
                       >
-                        <i class="material-icons">view_carousel</i>
-                        <p></p>
+                        <i class="material-icons">language</i>
+                        <p v-if="$root.language == 'rus'">Rus</p>
+                        <p v-else>Eng</p>
                       </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
+                      <ul class="dropdown-menu dropdown-with-icons md-theme-second">
+                        <li class="flag">
                           <a @click="$root.changeLang('rus')">
-                            <i class="material-icons">view_day</i>
-                            <p>Rus</p>
+                            <img src="@/assets/img/icon/ru.svg"/>
+                            <p>Russia</p>
                           </a>
                         </li>
-                        <li>
+                        <li class="flag">
                           <a @click="$root.changeLang('eng')">
-                            <i class="material-icons">fingerprint</i>
-                            <p>Eng</p>
+                             <img src="@/assets/img/icon/eng.svg" />
+                            <p>English</p>
                           </a>
                         </li>
                       </ul>
@@ -337,4 +338,11 @@ export default {
 .modal-body {
   padding: 0 15px !important;
 }
+.flag img{
+  width: 30px;
+}
+.flag p{
+  margin: 3px 0 0 10px;
+}
+
 </style>

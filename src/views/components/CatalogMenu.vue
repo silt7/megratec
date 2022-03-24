@@ -83,7 +83,7 @@
                       <div class="sub-title">
                         {{ product.PREVIEW_TEXT }}
                       </div>
-                      <div class="md-subhead">Подробнее</div>
+                      <div class="md-subhead">{{$root.dictionary.button.detail}}</div>
                     </md-card-header-text>
                   </md-card>
                 </router-link>
@@ -103,8 +103,8 @@
         </md-tabs>
         <div class="md-layout text-center" v-if="isShow">
           <div class="md-layout-item md-size-33 mx-auto">
-            <router-link exact to="/products/">
-              <md-button class="md-primary all-products">Все</md-button>
+            <router-link exact :to="$root.dictionary.link.products">
+              <md-button class="md-primary all-products">{{$root.dictionary.button.all}}</md-button>
             </router-link>
           </div>
         </div>

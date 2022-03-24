@@ -6,7 +6,7 @@
           <div
             class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
           >
-            <h1 class="title" style="text-align:center">О нас</h1>
+            <h1 class="title" style="text-align:center">{{$root.dictionary.static.about}}</h1>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
       <Breadcrumbs title="О нас"/>
       <div class="section section-contacts">
         <div v-if="page" v-html="page.DETAIL_TEXT"></div>
-        <div class="container" style="padding: 70px 15px">
+        <div class="container" style="padding: 70px 15px" v-if="false">
           <h2 class="text-center title">Партнёры</h2>
           <h5>
             Мы также имеем возможность осуществлять комплексные поставки

@@ -32,5 +32,39 @@
             "url": "/eng/search/",
             "title": "Search"
         }
+    },
+    "button":{
+        "detail": "More",
+        "all": "All",
+        "read": "Raed",
+        "events": "All Events",
+        "send": "Send"
+    },
+    "title":{
+        "popularCourse": "Popular courses",
+        "lastEvents": "Latest events",
+        "application": "Submit your application",
+        "sendmessage": "Send us a message"
+    },
+    "link":{
+       "products": "/eng/products/",
+       "product": "/eng/product/",
+       "news": "/eng/news/",
+       "training": "/eng/training/"
+    },
+    "static":{
+        "name":"Name",
+        "company":"Company",
+        "phone":"Phone",
+        "email":"Email",
+        "message":"Message",
+        "comment":"Comment",
+        "sent":"Sent",
+        "errorsent": "Sending error",
+        "address":"Address",
+        "contactinfo":"Contact Information",
+        "support":"Technical support",
+        "about": "About"
+
     }
 }

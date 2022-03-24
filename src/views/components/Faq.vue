@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async loadInfo(id_tab) {
-      this.text = await this.getItem("faq", 0);
+      this.text = await this.getItem("faq", '');
     }
   },
   created() {

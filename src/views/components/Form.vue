@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="title" style="margin: 10px auto">Оставить заявку</h2>
+    <h2 class="title" style="margin: 10px auto">{{$root.dictionary.title.application}}</h2>
     <div class="md-layout">
       <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
         <form class="contact-form">
@@ -10,7 +10,7 @@
               v-if="fields.includes('Имя')"
             >
               <md-field :class="className">
-                <label>Имя</label>
+                <label>{{$root.dictionary.static.name}}</label>
                 <md-input v-model="name" type="text" required></md-input>
               </md-field>
             </div>
@@ -19,7 +19,7 @@
               v-if="fields.includes('Компания')"
             >
               <md-field :class="classCompany">
-                <label>Компания</label>
+                <label>{{$root.dictionary.static.company}}</label>
                 <md-input v-model="company" type="text" required></md-input>
               </md-field>
             </div>
@@ -28,7 +28,7 @@
               v-if="fields.includes('Телефон')"
             >
               <md-field :class="classPhone">
-                <label>Телефон</label>
+                <label>{{$root.dictionary.static.phone}}</label>
                 <md-input v-model="phone" type="number" required></md-input>
               </md-field>
             </div>
@@ -37,24 +37,24 @@
               v-if="fields.includes('Почта')"
             >
               <md-field :class="classEmail">
-                <label>Email</label>
+                <label>{{$root.dictionary.static.email}}</label>
                 <md-input v-model="email" type="email" required></md-input>
               </md-field>
             </div>
           </div>
           <md-field maxlength="5">
-            <label>Сообщение</label>
+            <label>{{$root.dictionary.static.message}}</label>
             <md-textarea v-model="message"></md-textarea>
           </md-field>
-          <p v-if="messOk" class="text-success">Отправлено</p>
-          <p v-if="messErr" class="text-danger">Ошибка при отправке</p>
+          <p v-if="messOk" class="text-success">{{$root.dictionary.static.sent}}</p>
+          <p v-if="messErr" class="text-danger">{{$root.dictionary.static.errorsent}}</p>
           <div class="md-layout" style="margin-bottom:15px">
             <div class="md-layout-item md-size-33 mx-auto text-center">
               <md-button
                 class="md-primary"
                 :disabled="messOk"
                 @click="sendForm()"
-                >Отправить</md-button
+                >{{$root.dictionary.button.send}}</md-button
               >
             </div>
           </div>

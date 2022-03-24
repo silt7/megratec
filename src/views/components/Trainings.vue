@@ -10,7 +10,7 @@
           <div
             class="md-card md-card-background md-theme-default"
             :style="{
-              'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+              'background-image': 'url(' + $root.baseURL + item.PREVIEW_PICTURE + ')'
             }"
           >
             <div class="md-card-content" style="height:230px">
@@ -23,7 +23,7 @@
               ></p>
               <div>
               <router-link
-                :to="'/training/' + item.CODE"
+                :to="$root.dictionary.link.training + item.CODE"
                 style="color: white"
                 class="md-button md-white md-round md-theme-default"
               >
@@ -32,7 +32,7 @@
                     <i class="md-icon md-icon-font md-theme-default"
                       >format_align_left</i
                     >
-                    Подробнее
+                    {{$root.dictionary.button.detail}}
                   </div>
                 </div>
               </router-link>
@@ -59,7 +59,8 @@ export default ({
   },
   methods: {
     async loadContent() {
-      this.items = await this.getItem("trainings", 0);
+      console.log('xxx')
+      this.items = await this.getItem("trainings", '');
 
       for(let key in this.items){
         if((this.items[key].ID == 169) 
@@ -68,7 +69,11 @@ export default ({
             this.items.splice(key)
         }
       }
-      // this.items.splice(key)
+    }
+  },
+  watch: {
+    "$root.language": function() {
+      this.loadContent();
     }
   },
 })
