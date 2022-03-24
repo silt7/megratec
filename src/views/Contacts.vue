@@ -50,6 +50,7 @@
             </div>
             <div
               class="md-layout-item md-size-33 md-small-size-100 ml-auto block-2"
+              v-if="contacts[0]"
             >
               <div class="md-layout contacts">
                 <div
@@ -61,11 +62,8 @@
                   class="md-layout-item md-size-80 md-small-size-100 ml-auto"
                 >
                   <h4 class="title">{{$root.dictionary.static.address}}</h4>
-                  <p
-                    class="muted-text"
-                    v-if="contacts[0]"
-                    v-html="contacts[0].UF_ADDRES"
-                  ></p>
+                  <p class="muted-text" v-if="$root.language == 'rus'" v-html="contacts[0].UF_ADDRES"></p>
+                  <p v-else v-html="contacts[0].UF_ADDRESS_ENG"></p>
                 </div>
               </div>
               <div class="md-layout contacts">
@@ -78,11 +76,8 @@
                   class="md-layout-item md-size-80 md-small-size-100 ml-auto"
                 >
                   <h4 class="title">{{$root.dictionary.static.contactinfo}}</h4>
-                  <p
-                    class="muted-text"
-                    v-if="contacts[0]"
-                    v-html="contacts[0].UF_CONTACTS"
-                  ></p>
+                  <p class="muted-text" v-if="$root.language == 'rus'" v-html="contacts[0].UF_CONTACTS"></p>
+                  <p v-else v-html="contacts[0].UF_INFO_ENG"></p>
                 </div>
               </div>
               <div class="md-layout contacts">
@@ -95,15 +90,12 @@
                   class="md-layout-item md-size-80 md-small-size-100 ml-auto"
                 >
                   <h4 class="title">{{$root.dictionary.static.support}}</h4>
-                  <p
-                    class="muted-text"
-                    v-if="contacts[0]"
-                    v-html="contacts[0].UF_SUPPORT"
-                  ></p>
+                  <p class="muted-text" v-if="$root.language == 'rus'" v-html="contacts[0].UF_SUPPORT"></p>
+                  <p v-else v-html="contacts[0].UF_SUPPORT_ENG"></p>
                 </div>
               </div>
             </div>
-            <div v-if="page" v-html="page.DETAIL_TEXT"></div>
+            <div v-if="$root.contentPage" v-html="$root.contentPage.DETAIL_TEXT"></div>
           </div>
         </div>
       </div>
@@ -119,7 +111,6 @@ export default {
       email: null,
       message: null,
       phone: null,
-      page: "",
       contacts: [],
       messOk: false,
       messErr: false
@@ -131,15 +122,6 @@ export default {
         backgroundImage: `url(${this.header})`
       };
     }
-  },
-  mounted() {
-    this.contacts = this.getUserField(5, 12);
-    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
-      data => {
-        this.page = data.shift();
-      }
-    );
-    this.getSeo();
   },
   methods: {
     sendForm() {
@@ -164,6 +146,12 @@ export default {
           }
         });
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$root.loadContantsPage();
+      vm.contacts = vm.getUserField(5, 12);
+    });
   }
 };
 </script>

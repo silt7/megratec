@@ -14,7 +14,7 @@
     <div class="main main-raised">
       <Breadcrumbs title="Тренинги"/>
       <div class="section section-contacts">
-        <div class="container" v-if="page" v-html="page.DETAIL_TEXT"></div>
+        <div class="container" v-if="$root.contentPage" v-html="$root.contentPage.DETAIL_TEXT"></div>
         <Trainings count="6"/>
         <Form :fields="['Имя', 'Компания', 'Почта', 'Телефон']"></Form>
       </div>
@@ -44,13 +44,10 @@ export default {
       };
     }
   },
-  mounted() {
-    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
-      data => {
-        this.page = data.shift();
-        this.getSeo();
-      }
-    );
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$root.loadContantsPage();
+    });
   }
 };
 </script>

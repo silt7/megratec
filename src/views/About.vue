@@ -14,7 +14,7 @@
     <div class="main main-raised">
       <Breadcrumbs title="О нас"/>
       <div class="section section-contacts">
-        <div v-if="page" v-html="page.DETAIL_TEXT"></div>
+        <div v-if="$root.contentPage" v-html="$root.contentPage.DETAIL_TEXT"></div>
         <div class="container" style="padding: 70px 15px" v-if="false">
           <h2 class="text-center title">Партнёры</h2>
           <h5>
@@ -98,13 +98,10 @@ export default {
       };
     }
   },
-  mounted() {
-    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
-      data => {
-        this.page = data.shift();
-      }
-    );
-    this.getSeo();
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$root.loadContantsPage();
+    });
   }
 };
 </script>

@@ -44,7 +44,8 @@
         "popularCourse": "Популярные курсы",
         "lastEvents": "Последние события",
         "application": "Оставить заявку",
-        "sendmessage": "Отправить нам сообщение"
+        "sendmessage": "Отправить нам сообщение",
+        "design":"Дизайн-центр"
     },
     "link":{
        "products": "/products/",

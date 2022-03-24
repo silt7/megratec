@@ -44,7 +44,8 @@
         "popularCourse": "Popular courses",
         "lastEvents": "Latest events",
         "application": "Submit your application",
-        "sendmessage": "Send us a message"
+        "sendmessage": "Send us a message",
+        "design":"Design Center"
     },
     "link":{
        "products": "/eng/products/",

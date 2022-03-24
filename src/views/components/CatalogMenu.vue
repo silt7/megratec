@@ -159,7 +159,6 @@ export default {
     },
     tabChanged(direction) {
       let count = Object.keys(this.products).length;
-      console.log(count)
       if (direction == "next") {
         if(this.active + 1 >= count){
           this.active = 0
@@ -176,6 +175,7 @@ export default {
     },
   },
   mounted() {
+    this.$root.getCatalog().then(response=>this.products = response)
     if (this.isShow == 0) {
       this.productsShow = 0;
     }

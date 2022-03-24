@@ -80,7 +80,6 @@ export default {
     next(vm => {
       vm.getItem("pages", to.path.replace(/(\\|\/)/g, "")).then(data => {
         vm.page = data;
-        vm.getSeo();
       });
     });
   }

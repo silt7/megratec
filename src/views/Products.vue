@@ -75,15 +75,11 @@ export default {
       };
     }
   },
-  mounted() {
-    this.getSeo();
-
-  },
-  watch: {
-    "$root.language": function() {
-      this.$root.getCatalog().then(response=>this.products = response)
-    }
-  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$root.getCatalog().then(response=>vm.products = response)
+    });
+  }
 };
 </script>
 

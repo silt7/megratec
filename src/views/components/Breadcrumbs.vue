@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section" v-if="$root.language == 'rus'">
     <div class="container">
       <nav>
         <ul itemscope itemtype="https://schema.org/BreadcrumbList">
@@ -8,8 +8,8 @@
             itemscope
             itemtype="https://schema.org/ListItem"
           >
-            <router-link to="/" title="Главная" itemprop="item">
-              <span itemprop="name"><md-icon>home</md-icon>Главная</span>
+            <router-link :to="$root.dictionary.menu.main.url" :title="$root.dictionary.menu.main.title" itemprop="item">
+              <span itemprop="name"><md-icon>home</md-icon>{{$root.dictionary.menu.main.title}}</span>
               <meta itemprop="position" content="0" />
             </router-link>
           </li>

@@ -59,7 +59,7 @@ export default ({
   },
   methods: {
     async loadContent() {
-      console.log('xxx')
+
       this.items = await this.getItem("trainings", '');
 
       for(let key in this.items){

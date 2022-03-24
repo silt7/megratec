@@ -42,6 +42,7 @@ Vue.mixin({
       baseURL: $baseURL,
       titleMeta: "Megratec",
       descriptionMeta: "Megratec",
+      contentPage: "",
       language: this.$route.path.includes("/eng") ? "eng" : "rus",
       dictionary: LangRus,
     };
@@ -51,13 +52,6 @@ Vue.mixin({
       title: this.$root.titleMeta,
       meta: [{ name: "description", content: this.$root.descriptionMeta }],
     };
-  },
-  created() {
-    if (this.$root.language == "rus") {
-      this.$root.dictionary = LangRus;
-    } else {
-      this.$root.dictionary = LangEng;
-    }
   },
   methods: {
     async getCatalog() {
@@ -70,8 +64,6 @@ Vue.mixin({
         $baseURL + "/rest-custom/getCatalog.php",
         params
       );
-
-      console.log(data);
 
       return data;
     },
@@ -131,9 +123,7 @@ Vue.mixin({
           this.$root.titleMeta = response.data["ELEMENT_META_TITLE"];
           this.$root.descriptionMeta =
             response.data["ELEMENT_META_DESCRIPTION"];
-          res.push(response.data);
         });
-      return res;
     },
     changeLang(lang) {
       this.$root.language = lang;
@@ -150,6 +140,17 @@ Vue.mixin({
         uri = uri + "-eng";
       }
       this.$router.push({ name: uri }).catch((err) => {});
+    },
+    loadContantsPage() {
+      let code = "";
+      if (this.$route.path.slice(0, 5) == "/eng/") {
+        code = this.$route.path.slice(5);
+      } else {
+        code = this.$route.path;
+      }
+      this.getItem("pages", code.replace(/(\\|\/)/g, "")).then((data) => {
+        this.contentPage = data[0];
+      });
     },
   },
 });

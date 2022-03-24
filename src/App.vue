@@ -11,6 +11,55 @@
     </div>
   </div>
 </template>
+<script>
+import LangRus from "@/assets/lang/rus.json";
+import LangEng from "@/assets/lang/eng.json";
+
+export default {
+  created(){
+    this.getSeo()
+    if (this.$root.language == "rus") {
+      this.$root.dictionary = LangRus;
+    } else {
+      this.$root.dictionary = LangEng;
+    }
+  },
+  methods: {
+    getSeo: function() {
+      let path = this.$route.path;
+      if (path == "/") {
+        path = "main";
+      }
+      if (Object.keys(this.$route.params).length != 0) {
+        if (this.$route.params["id"] !== undefined) {
+          path = this.$route.params["id"];
+        }
+      }
+
+      path = path.replace(/(\\|\/)/g, "");
+      let res = [];
+      let params = {
+        params: {
+          CODE: path,
+        },
+      };
+
+      this.axios
+        .get(this.$root.baseURL + "/rest-custom/seoget.php", params)
+        .then((response) => {
+          this.$root.titleMeta = response.data["ELEMENT_META_TITLE"];
+          this.$root.descriptionMeta =
+            response.data["ELEMENT_META_DESCRIPTION"];
+        });
+    },
+  },
+  watch: {
+    $route () {
+      this.getSeo();
+    }
+  }
+}
+</script>
 <style>
 .fade-enter-active,
 .fade-leave-active {

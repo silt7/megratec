@@ -229,8 +229,6 @@ export default {
     async loadContent() {
       this.banners = await this.getItem("banners", '');
       this.news = await this.getItem("news", '');
-
-      this.getSeo();
     }
   },
   computed: {

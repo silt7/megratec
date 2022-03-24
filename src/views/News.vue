@@ -4,7 +4,7 @@
       class="section page-header header-filter"
       :style="headerStyle"
     ></parallax>
-    <div class="main main-raised">
+    <div class="main main-raised" v-if="news[0]">
       <Breadcrumbs :title="news[0].NAME"/>
       <div class="section profile-content">
         <div class="container" v-for="item in news" :key="item.ID">
@@ -14,7 +14,7 @@
                 <div class="avatar">
                   <img
                     v-if="item.DETAIL_PICTURE"
-                    :src="item.DETAIL_PICTURE"
+                    :src="$root.baseURL + item.DETAIL_PICTURE"
                     :alt="item.NAME"
                     class="img-raised rounded img-fluid"
                   />
@@ -77,7 +77,6 @@ export default {
     next(vm => {
       vm.getItem("news", to.params.id).then(data => {
         vm.news = data;
-        vm.getSeo();
       });
     });
   }

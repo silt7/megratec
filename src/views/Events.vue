@@ -19,13 +19,13 @@
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
-              v-for="item in newsFiltr(1)"
+              v-for="item in news.slice(0, 2)"
               :key="item.ID"
             >
               <div
                 class="md-card md-card-background md-theme-default"
                 :style="{
-                  'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+                  'background-image': 'url(' + $root.baseURL + item.PREVIEW_PICTURE + ')'
                 }"
               >
                 <div class="md-card-content" style="min-height:290px">
@@ -57,13 +57,13 @@
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
-              v-for="item in newsFiltr(2)"
+              v-for="item in news.slice(2, 5)"
               :key="item.ID"
             >
               <div
                 class="md-card md-card-background md-theme-default"
                 :style="{
-                  'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+                  'background-image': 'url('  + $root.baseURL + item.PREVIEW_PICTURE + ')'
                 }"
               >
                 <div class="md-card-content" style="height:300px">
@@ -99,13 +99,13 @@
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
-              v-for="item in newsFiltr(3)"
+              v-for="item in news.slice(5, 7)"
               :key="item.ID"
             >
               <div
                 class="md-card md-card-background md-theme-default"
                 :style="{
-                  'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+                  'background-image': 'url(' + $root.baseURL+ item.PREVIEW_PICTURE + ')'
                 }"
               >
                 <div class="md-card-content" style="min-height:290px">
@@ -137,13 +137,13 @@
           <div class="md-layout text-center">
             <div
               class="md-layout-item"
-              v-for="item in newsFiltr(4)"
+              v-for="item in news.slice(7, 10)"
               :key="item.ID"
             >
               <div
                 class="md-card md-card-background md-theme-default"
                 :style="{
-                  'background-image': 'url(' + item.PREVIEW_PICTURE + ')'
+                  'background-image': 'url(' + $root.baseURL + item.PREVIEW_PICTURE + ')'
                 }"
               >
                 <div class="md-card-content" style="height:300px">
@@ -197,33 +197,15 @@ export default {
       };
     }
   },
-  mounted() {
-    this.getItem("pages", this.$route.path.replace(/(\\|\/)/g, "")).then(
-      data => {
-        this.page = data.shift();
-        this.getSeo();
-        this.loadContent();
-      }
-    );
-  },
   methods: {
-    newsFiltr(number) {
-      let result = [];
-      if (number == 1) {
-        result = this.news.slice(0, 2);
-      } else if (number == 2) {
-        result = this.news.slice(2, 5);
-      } else if (number == 3) {
-        result = this.news.slice(5, 7);
-      } else if (number == 4) {
-        result = this.news.slice(7, 10);
-      }
-
-      return result;
-    },
     async loadContent() {
       this.news = await this.getItem("news", '');
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.loadContent();
+    });
   }
 };
 </script>

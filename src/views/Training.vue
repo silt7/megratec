@@ -7,7 +7,7 @@
             <div class="profile">
               <img
                 v-if="product.DETAIL_PICTURE"
-                :src="product.DETAIL_PICTURE"
+                :src="$root.baseURL + product.DETAIL_PICTURE"
                 :alt="product.NAME"
                 class="img-raised rounded img-fluid"
                 style="transform: inherit"
@@ -40,7 +40,7 @@
           <div class="container" v-html="product.DETAIL_TEXT"></div>
           <div v-if="product.PROPERTY_VALUES">
             <Form
-              v-if="product.PROPERTY_VALUES.FORM == 'Да'"
+              v-if="product.PROPERTY_VALUES.FORM == '13'"
               :fields="['Имя', 'Компания', 'Почта', 'Телефон']"
             ></Form>
           </div>
@@ -79,17 +79,10 @@ export default {
       };
     }
   },
-  watch: {
-    "$route.params.id": function() {
-      this.loadContent();
-    }
-  },
   methods: {
     async loadContent() {
       this.product = await this.getItem("trainings", this.$route.params.id);
       this.product = this.product[0];
-
-      this.getSeo();
     }
   },
   beforeRouteEnter(to, from, next) {
