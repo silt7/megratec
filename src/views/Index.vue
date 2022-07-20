@@ -130,7 +130,7 @@
         </div>
         <div class="container" style="padding: 50px 0 0 0"><h2>{{$root.dictionary.title.popularCourse}}</h2></div>
         <Trainings count="3"/>
-        <div class="container" style="padding: 50px 0" v-if="false">
+        <div class="container" style="padding: 50px 0" >
           <carousel
             :perPageCustom="[[900, 5]]"
             loop

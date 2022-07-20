@@ -15,7 +15,7 @@
       <Breadcrumbs title="О нас"/>
       <div class="section section-contacts">
         <div v-if="$root.contentPage" v-html="$root.contentPage.DETAIL_TEXT"></div>
-        <div class="container" style="padding: 70px 15px" v-if="false">
+        <div class="container" style="padding: 70px 15px" >
           <h2 class="text-center title">Партнёры</h2>
           <h5>
             Мы также имеем возможность осуществлять комплексные поставки

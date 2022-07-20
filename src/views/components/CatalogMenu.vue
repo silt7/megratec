@@ -127,7 +127,7 @@ export default {
       clickCategory: 0,
       turn: 0,
       active: 0,
-      products: this.$root.getCatalog().then(response=>this.products = response)
+      products: []
     };
   },
   props: {

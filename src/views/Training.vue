@@ -40,7 +40,7 @@
           <div class="container" v-html="product.DETAIL_TEXT"></div>
           <div v-if="product.PROPERTY_VALUES">
             <Form
-              v-if="product.PROPERTY_VALUES.FORM == '13'"
+              v-if="product.PROPERTY_VALUES.FORM == 'Да'"
               :fields="['Имя', 'Компания', 'Почта', 'Телефон']"
             ></Form>
           </div>

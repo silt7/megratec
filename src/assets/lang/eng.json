@@ -36,7 +36,7 @@
     "button":{
         "detail": "More",
         "all": "All",
-        "read": "Raed",
+        "read": "Read",
         "events": "All Events",
         "send": "Send"
     },

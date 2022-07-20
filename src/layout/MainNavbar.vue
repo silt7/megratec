@@ -51,7 +51,7 @@
                         <li class="flag">
                           <a @click="$root.changeLang('rus')">
                             <img src="@/assets/img/icon/ru.svg"/>
-                            <p>Russia</p>
+                            <p>Russian</p>
                           </a>
                         </li>
                         <li class="flag">
@@ -67,42 +67,42 @@
               </li>
               <md-list-item v-if="this.$route.path !== '/' && this.$route.path !== '/eng'">
                 <router-link exact :to="$root.dictionary.menu.main.url">
-                  <p>{{$root.dictionary.menu.main.title}}</p>
+                  <p class="menu-p">{{$root.dictionary.menu.main.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
                 v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
                 <router-link exact :to="$root.dictionary.menu.dizayncentr.url">
-                  <p>{{$root.dictionary.menu.dizayncentr.title}}</p>
+                  <p class="menu-p">{{$root.dictionary.menu.dizayncentr.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
                 v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
                 <router-link exact :to="$root.dictionary.menu.products.url">
-                  <p>{{$root.dictionary.menu.products.title}}</p>
+                  <p class="menu-p">{{$root.dictionary.menu.products.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
                 v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
                 <router-link exact :to="$root.dictionary.menu.trainings.url">
-                  <p>{{$root.dictionary.menu.trainings.title}}</p>
+                  <p class="menu-p">{{$root.dictionary.menu.trainings.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
                 v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
                 <router-link exact :to="$root.dictionary.menu.contacts.url">
-                  <p>{{$root.dictionary.menu.contacts.title}}</p>
+                  <p class="menu-p">{{$root.dictionary.menu.contacts.title}}</p>
                 </router-link>
               </md-list-item>
               <md-list-item
                 v-if="(this.$route.path !== '/' && this.$route.path !== '/eng') || this.window.width <= 990"
               >
                 <router-link exact :to="$root.dictionary.menu.about.url">
-                  <p>{{$root.dictionary.menu.about.title}}</p>
+                  <p class="menu-p">{{$root.dictionary.menu.about.title}}</p>
                 </router-link>
               </md-list-item>
 
@@ -343,6 +343,9 @@ export default {
 }
 .flag p{
   margin: 3px 0 0 10px;
+}
+.menu-p{
+  margin-bottom: 0;
 }
 
 </style>

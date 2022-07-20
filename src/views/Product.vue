@@ -81,7 +81,7 @@ export default {
   },
   watch: {
     "$route.params.id": function() {
-      this.loadContent();
+      this.$root.getItem("products", this.$route.params.id).then(responce=>this.product = responce[0])
     }
   },
   beforeRouteEnter(to, from, next) {
